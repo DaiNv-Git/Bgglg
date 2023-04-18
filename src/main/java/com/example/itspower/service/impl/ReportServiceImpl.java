@@ -39,10 +39,6 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public Object reportDto(String reportDate, int groupId) {
-        Optional<ReportEntity> entity = reportRepository.findByReportDateAndGroupId(reportDate, groupId);
-        if (entity.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new SuccessResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), "report is not exits now date", HttpStatus.INTERNAL_SERVER_ERROR.name()));
-        }
         ReportDto reportDto = reportRepository.reportDto(reportDate, groupId);
         List<RestDto> restDtos = restRepository.getRests(reportDto.getId());
         List<TransferEntity> transferEntities = transferRepository.findByReportId(reportDto.getId());
