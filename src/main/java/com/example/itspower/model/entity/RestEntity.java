@@ -1,10 +1,7 @@
 package com.example.itspower.model.entity;
-
 import com.example.itspower.model.resultset.RestDto;
 import lombok.Data;
-
 import javax.persistence.*;
-
 @Entity
 @Table(name = "rest")
 @Data
@@ -33,7 +30,15 @@ public class RestEntity {
     @Column(name = "id")
     private int restId;
     @Column(name = "rest_name")
-    private String restName = "";
+    private String restName ;
+    @Column(name = "employee_Name")
+    private String employeeName ;
+    @Column(name = "employee_Labor")
+    private String employeeLabor ;
+    @Column(name = "work_Time")
+    private Float workTime ;
+    @Column(name = "session")
+    private String session ;
     @Column(name = "reason_id")
     private int reasonId = 0;
     @Column(name = "reportId")

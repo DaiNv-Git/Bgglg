@@ -7,12 +7,14 @@ import com.example.itspower.repository.GroupRoleRepository;
 import com.example.itspower.repository.repositoryjpa.GroupJpaRepository;
 import com.example.itspower.request.GroupRoleRequest;
 import com.example.itspower.response.SuccessResponse;
+import com.example.itspower.response.dynamic.PageResponse;
 import com.example.itspower.response.group.GroupRoleDemarcationRes;
 import com.example.itspower.response.group.GroupRoleResponse;
 import com.example.itspower.response.group.ResponseCount;
 import com.example.itspower.service.GroupRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -42,11 +44,15 @@ public class GroupRoleServiceImpl implements GroupRoleService {
     }
 
     @Override
-    public Page<GroupEntity> getAllDamercation(String groupName,Pageable pageable) {
-        try{
-            Page<GroupEntity> findAll = groupJpaRepository.findByGroupName(groupName,pageable);
-            return findAll;
-        }catch (Exception e){
+    public PageResponse getAllDamercation(String groupName, int pageSize, int pageNo) {
+        try {
+            int offset = (pageNo - 1) * pageSize;
+            int countGroupRole = groupJpaRepository.countGroupRole();
+            List<GroupEntity> findAll = groupJpaRepository.findByGroupName(groupName, pageSize, offset);
+            Pageable pageable = PageRequest.of(offset, pageSize);
+            final PageImpl<GroupEntity> page = new PageImpl<>(findAll, pageable, 0);
+            return new PageResponse<>(page, (long) countGroupRole);
+        } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
 
@@ -144,7 +150,7 @@ public class GroupRoleServiceImpl implements GroupRoleService {
         Map<Integer, List<GroupRoleResponse>> parentIdToChildren =
                 mapData.stream().collect(Collectors.groupingBy(GroupRoleResponse::getParentId));
         mapData.forEach(p -> p.setChildren(parentIdToChildren.get(p.getValue())));
-        return  parentIdToChildren.get(0);
+        return parentIdToChildren.get(0);
     }
 
 

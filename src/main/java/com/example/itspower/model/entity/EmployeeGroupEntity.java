@@ -21,8 +21,9 @@ import javax.persistence.*;
         "from group_employee ge inner join group_role gr on ge.group_id =gr.id" +
         " where (:groupId IS NULL OR ge.group_id LIKE CONCAT(:groupId)) and " +
         "(:groupName IS NULL OR gr.group_name LIKE CONCAT('%',:groupName,'%')) and " +
-        "(:laborCode IS NULL OR ge.labor_code LIKE CONCAT('%',:laborCode,'%'))"+
-        " ORDER BY gr.group_name ASC ",
+        "(:laborCode IS NULL OR ge.labor_code LIKE CONCAT('%',:laborCode,'%')) and " +
+        "(:employeeName is null or ge.name like CONCAT('%',:employeeName,'%'))"+
+        " ORDER BY gr.group_name ASC LIMIT :pageSize OFFSET :pageNo ",
         resultSetMapping = "getEmployee"
         )
 @Entity

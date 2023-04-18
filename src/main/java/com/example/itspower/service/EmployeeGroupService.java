@@ -1,8 +1,8 @@
 package com.example.itspower.service;
+
 import com.example.itspower.request.userrequest.addUserRequest;
-import com.example.itspower.response.employee.EmployeeGroupResponse;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.example.itspower.response.dynamic.PageResponse;
+
 import java.util.List;
 
 public interface EmployeeGroupService {
@@ -10,5 +10,5 @@ public interface EmployeeGroupService {
 
     void delete(List<Integer> ids);
 
-    Page<EmployeeGroupResponse> getEmployee(String groupName, Integer groupId, String laborCode, Pageable pageable);
+    PageResponse getEmployee(String groupName, Integer groupId, String laborCode, String employeeName, int pageSize, int pageNo);
 }

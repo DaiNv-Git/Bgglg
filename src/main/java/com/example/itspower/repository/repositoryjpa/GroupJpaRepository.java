@@ -6,8 +6,6 @@ import com.example.itspower.model.resultset.RootNameDto;
 import com.example.itspower.model.resultset.ViewAllDto;
 import com.example.itspower.response.group.ViewDetailGroupResponse;
 import com.example.itspower.response.group.ViewGroupRoot;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -22,13 +20,19 @@ import java.util.Optional;
 public interface GroupJpaRepository extends JpaRepository<GroupEntity, Integer> {
 
     List<GroupEntity> findAllByParentId(int parentId);
-    @Query(value = "select * from group_role where group_name like concat('%',?1,'%')",nativeQuery = true)
-    Page<GroupEntity> findByGroupName(String groupName, Pageable pageable);
+
+    @Query(value = "select * from group_role where group_name like concat('%',:groupName,'%') LIMIT :pageSize OFFSET :pageNo ", nativeQuery = true)
+    List<GroupEntity> findByGroupName(@Param("groupName") String groupName
+            ,@Param("pageSize") int pageSize
+            ,@Param("pageNo")  int pageNo);
+
+    @Query(value = "select count(*) from group_role", nativeQuery = true)
+    int countGroupRole();
 
     @Transactional
     @Modifying
     @Query(value = "Delete FROM group_role where id =:groupId ", nativeQuery = true)
-    void deleteByGroupName( @Param("groupId") Integer groupId);
+    void deleteByGroupName(@Param("groupId") Integer groupId);
 
     List<GroupEntity> findAllByParentIdIsNull();
 

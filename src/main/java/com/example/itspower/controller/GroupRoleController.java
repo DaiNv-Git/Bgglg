@@ -5,8 +5,6 @@ import com.example.itspower.request.GroupRoleRequest;
 import com.example.itspower.response.BaseResponse;
 import com.example.itspower.service.GroupRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,9 +47,9 @@ public class GroupRoleController {
 
     @GetMapping("/groupRole/view-root")
     @CrossOrigin
-    public ResponseEntity<BaseResponse<Object>> count(@RequestParam("reportDate")String reportDate) {
+    public ResponseEntity<BaseResponse<Object>> count(@RequestParam("reportDate") String reportDate) {
         try {
-            Date date=new SimpleDateFormat("yyyy/MM/dd").parse(reportDate);
+            Date date = new SimpleDateFormat("yyyy/MM/dd").parse(reportDate);
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date); // yourDate là thời gian hiện tại của bạn
             calendar.add(Calendar.HOUR_OF_DAY, 7); // thêm 7 giờ vào thời gian hiện tại
@@ -107,12 +105,11 @@ public class GroupRoleController {
 
     @GetMapping("/groupRole/getAllDemarcation")
     @CrossOrigin
-    public ResponseEntity<Object> getAllDemarcation( @RequestParam(defaultValue = "1") Integer pageNo,
-                                                     @RequestParam(defaultValue = "10") Integer pageSize,
-                                                     @RequestParam("groupName")String groupName) {
+    public ResponseEntity<Object> getAllDemarcation(@RequestParam(defaultValue = "1") Integer pageNo,
+                                                    @RequestParam(defaultValue = "10") Integer pageSize,
+                                                    @RequestParam(value = "groupName",required = false,defaultValue = "") String groupName) {
         try {
-            Pageable pageable = PageRequest.of(pageNo-1, pageSize);
-            return ResponseEntity.ok(groupRoleService.getAllDamercation(groupName,pageable));
+            return ResponseEntity.ok(groupRoleService.getAllDamercation(groupName, pageSize, pageNo));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
