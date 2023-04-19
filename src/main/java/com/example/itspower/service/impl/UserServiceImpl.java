@@ -8,6 +8,7 @@ import com.example.itspower.model.entity.UserEntity;
 import com.example.itspower.model.entity.UserGroupEntity;
 import com.example.itspower.model.resultset.UserDto;
 import com.example.itspower.repository.*;
+import com.example.itspower.repository.repositoryjpa.ReportJpaRepository;
 import com.example.itspower.repository.repositoryjpa.UserJpaRepository;
 import com.example.itspower.request.search.UserSearchRequest;
 import com.example.itspower.request.userrequest.UserUpdateRequest;
@@ -29,6 +30,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +42,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
+    private final ReportJpaRepository reportJpaRepository;
     private final GroupRoleRepository groupRoleRepository;
     private final ReportRepository reportRepository;
     private final RestRepository restRepository;
@@ -106,8 +112,16 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public boolean isCheckReport(int groupId) {
-        Optional<ReportEntity> reportEntity = reportRepository.findByReportDateAndGroupId(DateUtils.formatDate(new Date()), groupId);
+    public boolean isCheckReport(int groupId) throws ParseException {
+        Date date=new SimpleDateFormat("yyyy/MM/dd").parse(String.valueOf(new Date()));
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date); // yourDate là thời gian hiện tại của bạn
+        calendar.add(Calendar.HOUR_OF_DAY, 7); // thêm 7 giờ vào thời gian hiện tại
+        Date newDate = calendar.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String strDate = dateFormat.format(newDate);
+        Optional<ReportEntity> reportEntity = reportJpaRepository.findByReportDateAndGroupId(
+                DateUtils.formatDate(newDate), groupId);
         return reportEntity.isPresent();
     }
 

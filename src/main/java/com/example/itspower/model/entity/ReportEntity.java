@@ -91,6 +91,10 @@ public class ReportEntity {
     private Integer groupId;
     @Column(name = "demarcation")
     private Integer demarcation = 0;
+    @Column(name = "professionLabor")
+    private Integer professionLabor = 0;
+    @Column(name = "professionNotLabor")
+    private Integer professionNotLabor = 0;
     @Column(name = "labor_productivity")
     private Integer laborProductivity = 0;
 }
