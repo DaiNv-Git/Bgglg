@@ -1,4 +1,5 @@
 package com.example.itspower.controller;
+
 import com.example.itspower.exception.ReasonException;
 import com.example.itspower.response.BaseResponse;
 import com.example.itspower.service.ViewDetailService;
@@ -15,6 +16,7 @@ import java.util.Date;
 
 import static com.example.itspower.component.enums.StatusReason.ERROR;
 import static com.example.itspower.component.enums.StatusReason.SUCCESS;
+
 @RestController
 @RequestMapping("/view")
 public class ViewController {
@@ -29,11 +31,12 @@ public class ViewController {
     public ResponseEntity<Object> getAll(@RequestParam("date") String date) {
         return ResponseEntity.status(HttpStatus.OK).body(viewService.getView(date));
     }
+
     @GetMapping("/groupRoleViewDetails")
     @CrossOrigin
-    public ResponseEntity<BaseResponse<Object>> searchAllViewDetails(@RequestParam("reportDate")String reportDate) {
+    public ResponseEntity<BaseResponse<Object>> searchAllViewDetails(@RequestParam("reportDate") String reportDate) {
         try {
-            Date date=new SimpleDateFormat("yyyy/MM/dd").parse(reportDate);
+            Date date = new SimpleDateFormat("yyyy/MM/dd").parse(reportDate);
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date); // yourDate là thời gian hiện tại của bạn
             calendar.add(Calendar.HOUR_OF_DAY, 7); // thêm 7 giờ vào thời gian hiện tại
@@ -45,6 +48,16 @@ public class ViewController {
             return ResponseEntity.status(HttpStatus.OK).body(res);
         } catch (Exception e) {
             throw new ReasonException(HttpStatus.BAD_REQUEST.value(), ERROR, e);
+        }
+    }
+
+    @GetMapping("/exportExcel")
+    @CrossOrigin
+    public ResponseEntity<Object> exportExcel() {
+        try {
+            return null;
+        } catch (Exception e) {
+            throw new ReasonException(HttpStatus.NOT_FOUND.value(), ERROR, e);
         }
     }
 }

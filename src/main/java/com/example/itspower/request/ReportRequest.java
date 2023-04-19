@@ -17,6 +17,8 @@ public class ReportRequest {
     private int laborProductivity;
     private int partTimeNum;
     private int studentNum;
+    private int professionLabor;
+    private int professionNotLabor;
     @Valid
     private RiceRequest riceRequests;
     @Valid

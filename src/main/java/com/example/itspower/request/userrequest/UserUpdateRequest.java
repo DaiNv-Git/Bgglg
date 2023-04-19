@@ -10,7 +10,6 @@ public class UserUpdateRequest {
     @NotBlank
     private String groupName;
     private String password;
-    private String passwordOld;
     private int parentId;
     @JsonProperty("edit")
     private boolean isEdit;

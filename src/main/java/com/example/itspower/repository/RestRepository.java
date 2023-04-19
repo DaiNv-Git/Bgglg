@@ -23,10 +23,14 @@ public class RestRepository {
 
     public List<RestEntity> saveRest(List<RestRequest> requests, Integer reportId) {
         List<RestEntity> restEntities = new ArrayList<>();
-        for (RestRequest request : requests) {
+        for (RestRequest requestRest : requests) {
             RestEntity entity = new RestEntity();
-            entity.setRestName(request.getRestName());
-            entity.setReasonId(request.getReasonId());
+            String[] restAndLabor = requestRest.getRestNameAndLabor().split("-");
+            entity.setRestName(restAndLabor[0].trim());
+            entity.setEmployeeLabor(restAndLabor[1].trim());
+            entity.setReasonId(requestRest.getReasonId());
+            entity.setWorkTime(requestRest.getWorkTime());
+            entity.setSession(requestRest.getSession());
             entity.setReportId(reportId);
             restEntities.add(entity);
         }
@@ -37,21 +41,30 @@ public class RestRepository {
     public List<RestEntity> updateRest(List<RestRequest> requests, Integer reportId) {
         List<RestEntity> restEntities = new ArrayList<>();
         List<Integer> restIds = new ArrayList<>();
-        for (RestRequest request : requests) {
-            if (request.isDelete()) {
-                restIds.add(request.getRestId());
+        for (RestRequest requestRest : requests) {
+            if (requestRest.isDelete()) {
+                restIds.add(requestRest.getRestId());
             } else {
                 RestEntity entity = new RestEntity();
-                if (request.getRestId() == 0) {
-                    entity.setRestName(request.getRestName());
-                    entity.setReasonId(request.getReasonId());
+
+                if (requestRest.getRestId() == 0) {
+                    String[] restAndLabor = requestRest.getRestNameAndLabor().split("-");
+                    entity.setRestName(restAndLabor[0].trim());
+                    entity.setEmployeeLabor(restAndLabor[1].trim());
+                    entity.setReasonId(requestRest.getReasonId());
                     entity.setReportId(reportId);
+                    entity.setWorkTime(requestRest.getWorkTime());
+                    entity.setSession(requestRest.getSession());
                     restEntities.add(entity);
                 } else {
-                    entity.setRestId(request.getRestId());
-                    entity.setRestName(request.getRestName());
-                    entity.setReasonId(request.getReasonId());
+                    String[] restAndLabor = requestRest.getRestNameAndLabor().split("-");
+                    entity.setRestName(restAndLabor[0].trim());
+                    entity.setEmployeeLabor(restAndLabor[1].trim());
+                    entity.setRestId(requestRest.getRestId());
+                    entity.setReasonId(requestRest.getReasonId());
                     entity.setReportId(reportId);
+                    entity.setWorkTime(requestRest.getWorkTime());
+                    entity.setSession(requestRest.getSession());
                     restEntities.add(entity);
                 }
             }
@@ -60,15 +73,7 @@ public class RestRepository {
         return restJpaRepository.saveAll(restEntities);
     }
 
-    public int findByReport(Integer reportId) {
-        return restJpaRepository.findByCount(reportId);
-    }
-
-    public void deleteRestReportId(Integer reportId) {
-        restJpaRepository.deleteByReportId(reportId);
-    }
-
     public void deleteRestIdsAndReportId(Integer reportId, List<Integer> restIds) {
-        restJpaRepository.deleteByReportIdAndRestIdIn( reportId,restIds);
+        restJpaRepository.deleteByReportIdAndRestIdIn(reportId, restIds);
     }
 }

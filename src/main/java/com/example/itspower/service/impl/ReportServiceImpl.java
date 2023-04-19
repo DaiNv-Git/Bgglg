@@ -58,39 +58,12 @@ public class ReportServiceImpl implements ReportService {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.HOUR_OF_DAY, 7); // thêm 7 giờ vào thời gian hiện tại
-        Date newDate = calendar.getTime();
-        Optional<ReportEntity> entity = reportRepository.findByReportDateAndGroupId(DateUtils.formatDate(newDate), groupId);
-        if (entity.isPresent()) {
-            return new SuccessResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), "report date is exits", HttpStatus.INTERNAL_SERVER_ERROR.name());
-        }
-        if (request.getRestNum() != request.getRestRequests().size()) {
-            return new SuccessResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), "size rest not equal size effective", HttpStatus.INTERNAL_SERVER_ERROR.name());
-        }
-        for (TransferRequest transferRequests : request.getTransferRequests()) {
-            if (transferRequests.getGroupId() != null) {
-                if (groupId == transferRequests.getGroupId().intValue()) {
-                    return new SuccessResponse<>(HttpStatus.BAD_REQUEST.value(), "group name not current group user!", null);
-                }
-            }
-        }
-        boolean isCheck = check(request.getRiceRequests().getRiceCus(), request.getRiceRequests().getRiceEmp(), request.getRiceRequests().getRiceVip());
-        if (isCheck) {
-            return new SuccessResponse<>(HttpStatus.BAD_REQUEST.value(), "rise < 0", null);
-        }
-        boolean isCheckReport = checkReport(request);
-        if (isCheckReport) {
-            return new SuccessResponse<>(HttpStatus.BAD_REQUEST.value(), "partTimeNum or studentNum <0", null);
-        }
-        boolean isCheckTransfer = checkTransfer(request.getTransferRequests());
-        if (isCheckTransfer) {
-            return new SuccessResponse<>(HttpStatus.BAD_REQUEST.value(), "TransferNum <0", null);
-        }
+//        Date newDate = calendar.getTime();
         ReportEntity reportEntity = reportRepository.saveReport(request, groupId);
         riceRepository.saveRice(request.getRiceRequests(), reportEntity.getId());
         restRepository.saveRest(request.getRestRequests(), reportEntity.getId());
         transferRepository.saveTransfer(request.getTransferRequests(), reportEntity.getId());
-
-        return ResponseEntity.ok(new SuccessResponse<>(HttpStatus.CREATED.value(), "report success", reportDto(DateUtils.formatDate(reportEntity.getReportDate()), reportEntity.getGroupId())));
+        return ResponseEntity.ok(new SuccessResponse<>(HttpStatus.CREATED.value(),  "report success", reportDto(DateUtils.formatDate(reportEntity.getReportDate()), reportEntity.getGroupId())));
     }
 
     @Override

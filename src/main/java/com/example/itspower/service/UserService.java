@@ -8,6 +8,8 @@ import com.example.itspower.response.dynamic.PageResponse;
 import com.example.itspower.response.search.UserRequest;
 import org.springframework.http.ResponseEntity;
 
+import java.text.ParseException;
+
 public interface UserService {
     SuccessResponse<Object> save(UserRequest userRequest);
 
@@ -17,6 +19,6 @@ public interface UserService {
 
     void delete(Integer id);
 
-    boolean isCheckReport(int groupId);
+    boolean isCheckReport(int groupId) throws ParseException;
     PageResponse getAllUser(UserSearchRequest request, int pageSize, int pageNo);
 }
