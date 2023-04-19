@@ -63,7 +63,7 @@ public class ReportServiceImpl implements ReportService {
         riceRepository.saveRice(request.getRiceRequests(), reportEntity.getId());
         restRepository.saveRest(request.getRestRequests(), reportEntity.getId());
         transferRepository.saveTransfer(request.getTransferRequests(), reportEntity.getId());
-        return ResponseEntity.ok(new SuccessResponse<>(HttpStatus.CREATED.value(), "report success", reportDto(DateUtils.formatDate(reportEntity.getReportDate()), reportEntity.getGroupId())));
+        return ResponseEntity.ok(new SuccessResponse<>(HttpStatus.CREATED.value(),  "report success", reportDto(DateUtils.formatDate(reportEntity.getReportDate()), reportEntity.getGroupId())));
     }
 
     @Override
