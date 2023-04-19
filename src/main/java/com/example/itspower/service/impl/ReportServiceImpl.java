@@ -40,13 +40,16 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public Object reportDto(String reportDate, int groupId) {
         ReportDto reportDto = reportRepository.reportDto(reportDate, groupId);
+
         List<RestDto> restDtos = restRepository.getRests(reportDto.getId());
         List<TransferEntity> transferEntities = transferRepository.findByReportId(reportDto.getId());
-        for (TransferEntity transfer : transferEntities) {
-            Optional<GroupEntity> groupEntity = groupRoleRepository.findById(transfer.getGroupId());
-            if (groupEntity.isPresent()) {
-                transfer.setParentId(groupEntity.get().getParentId());
-                transfer.setGroupName(groupEntity.get().getGroupName());
+        if(transferEntities.size() >0){
+            for (TransferEntity transfer : transferEntities) {
+                Optional<GroupEntity> groupEntity = groupRoleRepository.findById(transfer.getGroupId());
+                if (groupEntity.isPresent()) {
+                    transfer.setParentId(groupEntity.get().getParentId());
+                    transfer.setGroupName(groupEntity.get().getGroupName());
+                }
             }
         }
         RiceEntity riceEntity = riceRepository.getByRiceDetail(reportDto.getId());
@@ -58,7 +61,6 @@ public class ReportServiceImpl implements ReportService {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.HOUR_OF_DAY, 7); // thêm 7 giờ vào thời gian hiện tại
-//        Date newDate = calendar.getTime();
         ReportEntity reportEntity = reportRepository.saveReport(request, groupId);
         riceRepository.saveRice(request.getRiceRequests(), reportEntity.getId());
         restRepository.saveRest(request.getRestRequests(), reportEntity.getId());

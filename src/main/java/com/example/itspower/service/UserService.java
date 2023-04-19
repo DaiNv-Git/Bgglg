@@ -13,12 +13,12 @@ import java.text.ParseException;
 public interface UserService {
     SuccessResponse<Object> save(UserRequest userRequest);
 
-    ResponseEntity<Object> update(UserUpdateRequest userUpdateRequest, int id);
+    ResponseEntity<Object> update(UserUpdateRequest userUpdateRequest, Integer id);
 
     UserDto loginInfor(String userLogin);
 
     void delete(Integer id);
 
-    boolean isCheckReport(int groupId) throws ParseException;
+    boolean isCheckReport(Integer groupId) throws ParseException;
     PageResponse getAllUser(UserSearchRequest request, int pageSize, int pageNo);
 }

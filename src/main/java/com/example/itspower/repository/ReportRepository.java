@@ -26,7 +26,6 @@ public class ReportRepository {
     public ReportDto reportDto(String reportDate, int groupId) {
         return reportJpaRepository.findByReport(reportDate, groupId);
     }
-
     public ReportEntity saveReport(ReportRequest request, int groupId) {
         ReportEntity reportEntity = new ReportEntity();
         reportEntity.setDemarcation(request.getDemarcation());

@@ -23,7 +23,7 @@ public interface ReportJpaRepository extends JpaRepository<ReportEntity, Integer
     Optional<ReportEntity> findByReportDate(String reportDate);
 
     @Query(value = "select * from report r where " +
-            " DATE_FORMAT(r.report_date, '%Y%m%d') = DATE_FORMAT(:#{#reportDate}, '%Y%m%d') and groupID =:groupId", nativeQuery = true)
+            " DATE_FORMAT(r.report_date, '%Y%m%d') = DATE_FORMAT(:#{#reportDate}, '%Y%m%d') and group_ID =:groupId", nativeQuery = true)
     Optional<ReportEntity> findByReportDateAndGroupId(String reportDate,@Param("groupId") Integer groupId);
 
     Optional<ReportEntity> findByIdAndGroupId(int id, int groupId);

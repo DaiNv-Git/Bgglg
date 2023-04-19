@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -18,8 +19,8 @@ import javax.persistence.*;
                 targetClass = UserDto.class,
                 columns = {
                         @ColumnResult(name = "userId", type = Integer.class),
-                        @ColumnResult(name = "groupName", type = String.class),
                         @ColumnResult(name = "isAdmin", type = Boolean.class),
+                        @ColumnResult(name = "groupName", type = String.class),
                         @ColumnResult(name = "isEdit", type = Boolean.class),
                         @ColumnResult(name = "isReport", type = Boolean.class),
                         @ColumnResult(name = "isView", type = Boolean.class),

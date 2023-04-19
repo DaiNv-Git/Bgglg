@@ -1,6 +1,5 @@
 package com.example.itspower.service.impl;
 
-import com.example.itspower.component.util.DateUtils;
 import com.example.itspower.exception.ResourceNotFoundException;
 import com.example.itspower.model.entity.GroupEntity;
 import com.example.itspower.model.entity.ReportEntity;
@@ -28,6 +27,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import javax.transaction.Transactional;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public ResponseEntity<Object> update(UserUpdateRequest userUpdateRequest, int id) {
+    public ResponseEntity<Object> update(UserUpdateRequest userUpdateRequest, Integer id) {
         try {
             UserDetails userEntity = userLoginConfig.loadUserById(id);
             UserEntity user = userJpaRepository.findByUserLogin(userEntity.getUsername()).get();
@@ -111,16 +111,15 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public boolean isCheckReport(int groupId) throws ParseException {
-        Date date=new SimpleDateFormat("yyyy/MM/dd").parse(String.valueOf(new Date()));
+    public boolean isCheckReport(Integer groupId) throws ParseException {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date); // yourDate là thời gian hiện tại của bạn
+        calendar.setTime(new Date()); // yourDate là thời gian hiện tại của bạn
         calendar.add(Calendar.HOUR_OF_DAY, 7); // thêm 7 giờ vào thời gian hiện tại
         Date newDate = calendar.getTime();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String strDate = dateFormat.format(newDate);
         Optional<ReportEntity> reportEntity = reportJpaRepository.findByReportDateAndGroupId(
-                DateUtils.formatDate(newDate), groupId);
+              strDate, groupId);
         return reportEntity.isPresent();
     }
 

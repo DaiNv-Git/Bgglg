@@ -5,7 +5,6 @@ import com.example.itspower.model.resultset.UserDto;
 import com.example.itspower.model.usertoken.UserRefreshToken;
 import com.example.itspower.model.usertoken.UserResponse;
 import com.example.itspower.request.search.UserSearchRequest;
-import com.example.itspower.request.userrequest.UserDeleteRequest;
 import com.example.itspower.request.userrequest.UserUpdateRequest;
 import com.example.itspower.response.SuccessResponse;
 import com.example.itspower.response.search.UserAulogin;
@@ -69,7 +68,7 @@ public class UserController {
     @CrossOrigin
     public ResponseEntity<Object> login(@Validated @RequestBody UserAulogin userAulogin) {
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userAulogin.getUserLogin(), userAulogin.getPassword()));
+           authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userAulogin.getUserLogin(), userAulogin.getPassword()));
             UserDetails userDetails = userLoginConfig.loadUserByUsername(userAulogin.getUserLogin());
             String token = jwtToken.generateToken(userDetails);
             String refreshToken = jwtToken.generateRefreshToken(userDetails);
