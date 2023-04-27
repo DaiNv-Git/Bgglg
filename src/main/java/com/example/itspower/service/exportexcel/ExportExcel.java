@@ -70,7 +70,11 @@ public class ExportExcel {
         CellStyle style = workbook.createCellStyle();
         CellStyle style1 = workbook.createCellStyle();
         XSSFFont font = (XSSFFont) workbook.createFont();
+        XSSFFont font1 = (XSSFFont) workbook.createFont();
         font.setFontHeight(14);
+        font1.setBold(true);
+        font1.setFontHeight(14);
+
         style.setFont(font);
         style.setBorderTop(BorderStyle.THIN); // Đường viền mỏng phía dưới
         style.setBorderBottom(BorderStyle.THIN); // Đường viền mỏng phía dưới
@@ -78,7 +82,7 @@ public class ExportExcel {
         style.setBorderRight(BorderStyle.THIN);
         style.setAlignment(HorizontalAlignment.CENTER); // Căn giữa ngang
         style.setVerticalAlignment(VerticalAlignment.CENTER);
-        style1.setFont(font);
+        style1.setFont(font1);
         style1.setWrapText(true);
         style1.setAlignment(HorizontalAlignment.CENTER); // Căn giữa ngang
         style1.setVerticalAlignment(VerticalAlignment.CENTER); // Căn giữa dọc
@@ -108,9 +112,9 @@ public class ExportExcel {
         Row rowTotal = sheet3.createRow(rowCount);
         Row row10 = sheet4.createRow(rowString);
         Row rowNameKey = sheet5.createRow(rowKey);
-        creatCellFormatStr(rowTotal, 0, "Tổng", style);
-        creatCellFormatStr(rowTotal, 1, sumEmp, style);
-        creatCellFormatStr(rowTotal, 2, sumCus, style);
+        creatCellFormatStr(rowTotal, 0, "Tổng", style1);
+        creatCellFormatStr(rowTotal, 1, sumEmp, style1);
+        creatCellFormatStr(rowTotal, 2, sumCus, style1);
         creatCellFormatStr(rowTotal, 3, "", style);
         creatCellFormatStr(row10, 0, "Kế toán", style1);
         creatCellFormatStr(row10, 1, "Giám sát", style1);
@@ -134,7 +138,6 @@ public class ExportExcel {
             createCell(row, columnCount++, employee.getEmployeeName(), style);
             createCell(row, columnCount++, employee.getLaborCode(), style);
             createCell(row, columnCount, employee.getGroupName(), style);
-            createCell(row, columnCount, "", style);
         }
     }
 
