@@ -10,11 +10,10 @@ import com.example.itspower.repository.repositoryjpa.ReportJpaRepository;
 import com.example.itspower.response.export.EmployeeExportExcelContractEnd;
 import com.example.itspower.response.export.ExportExcelDtoReport;
 import com.example.itspower.response.export.ExportExcelEmpRest;
-import com.example.itspower.service.exportexcel.ExportExcel;
 import com.example.itspower.response.group.ViewDetailGroups;
 import com.example.itspower.service.ViewDetailService;
+import com.example.itspower.service.exportexcel.ExportExcel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -146,11 +145,11 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
         return parentIdToChildren.get(0);
     }
 
-    public  InputStreamResource exportExcel(String reportDate) throws IOException, NoSuchFieldException, IllegalAccessException {
+    public  byte[] exportExcel(String reportDate) throws IOException {
         List<ExportExcelDtoReport> reportExcel = reportRepository.findByReportExcel(reportDate);
         List<EmployeeExportExcelContractEnd> employeeExportExcelContractEnds = empTerminationContractRepository.findByEmployee(reportDate);
         List<ExportExcelEmpRest> exportExcelEmpRests = reportRepository.findByReportExcelEmpRest(reportDate);
-        exportExcel.initializeData(reportExcel, employeeExportExcelContractEnds, exportExcelEmpRests, "src/main/resources/template/BGGLG_EXCEL.xlsx");
+        exportExcel.initializeData(reportExcel, employeeExportExcelContractEnds, exportExcelEmpRests);
         return exportExcel.export();
     }
 }

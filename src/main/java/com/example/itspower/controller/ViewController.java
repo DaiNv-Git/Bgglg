@@ -2,15 +2,17 @@ package com.example.itspower.controller;
 
 import com.example.itspower.exception.ReasonException;
 import com.example.itspower.response.BaseResponse;
+import com.example.itspower.response.SuccessResponse;
 import com.example.itspower.service.ViewDetailService;
 import com.example.itspower.service.ViewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -51,20 +53,10 @@ public class ViewController {
         }
     }
 
-    @PostMapping("/exportExcel")
-    public HttpServletResponse exportExcel(@RequestParam("reportDate") String reportDate, HttpServletResponse response) {
+    @GetMapping("/exportExcel")
+    public ResponseEntity<Object> exportExcel(@RequestParam("reportDate") String reportDate) {
         try {
-            String fileName = "bgglg-" + reportDate + ".xlsx";
-            response.setContentType("application/vnd.ms-excel");
-            response.setHeader("Content-Disposition", "attachment; filename= " + fileName);
-            InputStream inputStream = viewDetailService.exportExcel(reportDate).getInputStream();
-            byte[] buffer = new byte[1024];
-            int len;
-            while ((len = inputStream.read(buffer)) > 0) {
-                response.getOutputStream().write(buffer, 0, len);
-            }
-            response.flushBuffer();
-            return response;
+            return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse<>(viewDetailService.exportExcel(reportDate)));
         } catch (Exception e) {
             throw new ReasonException(HttpStatus.NOT_FOUND.value(), ERROR, e);
         }

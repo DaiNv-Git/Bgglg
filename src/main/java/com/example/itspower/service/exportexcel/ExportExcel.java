@@ -4,45 +4,43 @@ package com.example.itspower.service.exportexcel;
 import com.example.itspower.response.export.EmployeeExportExcelContractEnd;
 import com.example.itspower.response.export.ExportExcelDtoReport;
 import com.example.itspower.response.export.ExportExcelEmpRest;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFFont;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @Component
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class ExportExcel {
-    private XSSFWorkbook workbook;
-    private XSSFSheet sheet;
-    private XSSFSheet sheet1;
-    private XSSFSheet sheet2;
-    private XSSFSheet sheet3;
-    private XSSFSheet sheet4;
-    private XSSFSheet sheet5;
+    private Workbook workbook = new SXSSFWorkbook();
+    private Sheet sheet;
+    private Sheet sheet1;
+    private Sheet sheet2;
+    private Sheet sheet3;
+    private Sheet sheet4;
+    private Sheet sheet5;
     private List<ExportExcelDtoReport> reportExcel;
     private List<EmployeeExportExcelContractEnd> reportEmpContractEnd;
     private List<ExportExcelEmpRest> exportExcelEmpRests;
-    private String file;
+    private final ResourceLoader resourceLoader;
 
-    public void initializeData(List<ExportExcelDtoReport> reportExcel, List<EmployeeExportExcelContractEnd> reportEmpContractEnd, List<ExportExcelEmpRest> exportExcelEmpRests, String file) {
+    public ExportExcel(ResourceLoader resourceLoader) {
+        this.resourceLoader = resourceLoader;
+    }
+
+    public void initializeData(List<ExportExcelDtoReport> reportExcel, List<EmployeeExportExcelContractEnd> reportEmpContractEnd, List<ExportExcelEmpRest> exportExcelEmpRests) {
         this.reportExcel = reportExcel;
         this.reportEmpContractEnd = reportEmpContractEnd;
         this.exportExcelEmpRests = exportExcelEmpRests;
-        this.file = file;
     }
 
-    static void createCell(Row row, int columnCount, Object value, XSSFCellStyle style) {
+    static void createCell(Row row, int columnCount, Object value, CellStyle style) {
         Cell cell = row.createCell(columnCount);
         if (value instanceof Integer) {
             cell.setCellValue((Integer) value);
@@ -56,10 +54,10 @@ public class ExportExcel {
         cell.setCellStyle(style);
     }
 
-    private void writeDataLines() throws IOException, NoSuchFieldException, IllegalAccessException {
-        FileInputStream target = new FileInputStream(file);
-        InputStream targetStream = new ByteArrayInputStream(target.readAllBytes());
-        workbook = (XSSFWorkbook) WorkbookFactory.create(targetStream);
+    private void writeDataLines() throws IOException {
+        Resource resource = resourceLoader.getResource("classpath:template/BGGLG_EXCEL.xls");
+        InputStream inp = resource.getInputStream();
+        workbook = WorkbookFactory.create(inp);
         sheet = workbook.getSheetAt(0);
         sheet1 = workbook.getSheetAt(1);
         sheet2 = workbook.getSheetAt(2);
@@ -69,9 +67,9 @@ public class ExportExcel {
         int rowCount = 7;
         int rowCount1 = 7;
         int rowCount2 = 7;
-        XSSFCellStyle style = workbook.createCellStyle();
-        XSSFCellStyle style1 = workbook.createCellStyle();
-        XSSFFont font = workbook.createFont();
+        CellStyle style = workbook.createCellStyle();
+        CellStyle style1 = workbook.createCellStyle();
+        XSSFFont font = (XSSFFont) workbook.createFont();
         font.setFontHeight(14);
         style.setFont(font);
         style.setBorderTop(BorderStyle.THIN); // Đường viền mỏng phía dưới
@@ -80,6 +78,8 @@ public class ExportExcel {
         style.setBorderRight(BorderStyle.THIN);
         style.setAlignment(HorizontalAlignment.CENTER); // Căn giữa ngang
         style.setVerticalAlignment(VerticalAlignment.CENTER);
+        style1.setFont(font);
+        style1.setWrapText(true);
         style1.setAlignment(HorizontalAlignment.CENTER); // Căn giữa ngang
         style1.setVerticalAlignment(VerticalAlignment.CENTER); // Căn giữa dọc
         Row row1 = sheet.createRow(4);
@@ -91,7 +91,6 @@ public class ExportExcel {
         Integer sumEmp = 0;
         Integer sumCus = 0;
         int rowString;
-        int rowCell = 0;
         int rowKey;
         for (ExportExcelDtoReport data1 : reportExcel) {
             Row row = sheet.createRow(rowCount++);
@@ -138,6 +137,7 @@ public class ExportExcel {
             createCell(row, columnCount, "", style);
         }
     }
+
     private void creatCellFormatStr(Row row, int getCell, String value, CellStyle cellStyle) {
         Cell cell = row.createCell(getCell);
         cell.setCellValue(value);
@@ -156,13 +156,15 @@ public class ExportExcel {
         cell.setCellStyle(cellStyle);
     }
 
-    public InputStreamResource export() throws IOException, NoSuchFieldException, IllegalAccessException {
+    public byte[] export() throws IOException {
         writeDataLines();
-        ByteArrayOutputStream targetStream = new ByteArrayOutputStream(file.length());
-        workbook.write(targetStream);
-        workbook.close();
-        targetStream.close();
-        InputStreamResource resource = new InputStreamResource(new ByteArrayInputStream(targetStream.toByteArray()));
-        return resource;
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        try {
+            workbook.write(bos);
+        } finally {
+            bos.close();
+            workbook.close();
+        }
+        return bos.toByteArray();
     }
 }

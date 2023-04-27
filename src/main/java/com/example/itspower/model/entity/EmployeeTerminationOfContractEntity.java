@@ -25,7 +25,7 @@ import java.util.Date;
                 "etc.employee_labor as laborCode from report r " +
                 "join emp_termination_contract etc on r.group_id = etc.group_id " +
                 "join group_role gr on r.group_id = gr.id\n" +
-                "where DATE_FORMAT(etc.start_date ,'%Y%m%d') =DATE_FORMAT(:reportDate ,'%Y%m%d') ",
+                "where DATE_FORMAT(r.report_date ,'%Y%m%d') =DATE_FORMAT(:reportDate ,'%Y%m%d') ",
         resultSetMapping = "Employee_Report"
 )
 @Data
