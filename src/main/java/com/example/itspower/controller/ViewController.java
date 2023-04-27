@@ -45,6 +45,7 @@ public class ViewController {
             Date newDate = calendar.getTime();
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String strDate = dateFormat.format(newDate);
+
             BaseResponse<Object> res = new BaseResponse<>(HttpStatus.CREATED.value(),
                     SUCCESS, viewDetailService.searchAllView(strDate));
             return ResponseEntity.status(HttpStatus.OK).body(res);

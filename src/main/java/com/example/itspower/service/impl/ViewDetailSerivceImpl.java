@@ -11,6 +11,9 @@ import com.example.itspower.response.export.EmployeeExportExcelContractEnd;
 import com.example.itspower.response.export.ExportExcelDtoReport;
 import com.example.itspower.response.export.ExportExcelEmpRest;
 import com.example.itspower.response.group.ViewDetailGroups;
+import com.example.itspower.response.view.ListNameRestResponse;
+import com.example.itspower.response.view.ReasonResponse;
+import com.example.itspower.response.view.RestObjectResponse;
 import com.example.itspower.service.ViewDetailService;
 import com.example.itspower.service.exportexcel.ExportExcel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,12 +41,19 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
     @Autowired
     private ExportExcel exportExcel;
     public static DecimalFormat decimalFormat = new DecimalFormat("#.#");
-
     @Override
     public List<ViewDetailGroups> searchAllView(String reportDate) {
+        List<ReasonResponse> getReasonResponse = groupJpaRepository.getReasonResponse(reportDate);
+        List<ListNameRestResponse> getListNameReason = groupJpaRepository.getListNameReason(reportDate);
         List<RootNameDto> getIdRoot = groupJpaRepository.getAllRoot();
         List<ViewAllDto> viewAllDtoList = groupRoleRepository.searchAllView(reportDate);
         List<ViewAllDto> response = getLogicParent(viewAllDtoList, getIdRoot);
+        for(int i = 0 ; i <viewAllDtoList.size();i++){
+            int finalI = i;
+          List listReason= getReasonResponse.stream().filter(j->j.getGroupId()==viewAllDtoList.get(finalI).getGroupId()).collect(Collectors.toList());
+          List listNameReason = getListNameReason.stream().filter(j->j.getGroupId()==viewAllDtoList.get(finalI).getGroupId()).collect(Collectors.toList());
+          viewAllDtoList.get(i).setRestObjectResponse(new RestObjectResponse(viewAllDtoList.get(i).getRestNum(),listReason,listNameReason));
+        }
         int officeId = response.stream().filter(i -> i.getGroupName().equalsIgnoreCase("văn phòng"))
                 .map(i -> i.getGroupId()).collect(Collectors.toList()).get(0);
         List<ViewDetailGroups> viewDetailsRes = new ArrayList<>();
@@ -64,6 +74,7 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
                         , 0, 0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
         ViewDetailGroups thoiVuDonViLe = new ViewDetailGroups(new ViewAllDto(0, 0, "Thời vụ đơn vị lẻ ", partTimeDonViLe, partTimeDonViLe
                 , 0, 0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
+
         List<ViewDetailGroups> res = children(viewDetailsRes);
         res.add(studentNangsuat);
         res.add(thoiVuToMay);
@@ -133,7 +144,6 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
                     || viewAllDto.getGroupName().equalsIgnoreCase("Đơn vị lẻ")) {
                 viewAllDto.setTotalRatioOfOfficeAndDonvile(totalRatioOfOfficeAndDonvile);
             }
-
         }
         return viewAllDtoList;
     }

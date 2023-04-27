@@ -6,6 +6,8 @@ import com.example.itspower.model.resultset.RootNameDto;
 import com.example.itspower.model.resultset.ViewAllDto;
 import com.example.itspower.response.group.ViewDetailGroupResponse;
 import com.example.itspower.response.group.ViewGroupRoot;
+import com.example.itspower.response.view.ListNameRestResponse;
+import com.example.itspower.response.view.ReasonResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -63,5 +65,8 @@ public interface GroupJpaRepository extends JpaRepository<GroupEntity, Integer> 
     Optional<GroupEntity> findByGroupName(String groupName);
 
     Optional<GroupEntity> findByGroupNameAndParentId(String groupName, Integer parentId);
-
+    @Query(name = "view_reason", nativeQuery = true)
+    List<ReasonResponse>  getReasonResponse(String reportDate);
+    @Query(name = "view_list_reason", nativeQuery = true)
+    List<ListNameRestResponse>  getListNameReason(String reportDate);
 }

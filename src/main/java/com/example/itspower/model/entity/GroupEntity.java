@@ -6,6 +6,8 @@ import com.example.itspower.model.resultset.ViewAllDto;
 import com.example.itspower.response.group.GroupRoleDemarcationRes;
 import com.example.itspower.response.group.ViewDetailGroupResponse;
 import com.example.itspower.response.group.ViewGroupRoot;
+import com.example.itspower.response.view.ListNameRestResponse;
+import com.example.itspower.response.view.ReasonResponse;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -170,7 +172,39 @@ import java.io.Serializable;
         "where gr.id in (SELECT DISTINCT gr1.parent_id from group_role gr1 ) and group_name <> 'Tổ may' ",
         resultSetMapping = "ViewGroupRoot"
 )
-
+@SqlResultSetMapping(
+        name = "reasonResponse",
+        classes = @ConstructorResult(targetClass = ReasonResponse.class, columns = {
+                @ColumnResult(name = "groupId", type = Integer.class),
+                @ColumnResult(name = "reasonName", type = String.class),
+                @ColumnResult(name = "total", type = Long.class)
+        }
+        )
+)
+@NamedNativeQuery(name = "view_reason", query = "SELECT r3.group_id as groupId, r.name as reasonName,count(r2.reason_id) as total \n" +
+        "from reason r inner join\n" +
+        "rest r2 on r.id = r2.reason_id\n" +
+        "INNER join report r3 on r2.report_id =r3.id \n" +
+        "where  DATE_FORMAT(r3.report_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d')" +
+        "GROUP by r2.reason_id,r3.group_id",
+        resultSetMapping = "reasonResponse"
+)
+@SqlResultSetMapping(
+        name = "listNameRest",
+        classes = @ConstructorResult(targetClass = ListNameRestResponse.class, columns = {
+                @ColumnResult(name = "groupId", type = Integer.class),
+                @ColumnResult(name = "nameEmployee", type = String.class),
+                @ColumnResult(name = "reasonName", type = String.class),
+                @ColumnResult(name = "labor", type = String.class),
+        }
+        )
+)
+@NamedNativeQuery(name = "view_list_reason", query = "SELECT  r3.group_id as groupId,rest_name as nameEmployee,r2.name as reasonName,employee_labor as labor from\n" +
+        "rest r inner join " +
+        "reason r2 on r.reason_id =r2.id " +
+        "inner join report r3 on r.report_id =r3.id where  DATE_FORMAT(r3.report_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d')",
+        resultSetMapping = "listNameRest"
+)
 public class GroupEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
