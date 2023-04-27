@@ -62,6 +62,7 @@ public interface GroupJpaRepository extends JpaRepository<GroupEntity, Integer> 
     @Query(name = "view_group_root", nativeQuery = true)
     List<ViewGroupRoot> getViewGroup();
 
+    List<GroupEntity> findByGroupNameIn(List<String> groupName);
     Optional<GroupEntity> findByGroupName(String groupName);
 
     Optional<GroupEntity> findByGroupNameAndParentId(String groupName, Integer parentId);

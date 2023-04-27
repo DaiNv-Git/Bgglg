@@ -1,5 +1,6 @@
 package com.example.itspower.service.impl;
 
+import com.example.itspower.model.entity.GroupEntity;
 import com.example.itspower.model.resultset.RootNameDto;
 import com.example.itspower.model.resultset.ViewAllDto;
 import com.example.itspower.repository.GroupRoleRepository;
@@ -10,6 +11,7 @@ import com.example.itspower.repository.repositoryjpa.ReportJpaRepository;
 import com.example.itspower.response.export.EmployeeExportExcelContractEnd;
 import com.example.itspower.response.export.ExportExcelDtoReport;
 import com.example.itspower.response.export.ExportExcelEmpRest;
+import com.example.itspower.response.group.GroupRoleResponse;
 import com.example.itspower.response.group.ViewDetailGroups;
 import com.example.itspower.response.view.ListNameRestResponse;
 import com.example.itspower.response.view.ReasonResponse;
@@ -22,6 +24,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -41,6 +44,7 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
     @Autowired
     private ExportExcel exportExcel;
     public static DecimalFormat decimalFormat = new DecimalFormat("#.#");
+
     @Override
     public List<ViewDetailGroups> searchAllView(String reportDate) {
         List<ReasonResponse> getReasonResponse = groupJpaRepository.getReasonResponse(reportDate);
@@ -48,11 +52,13 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
         List<RootNameDto> getIdRoot = groupJpaRepository.getAllRoot();
         List<ViewAllDto> viewAllDtoList = groupRoleRepository.searchAllView(reportDate);
         List<ViewAllDto> response = getLogicParent(viewAllDtoList, getIdRoot);
-        for(int i = 0 ; i <viewAllDtoList.size();i++){
+        for (int i = 0; i < viewAllDtoList.size(); i++) {
             int finalI = i;
-          List listReason= getReasonResponse.stream().filter(j->j.getGroupId()==viewAllDtoList.get(finalI).getGroupId()).collect(Collectors.toList());
-          List listNameReason = getListNameReason.stream().filter(j->j.getGroupId()==viewAllDtoList.get(finalI).getGroupId()).collect(Collectors.toList());
-          viewAllDtoList.get(i).setRestObjectResponse(new RestObjectResponse(viewAllDtoList.get(i).getRestNum(),listReason,listNameReason));
+            List listReason = getReasonResponse.stream().filter(j -> j.getGroupId() == viewAllDtoList.get(finalI).getGroupId()
+            ||j.getGroupId().equals(viewAllDtoList.get(finalI).getGroupId())).collect(Collectors.toList());
+            List listNameReason = getListNameReason.stream().filter(j -> j.getGroupId() == viewAllDtoList.get(finalI).getGroupId()
+            ||j.getGroupId().equals(viewAllDtoList.get(finalI).getGroupId())).collect(Collectors.toList());
+            viewAllDtoList.get(i).setRestObjectResponse(new RestObjectResponse(viewAllDtoList.get(i).getRestNum(), listReason, listNameReason));
         }
         int officeId = response.stream().filter(i -> i.getGroupName().equalsIgnoreCase("văn phòng"))
                 .map(i -> i.getGroupId()).collect(Collectors.toList()).get(0);
@@ -67,12 +73,12 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
         Integer partTimeDonViLe = viewAllDtoList.stream().filter(i -> i.getGroupName().trim().equalsIgnoreCase("Đơn vị lẻ"))
                 .map(i -> i.getPartTimeNum()).collect(Collectors.toList()).get(0);
         ViewDetailGroups studentNangsuat =
-                new ViewDetailGroups(new ViewAllDto(0, 0, "Học sinh chưa báo năng suất", student, 0
+                new ViewDetailGroups(new ViewAllDto(-1, 0, "Học sinh chưa báo năng suất", student, 0
                         , 0, 0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
         ViewDetailGroups thoiVuToMay =
-                new ViewDetailGroups(new ViewAllDto(0, 0, "Thời vụ tổ may", partTimeToMay, partTimeToMay
+                new ViewDetailGroups(new ViewAllDto(-2, 0, "Thời vụ tổ may", partTimeToMay, partTimeToMay
                         , 0, 0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
-        ViewDetailGroups thoiVuDonViLe = new ViewDetailGroups(new ViewAllDto(0, 0, "Thời vụ đơn vị lẻ ", partTimeDonViLe, partTimeDonViLe
+        ViewDetailGroups thoiVuDonViLe = new ViewDetailGroups(new ViewAllDto(-3, 0, "Thời vụ đơn vị lẻ ", partTimeDonViLe, partTimeDonViLe
                 , 0, 0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
 
         List<ViewDetailGroups> res = children(viewDetailsRes);
@@ -80,6 +86,47 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
         res.add(thoiVuToMay);
         res.add(thoiVuDonViLe);
         return res;
+    }
+
+    private List<GroupRoleResponse> getDetailsReport(String reportDate) {
+        List<ViewAllDto> mapReport = groupRoleRepository.searchAllView(reportDate);
+        List<GroupRoleResponse> mapData = new ArrayList<>();
+        for (ViewAllDto mapChildren : mapReport) {
+            mapData.add(new GroupRoleResponse(mapChildren));
+        }
+        Map<Integer, List<GroupRoleResponse>> parentIdToChildren =
+                mapData.stream().collect(Collectors.groupingBy(GroupRoleResponse::getParentId));
+        mapData.forEach(p -> p.setChildren(parentIdToChildren.get(p.getValue())));
+        return parentIdToChildren.get(0);
+    }
+
+    public void removeGroupRoleById(List<GroupRoleResponse> list) {
+        List<String> groupName = Arrays.asList("Đơn vị lẻ");
+        List<GroupEntity> entities = groupRoleRepository.findByGroupNameIn(groupName);
+        for (GroupRoleResponse groupRole : list) {
+            for (GroupEntity entity : entities) {
+                if (groupRole.getValue() == entity.getId()) {
+                    list.remove(groupRole);
+                }
+                if (groupRole.getChildren() != null) {
+                    removeGroupRoleById(groupRole.getChildren());
+                }
+            }
+        }
+
+    }
+
+    @Override
+    public List<Integer> searchDvl(String reportDate) {
+        List<Integer> key = new ArrayList<>();
+        List<GroupRoleResponse> a = getDetailsReport(reportDate);
+        List<GroupRoleResponse> responses= a.stream().filter(i -> i.getLabel().equalsIgnoreCase("Đơn vị lẻ")).collect(Collectors.toList());
+        for(int i =0 ;i <responses.size();i++){
+//            int parentId = responses.get(0).getParentId();
+
+        }
+        return key;
+
     }
 
     List<ViewAllDto> getLogicParent(List<ViewAllDto> viewAllDtoList, List<RootNameDto> getIdRoot) {
@@ -155,7 +202,7 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
         return parentIdToChildren.get(0);
     }
 
-    public  byte[] exportExcel(String reportDate) throws IOException {
+    public byte[] exportExcel(String reportDate) throws IOException {
         List<ExportExcelDtoReport> reportExcel = reportRepository.findByReportExcel(reportDate);
         List<EmployeeExportExcelContractEnd> employeeExportExcelContractEnds = empTerminationContractRepository.findByEmployee(reportDate);
         List<ExportExcelEmpRest> exportExcelEmpRests = reportRepository.findByReportExcelEmpRest(reportDate);

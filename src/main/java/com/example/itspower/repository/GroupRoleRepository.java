@@ -91,6 +91,9 @@ public class GroupRoleRepository {
         return new SuccessResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), "group id is not exits", HttpStatus.INTERNAL_SERVER_ERROR.name());
     }
 
+    public List<GroupEntity> findByGroupNameIn(List<String> groupName) {
+        return groupJpaRepository.findByGroupNameIn(groupName);
+    }
     public Optional<GroupEntity> findByGroupName(String groupName) {
         return groupJpaRepository.findByGroupName(groupName);
     }

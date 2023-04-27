@@ -65,10 +65,10 @@ public class ExportExcel {
         sheet4 = workbook.getSheetAt(0);
         sheet5 = workbook.getSheetAt(0);
         int rowCount = 7;
-        int rowCount1 = 7;
-        int rowCount2 = 7;
+        int rowCountSheet1 = 7;
+        int rowCountSheet2 = 7;
         CellStyle style = workbook.createCellStyle();
-        CellStyle style1 = workbook.createCellStyle();
+        CellStyle styleFooter = workbook.createCellStyle();
         XSSFFont font = (XSSFFont) workbook.createFont();
         XSSFFont font1 = (XSSFFont) workbook.createFont();
         font.setFontHeight(14);
@@ -82,16 +82,16 @@ public class ExportExcel {
         style.setBorderRight(BorderStyle.THIN);
         style.setAlignment(HorizontalAlignment.CENTER); // Căn giữa ngang
         style.setVerticalAlignment(VerticalAlignment.CENTER);
-        style1.setFont(font1);
-        style1.setWrapText(true);
-        style1.setAlignment(HorizontalAlignment.CENTER); // Căn giữa ngang
-        style1.setVerticalAlignment(VerticalAlignment.CENTER); // Căn giữa dọc
+        styleFooter.setFont(font1);
+        styleFooter.setWrapText(true);
+        styleFooter.setAlignment(HorizontalAlignment.CENTER); // Căn giữa ngang
+        styleFooter.setVerticalAlignment(VerticalAlignment.CENTER); // Căn giữa dọc
         Row row1 = sheet.createRow(4);
         Row row2 = sheet1.createRow(4);
         Row row3 = sheet2.createRow(4);
-        creatCellFormat(row1, String.valueOf(reportExcel.get(0).getReportDate()), style1);
-        creatCellFormat(row2, String.valueOf(reportExcel.get(0).getReportDate()), style1);
-        creatCellFormat(row3, String.valueOf(reportExcel.get(0).getReportDate()), style1);
+        creatCellFormat(row1, String.valueOf(reportExcel.get(0).getReportDate()), style);
+        creatCellFormat(row2, String.valueOf(reportExcel.get(0).getReportDate()), style);
+        creatCellFormat(row3, String.valueOf(reportExcel.get(0).getReportDate()), style);
         Integer sumEmp = 0;
         Integer sumCus = 0;
         int rowString;
@@ -112,17 +112,17 @@ public class ExportExcel {
         Row rowTotal = sheet3.createRow(rowCount);
         Row row10 = sheet4.createRow(rowString);
         Row rowNameKey = sheet5.createRow(rowKey);
-        creatCellFormatStr(rowTotal, 0, "Tổng", style1);
-        creatCellFormatStr(rowTotal, 1, sumEmp, style1);
-        creatCellFormatStr(rowTotal, 2, sumCus, style1);
+        creatCellFormatStr(rowTotal, 0, "Tổng", style);
+        creatCellFormatStr(rowTotal, 1, sumEmp, style);
+        creatCellFormatStr(rowTotal, 2, sumCus, style);
         creatCellFormatStr(rowTotal, 3, "", style);
-        creatCellFormatStr(row10, 0, "Kế toán", style1);
-        creatCellFormatStr(row10, 1, "Giám sát", style1);
-        creatCellFormatStr(row10, 2, "Nhà bếp", style1);
-        creatCellFormatStr(row10, 3, "Người lập bảng", style1);
-        creatCellFormatStr(rowNameKey, 3, "Nguyễn Công Lương", style1);
+        creatCellFormatStr(row10, 0, "Kế toán", styleFooter);
+        creatCellFormatStr(row10, 1, "Giám sát", styleFooter);
+        creatCellFormatStr(row10, 2, "Nhà bếp", styleFooter);
+        creatCellFormatStr(row10, 3, "Người lập bảng", styleFooter);
+        creatCellFormatStr(rowNameKey, 3, "Nguyễn Công Lương", styleFooter);
         for (ExportExcelEmpRest data2 : exportExcelEmpRests) {
-            Row row = sheet1.createRow(rowCount1++);
+            Row row = sheet1.createRow(rowCountSheet1++);
             int columnCount = 0;
 
             createCell(row, columnCount++, String.valueOf(data2.getReportDate()), style);
@@ -132,7 +132,7 @@ public class ExportExcel {
             createCell(row, columnCount, data2.getReasonName(), style);
         }
         for (EmployeeExportExcelContractEnd employee : reportEmpContractEnd) {
-            Row row = sheet2.createRow(rowCount2++);
+            Row row = sheet2.createRow(rowCountSheet2++);
             int columnCount = 0;
             createCell(row, columnCount++, employee.getStartDate(), style);
             createCell(row, columnCount++, employee.getEmployeeName(), style);

@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface ViewDetailService {
     List<ViewDetailGroups> searchAllView(String reportDate);
+    List<Integer> searchDvl(String reportDate);
 
     byte[] exportExcel(String reportDate) throws IOException;
 }
