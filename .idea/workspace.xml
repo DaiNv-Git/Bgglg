@@ -8,8 +8,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/ViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/ExportExcel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/ExportExcel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/template/bgglg-excel.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/template/BGGLG_EXCEL.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/template/BGGLG_EXCEL.xls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/ViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/ViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/exportexcel/ExportExcel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/exportexcel/ExportExcel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/template/BGGLG_EXCEL.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/its-power-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/its-power-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/its-power-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/its-power-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.itspower.ItsPowerApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.itspower.ItsPowerApplicationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.example.itspower.ItsPowerApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.example.itspower.ItsPowerApplicationTests.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +178,6 @@
       </method>
     </configuration>
     <configuration name="ItsPowerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true">
-      <option name="ACTIVE_PROFILES" />
       <module name="its-power" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.itspower.ItsPowerApplication" />
       <extension name="coverage">
@@ -256,76 +261,14 @@
       <workItem from="1682338758682" duration="533000" />
       <workItem from="1682348083069" duration="252000" />
       <workItem from="1682348373821" duration="5474000" />
-    </task>
-    <task id="LOCAL-00043" summary="api detail">
-      <created>1679537127657</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1679537127657</updated>
-    </task>
-    <task id="LOCAL-00044" summary="api detail">
-      <created>1679540909044</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1679540909044</updated>
-    </task>
-    <task id="LOCAL-00045" summary="api detail">
-      <created>1679542444578</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1679542444578</updated>
-    </task>
-    <task id="LOCAL-00046" summary="api detail">
-      <created>1679648070243</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1679648070243</updated>
-    </task>
-    <task id="LOCAL-00047" summary="api report">
-      <created>1679673336425</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1679673336425</updated>
-    </task>
-    <task id="LOCAL-00048" summary="api report">
-      <created>1679673583816</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1679673583816</updated>
-    </task>
-    <task id="LOCAL-00049" summary="api report">
-      <created>1679674731108</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1679674731108</updated>
-    </task>
-    <task id="LOCAL-00050" summary="api report">
-      <created>1679676905252</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1679676905253</updated>
-    </task>
-    <task id="LOCAL-00051" summary="api report">
-      <created>1679677971228</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1679677971228</updated>
-    </task>
-    <task id="LOCAL-00052" summary="fix view report">
-      <created>1680101435077</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1680101435077</updated>
+      <workItem from="1682393979664" duration="14170000" />
+      <workItem from="1682420445934" duration="902000" />
+      <workItem from="1682421520707" duration="1109000" />
+      <workItem from="1682437918415" duration="2104000" />
+      <workItem from="1682440106271" duration="1181000" />
+      <workItem from="1682441314521" duration="950000" />
+      <workItem from="1682442337489" duration="2246000" />
+      <workItem from="1682444660564" duration="324000" />
     </task>
     <task id="LOCAL-00053" summary="api /groupRole/demarcation get and update">
       <created>1680187205183</created>
@@ -600,7 +543,77 @@
       <option name="project" value="LOCAL" />
       <updated>1682353500268</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="fix api export excel">
+      <created>1682390474359</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1682390474359</updated>
+    </task>
+    <task id="LOCAL-00093" summary="fix api export excel">
+      <created>1682407515172</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1682407515172</updated>
+    </task>
+    <task id="LOCAL-00094" summary="fix api export excel">
+      <created>1682409710802</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1682409710802</updated>
+    </task>
+    <task id="LOCAL-00095" summary="fix api export excel">
+      <created>1682409741143</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1682409741143</updated>
+    </task>
+    <task id="LOCAL-00096" summary="fix api export excel">
+      <created>1682413868941</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1682413868941</updated>
+    </task>
+    <task id="LOCAL-00097" summary="fix api export excel">
+      <created>1682419352913</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1682419352913</updated>
+    </task>
+    <task id="LOCAL-00098" summary="fix api export excel">
+      <created>1682441143051</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1682441143052</updated>
+    </task>
+    <task id="LOCAL-00099" summary="fix api export excel">
+      <created>1682441191462</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1682441191462</updated>
+    </task>
+    <task id="LOCAL-00100" summary="fix api export excel">
+      <created>1682442131184</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1682442131184</updated>
+    </task>
+    <task id="LOCAL-00101" summary="fix api export excel">
+      <created>1682443085584</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1682443085585</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,6 +663,11 @@
             <option name="lambda-ordinal" value="-1" />
           </properties>
           <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java</url>
+          <line>148</line>
+          <option name="timeStamp" value="65" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
