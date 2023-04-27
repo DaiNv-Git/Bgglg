@@ -47,38 +47,53 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
 
     @Override
     public List<ViewDetailGroups> searchAllView(String reportDate) {
-        List<ReasonResponse> getReasonResponse = groupJpaRepository.getReasonResponse(reportDate);
-        List<ListNameRestResponse> getListNameReason = groupJpaRepository.getListNameReason(reportDate);
-        List<RootNameDto> getIdRoot = groupJpaRepository.getAllRoot();
+        List<ReasonResponse> reasonResponseList = groupJpaRepository.getReasonResponse(reportDate);
+        List<ListNameRestResponse> listNameReasonList = groupJpaRepository.getListNameReason(reportDate);
+        List<RootNameDto> idRootList = groupJpaRepository.getAllRoot();
         List<ViewAllDto> viewAllDtoList = groupRoleRepository.searchAllView(reportDate);
-        List<ViewAllDto> response = getLogicParent(viewAllDtoList, getIdRoot);
-        for (int i = 0; i < viewAllDtoList.size(); i++) {
-            int finalI = i;
-            List listReason = getReasonResponse.stream().filter(j -> j.getGroupId() == viewAllDtoList.get(finalI).getGroupId()
-            ||j.getGroupId().equals(viewAllDtoList.get(finalI).getGroupId())).collect(Collectors.toList());
-            List listNameReason = getListNameReason.stream().filter(j -> j.getGroupId() == viewAllDtoList.get(finalI).getGroupId()
-            ||j.getGroupId().equals(viewAllDtoList.get(finalI).getGroupId())).collect(Collectors.toList());
-            viewAllDtoList.get(i).setRestObjectResponse(new RestObjectResponse(viewAllDtoList.get(i).getRestNum(), listReason, listNameReason));
+        List<ViewAllDto> response = getLogicParent(viewAllDtoList, idRootList);
+
+        for (ViewAllDto viewAllDto : viewAllDtoList) {
+            List listReason = reasonResponseList.stream()
+                    .filter(j -> j.getGroupId().equals(viewAllDto.getGroupId()))
+                    .collect(Collectors.toList());
+            List listNameReason = listNameReasonList.stream()
+                    .filter(j -> j.getGroupId().equals(viewAllDto.getGroupId()))
+                    .collect(Collectors.toList());
+            viewAllDto.setRestObjectResponse(new RestObjectResponse(viewAllDto.getRestNum(), listReason, listNameReason));
         }
-        int officeId = response.stream().filter(i -> i.getGroupName().equalsIgnoreCase("văn phòng"))
-                .map(i -> i.getGroupId()).collect(Collectors.toList()).get(0);
-        List<ViewDetailGroups> viewDetailsRes = new ArrayList<>();
-        response.forEach(i -> {
-            ViewDetailGroups viewDetailsResponse = new ViewDetailGroups(i, officeId);
-            viewDetailsRes.add(viewDetailsResponse);
-        });
-        Integer student = viewAllDtoList.stream().map(i -> i.getStudentNum()).mapToInt(Integer::intValue).sum();
-        Integer partTimeToMay = viewAllDtoList.stream().filter(i -> i.getGroupName().trim().equalsIgnoreCase("Tổ may"))
-                .map(i -> i.getPartTimeNum()).collect(Collectors.toList()).get(0);
-        Integer partTimeDonViLe = viewAllDtoList.stream().filter(i -> i.getGroupName().trim().equalsIgnoreCase("Đơn vị lẻ"))
-                .map(i -> i.getPartTimeNum()).collect(Collectors.toList()).get(0);
+
+        int officeId = response.stream()
+                .filter(i -> i.getGroupName().equalsIgnoreCase("văn phòng"))
+                .findFirst()
+                .map(ViewAllDto::getGroupId)
+                .orElse(0);
+
+        List<ViewDetailGroups> viewDetailsRes = response.stream()
+                .map(i -> new ViewDetailGroups(i, officeId))
+                .collect(Collectors.toList());
+
+        int studentSum = viewAllDtoList.stream()
+                .collect(Collectors.summingInt(ViewAllDto::getStudentNum));
+
+        int partTimeToMaySum = viewAllDtoList.stream()
+                .filter(i -> i.getGroupName().trim().equalsIgnoreCase("Tổ may"))
+                .mapToInt(ViewAllDto::getPartTimeNum)
+                .findFirst()
+                .orElse(0);
+
+        int partTimeDonViLeSum = viewAllDtoList.stream()
+                .filter(i -> i.getGroupName().trim().equalsIgnoreCase("Đơn vị lẻ"))
+                .mapToInt(ViewAllDto::getPartTimeNum)
+                .findFirst()
+                .orElse(0);
         ViewDetailGroups studentNangsuat =
-                new ViewDetailGroups(new ViewAllDto(-1, 0, "Học sinh chưa báo năng suất", student, 0
+                new ViewDetailGroups(new ViewAllDto(-1, 0, "Học sinh chưa báo năng suất", studentSum, 0
                         , 0, 0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
         ViewDetailGroups thoiVuToMay =
-                new ViewDetailGroups(new ViewAllDto(-2, 0, "Thời vụ tổ may", partTimeToMay, partTimeToMay
+                new ViewDetailGroups(new ViewAllDto(-2, 0, "Thời vụ tổ may", partTimeToMaySum, partTimeDonViLeSum
                         , 0, 0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
-        ViewDetailGroups thoiVuDonViLe = new ViewDetailGroups(new ViewAllDto(-3, 0, "Thời vụ đơn vị lẻ ", partTimeDonViLe, partTimeDonViLe
+        ViewDetailGroups thoiVuDonViLe = new ViewDetailGroups(new ViewAllDto(-3, 0, "Thời vụ đơn vị lẻ ", partTimeToMaySum, partTimeDonViLeSum
                 , 0, 0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
 
         List<ViewDetailGroups> res = children(viewDetailsRes);
@@ -118,48 +133,63 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
 
     @Override
     public List<Integer> searchDvl(String reportDate) {
-        List<Integer> key = new ArrayList<>();
+
         List<GroupRoleResponse> a = getDetailsReport(reportDate);
-        List<GroupRoleResponse> responses= a.stream().filter(i -> i.getLabel().equalsIgnoreCase("Đơn vị lẻ")).collect(Collectors.toList());
-        for(int i =0 ;i <responses.size();i++){
-//            int parentId = responses.get(0).getParentId();
-
-        }
+        List<GroupRoleResponse> responses = a.stream()
+                .filter(i -> i.getLabel().equalsIgnoreCase("Đơn vị lẻ"))
+                .collect(Collectors.toList());
+            List<Integer> key = getAllValues(responses, 0);
         return key;
+    }
 
+    public List<Integer> getAllValues(List<GroupRoleResponse> list, int parentId) {
+        List<Integer> values = new ArrayList<>();
+        for (GroupRoleResponse item : list) {
+            if (item.getParentId() == parentId) {
+                values.add(item.getValue());
+                values.addAll(getAllValues(list, item.getValue()));
+            }
+        }
+        return values;
     }
 
     List<ViewAllDto> getLogicParent(List<ViewAllDto> viewAllDtoList, List<RootNameDto> getIdRoot) {
-        Float totalLaborProductivity = Float.valueOf(String.valueOf(viewAllDtoList.stream().map(i -> i.getLaborProductivity())
-                .mapToInt(Integer::intValue).sum()));
+        Float totalLaborProductivity = (float) viewAllDtoList.stream().mapToInt(ViewAllDto::getLaborProductivity).sum();
         Float totalRatioOfOfficeAndDonvile = 0.0f;
         for (RootNameDto id : getIdRoot) {
-            List<ViewAllDto> parent = viewAllDtoList.stream().filter(i -> i.getGroupId() == id.getId()).collect(Collectors.toList());
-            List<ViewAllDto> child = viewAllDtoList.stream().filter(i -> i.getGroupParentId() == id.getId()
-                    || i.getGroupId() == id.getId()).collect(Collectors.toList());
-            Integer groupID = parent.stream().map(i -> i.getGroupId()).collect(Collectors.toList()).get(0);
-            Integer groupParentId = parent.stream().map(i -> i.getGroupParentId()).collect(Collectors.toList()).get(0);
-            String groupName = parent.stream().map(i -> i.getGroupName()).collect(Collectors.toList()).get(0);
+            List<ViewAllDto> parent = viewAllDtoList.stream()
+                    .filter(i -> i.getGroupId() == id.getId())
+                    .collect(Collectors.toList());
+            List<ViewAllDto> child = viewAllDtoList.stream()
+                    .filter(i -> i.getGroupParentId() == id.getId() || i.getGroupId() == id.getId())
+                    .collect(Collectors.toList());
+            Integer groupID = parent.get(0).getGroupId();
+            Integer groupParentId = parent.get(0).getGroupParentId();
+            String groupName = parent.get(0).getGroupName();
             Integer reportDemarcation = child.stream().map(i -> i.getReportDemarcation()).mapToInt(Integer::intValue).sum();
-            Float laborProductivity = 0.0f;
-            laborProductivity = Float.valueOf(String.valueOf(child.stream().map(i ->
-                    i.getLaborProductivity()).mapToInt(Integer::intValue).sum()));
-            if (!groupName.equalsIgnoreCase("văn phòng")) {
-                laborProductivity = Float.valueOf(String.valueOf(child.stream().map(i ->
-                        i.getLaborProductivity()).mapToInt(Integer::intValue).sum())) -
-                        Float.valueOf(String.valueOf(child.stream().map(i ->
-                                i.getPartTimeNum()).mapToInt(Integer::intValue).sum()));
-            }
+
             Float laborProductivity2 = Float.valueOf(String.valueOf(child.stream().map(i ->
                     i.getLaborProductivity()).mapToInt(Integer::intValue).sum()));
             Integer laborProductivity1 = child.stream().map(i ->
                     i.getLaborProductivity()).mapToInt(Integer::intValue).sum();
-            int partTimeNumber = child.stream().map(i -> i.getPartTimeNum()).mapToInt(Integer::intValue).sum();
-            int studentNum = child.stream().map(i -> i.getStudentNum()).mapToInt(Integer::intValue).sum();
-            int restNum = child.stream().map(i -> i.getRestNum()).mapToInt(Integer::intValue).sum();
-            int riceCus = child.stream().map(i -> i.getRiceCus()).mapToInt(Integer::intValue).sum();
-            int riceEmp = child.stream().map(i -> i.getRiceEmp()).mapToInt(Integer::intValue).sum();
-            int riceVip = child.stream().map(i -> i.getRiceVip()).mapToInt(Integer::intValue).sum();
+            int partTimeNumber = child.stream()
+                    .mapToInt(ViewAllDto::getPartTimeNum)
+                    .sum();
+            int studentNum = child.stream()
+                    .mapToInt(ViewAllDto::getStudentNum)
+                    .sum();
+            int restNum = child.stream()
+                    .mapToInt(ViewAllDto::getRestNum)
+                    .sum();
+            int riceCus = child.stream()
+                    .mapToInt(ViewAllDto::getRiceCus)
+                    .sum();
+            int riceEmp = child.stream()
+                    .mapToInt(ViewAllDto::getRiceEmp)
+                    .sum();
+            int riceVip = child.stream()
+                    .mapToInt(ViewAllDto::getRiceVip)
+                    .sum();
 
             Float ratio = (laborProductivity2 / totalLaborProductivity) * 100;
             ratio = Float.valueOf(decimalFormat.format(ratio));
@@ -170,27 +200,33 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
             viewAllDtoList.add(new ViewAllDto(groupID, groupParentId, groupName, reportDemarcation, laborProductivity1
                     , partTimeNumber, restNum, studentNum, riceCus, riceEmp, riceVip, ratio, totalLaborProductivity, totalRatioOfOfficeAndDonvile));
         }
-        List<ViewAllDto> office = viewAllDtoList.stream().filter(i -> i.getGroupName()
-                .equalsIgnoreCase("văn phòng")).collect(Collectors.toList());
-        List<ViewAllDto> donViLe = viewAllDtoList.stream().filter(i -> i.getGroupName()
-                .equalsIgnoreCase("đơn vị lẻ")).collect(Collectors.toList());
-        if (office.size() > 0 && donViLe.size() > 0) {
-            Float officeRatio = Float.valueOf(viewAllDtoList.stream().filter(i -> i.getGroupParentId() == office.get(0).getGroupId())
-                    .map(i -> i.getLaborProductivity()).mapToInt(Integer::intValue).sum()) / totalLaborProductivity * 100;
-            Float DonViLeRatio = Float.valueOf(viewAllDtoList.stream().filter(i -> i.getGroupParentId() == donViLe.get(0).getGroupId())
-                    .map(i -> i.getLaborProductivity()).mapToInt(Integer::intValue).sum()) / totalLaborProductivity * 100;
-            totalRatioOfOfficeAndDonvile = officeRatio + DonViLeRatio;
-            totalRatioOfOfficeAndDonvile = Float.valueOf(decimalFormat.format(totalRatioOfOfficeAndDonvile));
 
-        }
-        if (totalRatioOfOfficeAndDonvile.isNaN() == true) {
-            totalRatioOfOfficeAndDonvile = 0.0f;
+        float officeLaborProductivity = viewAllDtoList.stream()
+                .filter(i -> i.getGroupName().equalsIgnoreCase("văn phòng"))
+                .mapToInt(ViewAllDto::getLaborProductivity)
+                .sum();
+        float donViLeLaborProductivity = viewAllDtoList.stream()
+                .filter(i -> i.getGroupName().equalsIgnoreCase("đơn vị lẻ"))
+                .mapToInt(ViewAllDto::getLaborProductivity)
+                .sum();
+        if (officeLaborProductivity > 0 && donViLeLaborProductivity > 0) {
+            float officeRatio = officeLaborProductivity / totalLaborProductivity * 100;
+            float donViLeRatio = donViLeLaborProductivity / totalLaborProductivity * 100;
+            totalRatioOfOfficeAndDonvile = officeRatio + donViLeRatio;
+            totalRatioOfOfficeAndDonvile = Float.parseFloat(decimalFormat.format(totalRatioOfOfficeAndDonvile));
         }
         for (ViewAllDto viewAllDto : viewAllDtoList) {
             if (viewAllDto.getGroupName().equalsIgnoreCase("văn phòng")
                     || viewAllDto.getGroupName().equalsIgnoreCase("Đơn vị lẻ")) {
                 viewAllDto.setTotalRatioOfOfficeAndDonvile(totalRatioOfOfficeAndDonvile);
             }
+            float laborProductivity2 = viewAllDto.getLaborProductivity();
+            float ratio = (laborProductivity2 / totalLaborProductivity) * 100;
+            ratio = Float.parseFloat(decimalFormat.format(ratio));
+            if (Float.isNaN(ratio)) {
+                ratio = 0.0f;
+            }
+            viewAllDto.setRatio(ratio);
         }
         return viewAllDtoList;
     }
