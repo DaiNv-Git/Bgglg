@@ -52,9 +52,9 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
             viewDetailsRes.add(viewDetailsResponse);
         });
         Integer student = viewAllDtoList.stream().map(i -> i.getStudentNum()).mapToInt(Integer::intValue).sum();
-        Integer partTimeToMay = viewAllDtoList.stream().filter(i -> i.getGroupName().equalsIgnoreCase("Tổ may"))
+        Integer partTimeToMay = viewAllDtoList.stream().filter(i -> i.getGroupName().trim().equalsIgnoreCase("Tổ may"))
                 .map(i -> i.getPartTimeNum()).collect(Collectors.toList()).get(0);
-        Integer partTimeDonViLe = viewAllDtoList.stream().filter(i -> i.getGroupName().equalsIgnoreCase("Đơn vị lẻ"))
+        Integer partTimeDonViLe = viewAllDtoList.stream().filter(i -> i.getGroupName().trim().equalsIgnoreCase("Đơn vị lẻ"))
                 .map(i -> i.getPartTimeNum()).collect(Collectors.toList()).get(0);
         ViewDetailGroups studentNangsuat =
                 new ViewDetailGroups(new ViewAllDto(0, 0, "Học sinh chưa báo năng suất", student, 0
