@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8e811f7-ab85-440d-81dd-29fe6388095e" name="Changes" comment="add api get All User">
-      <change beforePath="$PROJECT_DIR$/.idea/ITS-Power_By_DA.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ITS-Power_By_DA.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/GroupEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/GroupEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/resultset/ViewAllDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/resultset/ViewAllDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/repositoryjpa/GroupJpaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/repositoryjpa/GroupJpaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/view/ReasonResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/view/ReasonResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/view/RestObjectResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/view/RestObjectResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/group/ViewDetailGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/group/ViewDetailGroups.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -279,14 +274,7 @@
       <workItem from="1682561138361" duration="4193000" />
       <workItem from="1682566335871" duration="7612000" />
       <workItem from="1682777362001" duration="6378000" />
-      <workItem from="1682829585403" duration="5323000" />
-    </task>
-    <task id="LOCAL-00047" summary="api report">
-      <created>1679673336425</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1679673336425</updated>
+      <workItem from="1682829585403" duration="7221000" />
     </task>
     <task id="LOCAL-00048" summary="api report">
       <created>1679673583816</created>
@@ -624,7 +612,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682563149195</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="add api get All User">
+      <created>1682835010136</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1682835010136</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -655,9 +650,9 @@
     <MESSAGE value="api /groupRole/demarcation get and update" />
     <MESSAGE value="fix bug search view" />
     <MESSAGE value="fix api add request rest" />
-    <MESSAGE value="add api get All User" />
     <MESSAGE value="fix api export excel" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix api export excel" />
+    <MESSAGE value="add api get All User" />
+    <option name="LAST_COMMIT_MESSAGE" value="add api get All User" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -674,6 +669,16 @@
             <option name="lambda-ordinal" value="-1" />
           </properties>
           <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java</url>
+          <line>157</line>
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java</url>
+          <line>160</line>
+          <option name="timeStamp" value="86" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

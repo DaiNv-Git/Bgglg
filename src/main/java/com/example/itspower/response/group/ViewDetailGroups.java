@@ -26,6 +26,7 @@ public class ViewDetailGroups {
     private Float totalRatioOfOfficeAndDonvile;
     private RiceResponse rice;
     private RestObjectResponse restObjectResponse;
+    private Boolean isOpen=false;
     List<ViewDetailGroups> children;
 
 

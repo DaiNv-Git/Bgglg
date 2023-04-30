@@ -49,8 +49,6 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
         List<RootNameDto> idRootList = groupJpaRepository.getAllRoot();
         List<ViewAllDto> viewAllDtoList = groupRoleRepository.searchAllView(reportDate);
         List<ViewAllDto> response = getLogicParent(viewAllDtoList, idRootList);
-
-
         for (ViewAllDto viewAllDto : viewAllDtoList) {
             // ly do + number
             List listReason = reasonResponseList.stream()
@@ -156,23 +154,23 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
 
     @Override
     public List<Integer> searchDvl(String reportDate) {
-
         List<GroupRoleResponse> a = getDetailsReport(reportDate);
         List<GroupRoleResponse> responses = a.stream()
                 .filter(i -> i.getLabel().equalsIgnoreCase("Đơn vị lẻ"))
                 .collect(Collectors.toList());
-            List<Integer> key = getAllValues(responses, 0);
+            List<Integer> key = getAllValues(responses);
         return key;
     }
 
-    public List<Integer> getAllValues(List<GroupRoleResponse> list, int parentId) {
+    private List<Integer> getAllValues(List<GroupRoleResponse> groupRoleResponses) {
         List<Integer> values = new ArrayList<>();
-        for (GroupRoleResponse item : list) {
-            if (item.getParentId() == parentId) {
-                values.add(item.getValue());
-                values.addAll(getAllValues(list, item.getValue()));
+        for (GroupRoleResponse groupRoleResponse : groupRoleResponses) {
+            values.add(groupRoleResponse.getValue());
+            if (groupRoleResponse.getChildren() != null) {
+                values.addAll(getAllValues(groupRoleResponse.getChildren()));
             }
         }
+
         return values;
     }
 
