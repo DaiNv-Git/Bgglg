@@ -1,5 +1,4 @@
 package com.example.itspower.service.impl;
-
 import com.example.itspower.model.entity.GroupEntity;
 import com.example.itspower.model.resultset.RootNameDto;
 import com.example.itspower.model.resultset.ViewAllDto;
@@ -15,6 +14,7 @@ import com.example.itspower.response.group.GroupRoleResponse;
 import com.example.itspower.response.group.ViewDetailGroups;
 import com.example.itspower.response.view.ListNameRestResponse;
 import com.example.itspower.response.view.ReasonResponse;
+import com.example.itspower.response.view.ReasonRest;
 import com.example.itspower.response.view.RestObjectResponse;
 import com.example.itspower.service.ViewDetailService;
 import com.example.itspower.service.exportexcel.ExportExcel;
@@ -23,10 +23,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -53,16 +50,42 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
         List<ViewAllDto> viewAllDtoList = groupRoleRepository.searchAllView(reportDate);
         List<ViewAllDto> response = getLogicParent(viewAllDtoList, idRootList);
 
+
         for (ViewAllDto viewAllDto : viewAllDtoList) {
+            // ly do + number
             List listReason = reasonResponseList.stream()
                     .filter(j -> j.getGroupId().equals(viewAllDto.getGroupId()))
                     .collect(Collectors.toList());
+            // name + lý do
             List listNameReason = listNameReasonList.stream()
                     .filter(j -> j.getGroupId().equals(viewAllDto.getGroupId()))
                     .collect(Collectors.toList());
             viewAllDto.setRestObjectResponse(new RestObjectResponse(viewAllDto.getRestNum(), listReason, listNameReason));
         }
-
+        // add ly do nghi parent
+        for(RootNameDto id : idRootList){
+            Map<String ,Integer> addChild = new HashMap<>();
+            List<ReasonResponse> childs= reasonResponseList.stream().filter( i->i.getParentID().equals(id.getId())).collect(Collectors.toList());
+            for (ReasonResponse totalChild : childs){
+                addChild.put(totalChild.getReasonName(),totalChild.getTotal());
+            }
+            Map<String, Integer> sumMap = new HashMap<>();
+            for (String key : addChild.keySet()) {
+                int value = addChild.get(key);
+                int sum = sumMap.getOrDefault(key, 0) + value;
+                sumMap.put(key, sum);
+            }
+            List<ReasonRest> reason = new ArrayList<>();
+            for (String key : sumMap.keySet()) {
+                int sum = sumMap.get(key);
+                reason.add(new ReasonRest(sum,key));
+            }
+            viewAllDtoList.stream()
+                    .filter(setResponse -> setResponse.getGroupId().equals(id.getId()))
+                    .findFirst()
+                    .ifPresent(setResponse ->
+                            setResponse.setRestObjectResponse( new RestObjectResponse(setResponse.getRestNum(),reason,null)));
+        }
         int officeId = response.stream()
                 .filter(i -> i.getGroupName().equalsIgnoreCase("văn phòng"))
                 .findFirst()
@@ -167,7 +190,6 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
             Integer groupParentId = parent.get(0).getGroupParentId();
             String groupName = parent.get(0).getGroupName();
             Integer reportDemarcation = child.stream().map(i -> i.getReportDemarcation()).mapToInt(Integer::intValue).sum();
-
             Float laborProductivity2 = Float.valueOf(String.valueOf(child.stream().map(i ->
                     i.getLaborProductivity()).mapToInt(Integer::intValue).sum()));
             Integer laborProductivity1 = child.stream().map(i ->

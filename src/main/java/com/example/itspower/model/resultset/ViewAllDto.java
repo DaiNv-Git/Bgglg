@@ -95,4 +95,6 @@ public class ViewAllDto {
         this.riceVip = riceVip == null ? 0 : riceVip;
         this.ratio = ratio == null ? 0 : ratio;
     }
+
+
 }

@@ -177,14 +177,16 @@ import java.io.Serializable;
         classes = @ConstructorResult(targetClass = ReasonResponse.class, columns = {
                 @ColumnResult(name = "groupId", type = Integer.class),
                 @ColumnResult(name = "reasonName", type = String.class),
-                @ColumnResult(name = "total", type = Long.class)
+                @ColumnResult(name = "total", type = Integer.class),
+                @ColumnResult(name = "parentId", type = Integer.class),
         }
         )
 )
-@NamedNativeQuery(name = "view_reason", query = "SELECT r3.group_id as groupId, r.name as reasonName,count(r2.reason_id) as total \n" +
+@NamedNativeQuery(name = "view_reason", query = "SELECT r3.group_id as groupId, r.name as reasonName,count(r2.reason_id) as total," +
+        " gr.parent_id as parentId \n" +
         "from reason r inner join\n" +
         "rest r2 on r.id = r2.reason_id\n" +
-        "INNER join report r3 on r2.report_id =r3.id \n" +
+        "INNER join report r3 on r2.report_id =r3.id inner join group_role gr on gr.id = r3.group_id\n" +
         "where  DATE_FORMAT(r3.report_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d')" +
         "GROUP by r2.reason_id,r3.group_id",
         resultSetMapping = "reasonResponse"
