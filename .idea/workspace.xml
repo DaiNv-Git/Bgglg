@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8e811f7-ab85-440d-81dd-29fe6388095e" name="Changes" comment="add api get All User">
+    <list default="true" id="d8e811f7-ab85-440d-81dd-29fe6388095e" name="Changes" comment="add api get dvl">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/view/RootResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/group/ViewDetailGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/group/ViewDetailGroups.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/GroupEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/GroupEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/repositoryjpa/GroupJpaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/repositoryjpa/GroupJpaRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -274,14 +276,10 @@
       <workItem from="1682561138361" duration="4193000" />
       <workItem from="1682566335871" duration="7612000" />
       <workItem from="1682777362001" duration="6378000" />
-      <workItem from="1682829585403" duration="7221000" />
-    </task>
-    <task id="LOCAL-00048" summary="api report">
-      <created>1679673583816</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1679673583816</updated>
+      <workItem from="1682829585403" duration="7341000" />
+      <workItem from="1682860121117" duration="904000" />
+      <workItem from="1683101593080" duration="2476000" />
+      <workItem from="1683123208676" duration="5231000" />
     </task>
     <task id="LOCAL-00049" summary="api report">
       <created>1679674731108</created>
@@ -619,7 +617,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682835010136</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="add api get dvl">
+      <created>1682842778306</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1682842778306</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -652,7 +657,8 @@
     <MESSAGE value="fix api add request rest" />
     <MESSAGE value="fix api export excel" />
     <MESSAGE value="add api get All User" />
-    <option name="LAST_COMMIT_MESSAGE" value="add api get All User" />
+    <MESSAGE value="add api get dvl" />
+    <option name="LAST_COMMIT_MESSAGE" value="add api get dvl" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -672,13 +678,16 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java</url>
-          <line>157</line>
-          <option name="timeStamp" value="85" />
+          <line>91</line>
+          <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java</url>
-          <line>160</line>
-          <option name="timeStamp" value="86" />
+          <line>86</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="71" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -688,6 +697,12 @@
         <PinnedItemInfo parentTag="com.sun.proxy.$Proxy125" memberName="h" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="reasonResponseList.stream().                     filter( i-&gt;i.getParentID().equals(id.getId())&amp;&amp; !(i.getParentID().equals(idVp))).collect(Collectors.toList())" language="JAVA" />
+        <watch expression="this" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Bgglg$ItsPowerApplication.ic" NAME="ItsPowerApplication Coverage Results" MODIFIED="1681892284698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

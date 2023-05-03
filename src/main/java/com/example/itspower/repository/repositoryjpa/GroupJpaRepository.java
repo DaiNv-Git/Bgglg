@@ -8,6 +8,7 @@ import com.example.itspower.response.group.ViewDetailGroupResponse;
 import com.example.itspower.response.group.ViewGroupRoot;
 import com.example.itspower.response.view.ListNameRestResponse;
 import com.example.itspower.response.view.ReasonResponse;
+import com.example.itspower.response.view.RootResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -45,7 +46,8 @@ public interface GroupJpaRepository extends JpaRepository<GroupEntity, Integer> 
 
     @Query(name = "findAllRoot", nativeQuery = true)
     List<RootNameDto> getAllRoot();
-
+    @Query(name = "findRoot", nativeQuery = true)
+    List<RootResponse> getRoot();
     @Query(value = "SELECT group_name  from group_role gr ", nativeQuery = true)
     List<String> getAllByGroupName();
 

@@ -12,10 +12,7 @@ import com.example.itspower.response.export.ExportExcelDtoReport;
 import com.example.itspower.response.export.ExportExcelEmpRest;
 import com.example.itspower.response.group.GroupRoleResponse;
 import com.example.itspower.response.group.ViewDetailGroups;
-import com.example.itspower.response.view.ListNameRestResponse;
-import com.example.itspower.response.view.ReasonResponse;
-import com.example.itspower.response.view.ReasonRest;
-import com.example.itspower.response.view.RestObjectResponse;
+import com.example.itspower.response.view.*;
 import com.example.itspower.service.ViewDetailService;
 import com.example.itspower.service.exportexcel.ExportExcel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +44,7 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
         List<ReasonResponse> reasonResponseList = groupJpaRepository.getReasonResponse(reportDate);
         List<ListNameRestResponse> listNameReasonList = groupJpaRepository.getListNameReason(reportDate);
         List<RootNameDto> idRootList = groupJpaRepository.getAllRoot();
+        List<RootResponse> rootId = groupJpaRepository.getRoot();
         List<ViewAllDto> viewAllDtoList = groupRoleRepository.searchAllView(reportDate);
         List<ViewAllDto> response = getLogicParent(viewAllDtoList, idRootList);
         for (ViewAllDto viewAllDto : viewAllDtoList) {
@@ -63,7 +61,8 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
         // add ly do nghi parent
         for(RootNameDto id : idRootList){
             Map<String ,Integer> addChild = new HashMap<>();
-            List<ReasonResponse> childs= reasonResponseList.stream().filter( i->i.getParentID().equals(id.getId())).collect(Collectors.toList());
+            List<ReasonResponse> childs= reasonResponseList.stream().
+                    filter( i->i.getParentID().equals(id.getId())).collect(Collectors.toList());
             for (ReasonResponse totalChild : childs){
                 addChild.put(totalChild.getReasonName(),totalChild.getTotal());
             }
@@ -78,12 +77,24 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
                 int sum = sumMap.get(key);
                 reason.add(new ReasonRest(sum,key));
             }
-            viewAllDtoList.stream()
+           viewAllDtoList.stream()
                     .filter(setResponse -> setResponse.getGroupId().equals(id.getId()))
                     .findFirst()
                     .ifPresent(setResponse ->
                             setResponse.setRestObjectResponse( new RestObjectResponse(setResponse.getRestNum(),reason,null)));
+            if(!reason.isEmpty()){
+                int parentId =viewAllDtoList.stream()
+                        .filter(k -> k.getGroupId().equals(childs.get(0).getParentID()))
+                        .findFirst()
+                        .map(k ->k.getGroupParentId())
+                        .orElse(0);
+                for(int i = 0 ; i < reason.size();i++){
+                    reasonResponseList.add(new ReasonResponse(childs.get(0).getParentID()!=null ?childs.get(0).getParentID():0,reason.get(i).getReason(),reason.get(i).getRestNum(),
+                            parentId));
+                }
+            }
         }
+
         int officeId = response.stream()
                 .filter(i -> i.getGroupName().equalsIgnoreCase("văn phòng"))
                 .findFirst()
@@ -170,7 +181,6 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
                 values.addAll(getAllValues(groupRoleResponse.getChildren()));
             }
         }
-
         return values;
     }
 

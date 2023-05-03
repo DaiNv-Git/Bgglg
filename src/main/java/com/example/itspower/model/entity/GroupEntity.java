@@ -8,6 +8,7 @@ import com.example.itspower.response.group.ViewDetailGroupResponse;
 import com.example.itspower.response.group.ViewGroupRoot;
 import com.example.itspower.response.view.ListNameRestResponse;
 import com.example.itspower.response.view.ReasonResponse;
+import com.example.itspower.response.view.RootResponse;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -30,7 +31,22 @@ import java.io.Serializable;
         query = "select DISTINCT parent_id as id from group_role gr2 where parent_id  is not null  order by parent_id desc",
         resultSetMapping = "RootNameDto"
 )
+@SqlResultSetMapping(
+        name = "rootResponse",
+        classes = @ConstructorResult(
+                targetClass = RootResponse.class,
+                columns = {
+                        @ColumnResult(name = "id", type = Integer.class),
+                        @ColumnResult(name = "name", type = String.class),
+                }
+        )
+)
 
+@NamedNativeQuery(
+        name = "findRoot",
+        query = "SELECT gr.id as id ,gr.group_name as name  from group_role gr where parent_id is  null",
+        resultSetMapping = "rootResponse"
+)
 @SqlResultSetMapping(
         name = "GroupRoleDto",
         classes = @ConstructorResult(targetClass = GroupRoleDto.class, columns = {
