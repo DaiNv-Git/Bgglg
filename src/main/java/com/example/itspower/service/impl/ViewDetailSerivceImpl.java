@@ -64,7 +64,16 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
             List<ReasonResponse> childs= reasonResponseList.stream().
                     filter( i->i.getParentID().equals(id.getId())).collect(Collectors.toList());
             for (ReasonResponse totalChild : childs){
-                addChild.put(totalChild.getReasonName(),totalChild.getTotal());
+                String reasonName = totalChild.getReasonName();
+                Integer total = totalChild.getTotal();
+                if (addChild.containsKey(reasonName)) {
+                    // Nếu đã có, cộng thêm vào tổng hiện tại
+                    int currentTotal = addChild.get(reasonName);
+                    addChild.put(reasonName, currentTotal + total);
+                } else {
+                    // Nếu chưa có, thêm vào map với tổng ban đầu là total
+                    addChild.put(reasonName, total);
+                }
             }
             Map<String, Integer> sumMap = new HashMap<>();
             for (String key : addChild.keySet()) {
@@ -77,11 +86,14 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
                 int sum = sumMap.get(key);
                 reason.add(new ReasonRest(sum,key));
             }
+            int numberRest = reason.stream()
+                    .mapToInt(ReasonRest::getTotal)
+                    .sum();
            viewAllDtoList.stream()
                     .filter(setResponse -> setResponse.getGroupId().equals(id.getId()))
                     .findFirst()
                     .ifPresent(setResponse ->
-                            setResponse.setRestObjectResponse( new RestObjectResponse(setResponse.getRestNum(),reason,null)));
+                            setResponse.setRestObjectResponse( new RestObjectResponse(numberRest,reason,null)));
             if(!reason.isEmpty()){
                 int parentId =viewAllDtoList.stream()
                         .filter(k -> k.getGroupId().equals(childs.get(0).getParentID()))
