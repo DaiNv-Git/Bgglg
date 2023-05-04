@@ -89,7 +89,7 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
                         .map(k ->k.getGroupParentId())
                         .orElse(0);
                 for(int i = 0 ; i < reason.size();i++){
-                    reasonResponseList.add(new ReasonResponse(childs.get(0).getParentID()!=null ?childs.get(0).getParentID():0,reason.get(i).getReason(),reason.get(i).getRestNum(),
+                    reasonResponseList.add(new ReasonResponse(childs.get(0).getParentID()!=null ?childs.get(0).getParentID():0,reason.get(i).getReasonName(),reason.get(i).getTotal(),
                             parentId));
                 }
             }
