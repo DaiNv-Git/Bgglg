@@ -61,7 +61,7 @@ public class ReportServiceImpl implements ReportService {
             Object data = getYesterday(String.valueOf(newDate),groupId);
             if(data!=null){
                 return data;
-            }else if (i ==5){
+            }else if (i ==8){
                 break;
             }
             j++;
