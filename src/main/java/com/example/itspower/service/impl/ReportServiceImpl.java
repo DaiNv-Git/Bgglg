@@ -17,6 +17,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
@@ -48,7 +50,35 @@ public class ReportServiceImpl implements ReportService {
         Optional<RiceEntity> riceEntity = riceRepository.getByRiceDetail(reportDto.getId());
         return new ReportResponse(reportDto, riceEntity.get(), restDtos, transferEntities);
     }
-
+    public Object callDataByDate(String reportDate, int groupId) {
+        boolean dataAvailable = false;
+        int j = 0;
+        while (!dataAvailable) {
+            int i = j;
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate date = LocalDate.parse(reportDate, formatter);
+            LocalDate newDate = date.minusDays(i);
+            Object data = getYesterday(String.valueOf(newDate),groupId);
+            if(data!=null){
+                return data;
+            }else if (i ==5){
+                break;
+            }
+            j++;
+        }
+        return null;
+    }
+    public Object getYesterday(String reportDate, int groupId) {
+        Optional<ReportEntity> entity = reportRepository.findByReportDateAndGroupId(reportDate, groupId);
+        if (entity.isEmpty()) {
+            return null;
+        }
+        ReportDto reportDto = reportRepository.reportDto(reportDate, groupId);
+        List<RestDto> restDtos = restRepository.getRests(reportDto.getId());
+        List<TransferEntity> transferEntities = transferRepository.findByReportId(reportDto.getId());
+        Optional<RiceEntity> riceEntity = riceRepository.getByRiceDetail(reportDto.getId());
+        return new ReportResponse(reportDto, riceEntity.get(), restDtos, transferEntities);
+    }
     @Override
     public Object save(ReportRequest request, int groupId) {
         Calendar calendar = Calendar.getInstance();
