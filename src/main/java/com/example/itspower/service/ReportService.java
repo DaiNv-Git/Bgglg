@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ReportService {
     Object reportDto(String reportDate, int groupId);
-    Object callDataByDate(String reportDate, int groupId);
+    Object callDataByDate( int groupId);
 
     Object save(ReportRequest request, int groupId);
 

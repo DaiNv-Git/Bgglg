@@ -6,6 +6,7 @@ import com.example.itspower.model.resultset.RestDto;
 import com.example.itspower.repository.*;
 import com.example.itspower.repository.repositoryjpa.EmpTerminationContractRepository;
 import com.example.itspower.repository.repositoryjpa.EmployeeGroupRepository;
+import com.example.itspower.repository.repositoryjpa.ReportJpaRepository;
 import com.example.itspower.request.ReportRequest;
 import com.example.itspower.response.SuccessResponse;
 import com.example.itspower.response.report.ReportResponse;
@@ -17,14 +18,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
 public class ReportServiceImpl implements ReportService {
     @Autowired
     private ReportRepository reportRepository;
+    @Autowired
+    private ReportJpaRepository reportJpaRepository;
     @Autowired
     private RestRepository restRepository;
     @Autowired
@@ -50,21 +51,11 @@ public class ReportServiceImpl implements ReportService {
         Optional<RiceEntity> riceEntity = riceRepository.getByRiceDetail(reportDto.getId());
         return new ReportResponse(reportDto, riceEntity.get(), restDtos, transferEntities);
     }
-    public Object callDataByDate(String reportDate, int groupId) {
-        boolean dataAvailable = false;
-        int j = 0;
-        while (!dataAvailable) {
-            int i = j;
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate date = LocalDate.parse(reportDate, formatter);
-            LocalDate newDate = date.minusDays(i);
-            Object data = getYesterday(String.valueOf(newDate),groupId);
-            if(data!=null){
-                return data;
-            }else if (i ==8){
-                break;
-            }
-            j++;
+    public Object callDataByDate(int groupId) {
+        List<ReportEntity> data = reportJpaRepository.findLastDate(groupId);
+        if(!data.isEmpty()){
+            String date =DateUtils.formatDate(data.get(0).getReportDate(),DateUtils.FORMAT_DATE);
+            return getYesterday(date,groupId);
         }
         return null;
     }

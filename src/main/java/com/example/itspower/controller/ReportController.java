@@ -31,15 +31,8 @@ public class ReportController {
         return reportService.reportDto(strDate, groupId);
     }
     @GetMapping("/getReportByYesterday")
-    public Object getReportByYesterday(@RequestParam("reportDate") String reportDate, @RequestParam("groupId") int groupId) throws ParseException {
-        Date date = new SimpleDateFormat("yyyy/MM/dd").parse(reportDate);
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date); // yourDate là thời gian hiện tại của bạn
-        calendar.add(Calendar.HOUR_OF_DAY, 7); // thêm 7 giờ vào thời gian hiện tại
-        Date newDate = calendar.getTime();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String strDate = dateFormat.format(newDate);
-        return reportService.callDataByDate(strDate, groupId);
+    public Object getReportByYesterday( @RequestParam("groupId") int groupId) throws ParseException {
+        return reportService.callDataByDate( groupId);
     }
     @PostMapping("/report/save")
     public ResponseEntity<Object> save(@RequestBody ReportRequest reportRequest, @RequestParam("groupId") int groupId) throws GeneralException {

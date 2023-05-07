@@ -37,6 +37,8 @@ public interface ReportJpaRepository extends JpaRepository<ReportEntity, Integer
     Optional<ReportEntity> findByReportDateAndGroupId(@Param("reportDate") String reportDate, @Param("groupId") int groupId);
 
     Optional<ReportEntity> findByIdAndGroupId(int id, int groupId);
+    @Query(value = "SELECT *  from report r where group_id = ?1 order by report_date desc ",nativeQuery = true)
+    List<ReportEntity> findLastDate( int groupId);
 
     Optional<ReportEntity> findByGroupId(int groupId);
 
