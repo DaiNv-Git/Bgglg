@@ -12,7 +12,4 @@ public class ExportExcelDtoReport {
     private Integer riceEmp;
     private Integer riceCus;
     private String reportDate;
-    private String restName;
-    private String laborRest;
-    private String reasonName;
 }

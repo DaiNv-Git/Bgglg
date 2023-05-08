@@ -68,17 +68,14 @@ import java.util.Date;
 
 @NamedNativeQuery(
         name = "find_by_excel",
-        query = "select gr.group_name as groupName,IFNULL(ri.rice_emp,0) as riceEmp,IFNULL(ri.rice_cus,0) as riceCus, \n" +
-                "DATE_FORMAT(r.report_date ,'%Y-%m-%d') as reportDate, \n " +
-                "re.rest_name as restName, \n" +
-                "IFNULL(re.employee_labor,'') as laborRest, \n" +
-                "IFNULL(rea.name,'') as reasonName \n" +
-                "from report r \n" +
-                "left join group_role gr on r.group_id = gr.id \n" +
-                "left join rice ri on r.id= ri.report_id \n" +
-                "left join rest re on r.id = re.report_id \n" +
-                "left join reason rea on rea.id = re.reason_id \n" +
-                "where DATE_FORMAT(r.report_date ,'%Y%m%d') =DATE_FORMAT(:reportDate ,'%Y%m%d')",
+        query = "select gr.group_name as groupName," +
+                "IFNULL(ri.rice_emp,0) as riceEmp," +
+                "IFNULL(ri.rice_cus,0) as riceCus," +
+                "DATE_FORMAT(r.report_date ,'%Y-%m-%d') as reportDate " +
+                "from rice ri " +
+                "join report r on r.id= ri.report_id " +
+                "join group_role gr on r.group_id = gr.id " +
+                "where DATE_FORMAT(r.report_date ,'%Y%m%d') =DATE_FORMAT(:reportDate ,'%Y%m%d') ",
         resultSetMapping = "Export_Excel_Report"
 )
 @SqlResultSetMapping(
@@ -89,10 +86,7 @@ import java.util.Date;
                         @ColumnResult(name = "groupName", type = String.class),
                         @ColumnResult(name = "riceEmp", type = Integer.class),
                         @ColumnResult(name = "riceCus", type = Integer.class),
-                        @ColumnResult(name = "reportDate", type = String.class),
-                        @ColumnResult(name = "restName", type = String.class),
-                        @ColumnResult(name = "laborRest", type = String.class),
-                        @ColumnResult(name = "reasonName", type = String.class),
+                        @ColumnResult(name = "reportDate", type = String.class)
                 }
         )
 )
