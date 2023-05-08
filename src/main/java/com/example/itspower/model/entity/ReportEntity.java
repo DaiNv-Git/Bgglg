@@ -23,7 +23,7 @@ import java.util.Date;
                         @ColumnResult(name = "laborProductivity", type = Integer.class),
                         @ColumnResult(name = "transferNum", type = Integer.class),
                         @ColumnResult(name = "supportNum", type = Integer.class),
-                        @ColumnResult(name = "restNum", type = Integer.class),
+                        @ColumnResult(name = "restNum", type = Double.class),
                         @ColumnResult(name = "partTimeNum", type = Integer.class),
                         @ColumnResult(name = "studentNum", type = Integer.class),
                         @ColumnResult(name = "totalRice", type = Integer.class),

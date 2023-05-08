@@ -18,7 +18,7 @@ public class ReportResponse {
     private int laborProductivity;
     private int transferNum;
     private int supportNum;
-    private int restNum;
+    private Double restNum;
     private int partTimeNum;
     private int studentNum;
     private int totalRice;
