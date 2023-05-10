@@ -36,8 +36,8 @@ public class ViewDetailGroups {
         this.name = response.getGroupName();
         if(name.equalsIgnoreCase("văn phòng")||parentId==officeId ) {
              this.office = Float.valueOf(response.getReportDemarcation());
-            this.totalRatioOfOfficeAndDonvile=response.getTotalRatioOfOfficeAndDonvile();
-            this.totalLaborProductivity=response.getTotalLaborProductivity();
+             this.totalRatioOfOfficeAndDonvile=response.getTotalRatioOfOfficeAndDonvile();
+             this.totalLaborProductivity=response.getTotalLaborProductivity();
         }else if (name.equalsIgnoreCase("Đơn vị lẻ")){
             this.totalRatioOfOfficeAndDonvile=response.getTotalRatioOfOfficeAndDonvile();
         }
