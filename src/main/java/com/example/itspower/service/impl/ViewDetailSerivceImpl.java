@@ -107,38 +107,33 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
                 }
             }
         }
-
         int officeId = response.stream()
                 .filter(i -> i.getGroupName().equalsIgnoreCase("văn phòng"))
                 .findFirst()
                 .map(ViewAllDto::getGroupId)
                 .orElse(0);
-
         List<ViewDetailGroups> viewDetailsRes = response.stream()
                 .map(i -> new ViewDetailGroups(i, officeId))
                 .collect(Collectors.toList());
-
         int studentSum = viewAllDtoList.stream()
                 .collect(Collectors.summingInt(ViewAllDto::getStudentNum));
-
         int partTimeToMaySum = viewAllDtoList.stream()
                 .filter(i -> i.getGroupName().trim().equalsIgnoreCase("Tổ may"))
                 .mapToInt(ViewAllDto::getPartTimeNum)
                 .findFirst()
                 .orElse(0);
-
         int partTimeDonViLeSum = viewAllDtoList.stream()
                 .filter(i -> i.getGroupName().trim().equalsIgnoreCase("Đơn vị lẻ"))
                 .mapToInt(ViewAllDto::getPartTimeNum)
                 .findFirst()
                 .orElse(0);
         ViewDetailGroups studentNangsuat =
-                new ViewDetailGroups(new ViewAllDto(-1, -1, "Học sinh chưa báo năng suất", studentSum, 0
+                new ViewDetailGroups(new ViewAllDto(-1, 0, "Học sinh chưa báo năng suất", studentSum, 0
                         , 0, 0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
         ViewDetailGroups thoiVuToMay =
-                new ViewDetailGroups(new ViewAllDto(-2, -1, "Thời vụ tổ may", partTimeToMaySum, partTimeDonViLeSum
+                new ViewDetailGroups(new ViewAllDto(-2, 0, "Thời vụ tổ may", partTimeToMaySum, partTimeDonViLeSum
                         , 0, 0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
-        ViewDetailGroups thoiVuDonViLe = new ViewDetailGroups(new ViewAllDto(-3, -1, "Thời vụ đơn vị lẻ ", partTimeToMaySum, partTimeDonViLeSum
+        ViewDetailGroups thoiVuDonViLe = new ViewDetailGroups(new ViewAllDto(-3, 0, "Thời vụ đơn vị lẻ ", partTimeToMaySum, partTimeDonViLeSum
                 , 0, 0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
 
         List<ViewDetailGroups> res = children(viewDetailsRes);
