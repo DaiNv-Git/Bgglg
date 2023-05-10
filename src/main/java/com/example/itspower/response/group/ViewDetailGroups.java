@@ -34,7 +34,7 @@ public class ViewDetailGroups {
         this.key = response.getGroupId();
         this.parentId = response.getGroupParentId();
         this.name = response.getGroupName();
-        if(name.equalsIgnoreCase("văn phòng")||parentId==officeId && response.getGroupId()!=0) {
+        if(name.equalsIgnoreCase("văn phòng")||parentId==officeId ) {
             this.office = Float.valueOf(response.getReportDemarcation());
             this.totalRatioOfOfficeAndDonvile=response.getTotalRatioOfOfficeAndDonvile();
             this.totalLaborProductivity=response.getTotalLaborProductivity();

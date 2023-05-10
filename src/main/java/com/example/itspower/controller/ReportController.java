@@ -31,7 +31,7 @@ public class ReportController {
         return reportService.reportDto(strDate, groupId);
     }
     @GetMapping("/getReportByYesterday")
-    public Object getReportByYesterday( @RequestParam("groupId") int groupId) throws ParseException {
+    public Object getReportByYesterday( @RequestParam("groupId") int groupId) {
         return reportService.callDataByDate( groupId);
     }
     @PostMapping("/report/save")
