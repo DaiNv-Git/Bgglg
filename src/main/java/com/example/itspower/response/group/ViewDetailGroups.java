@@ -1,12 +1,10 @@
 package com.example.itspower.response.group;
-
 import com.example.itspower.model.resultset.ViewAllDto;
 import com.example.itspower.response.view.RestObjectResponse;
 import com.example.itspower.response.view.RiceResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.List;
 
 @Data
@@ -34,13 +32,18 @@ public class ViewDetailGroups {
         this.key = response.getGroupId();
         this.parentId = response.getGroupParentId();
         this.name = response.getGroupName();
-        if(name.equalsIgnoreCase("văn phòng")&& parentId==officeId && response.getGroupId()!=0) {
+        if(name.equalsIgnoreCase("văn phòng") || parentId==officeId ) {
             this.office = Float.valueOf(response.getReportDemarcation());
             this.totalRatioOfOfficeAndDonvile=response.getTotalRatioOfOfficeAndDonvile();
             this.totalLaborProductivity=response.getTotalLaborProductivity();
-        }else if (name.equalsIgnoreCase("Đơn vị lẻ")){
+        }
+        else if (key <0){
+            this.enterprise = Float.valueOf(response.getReportDemarcation());
+        }
+        else if (name.equalsIgnoreCase("Đơn vị lẻ")){
             this.totalRatioOfOfficeAndDonvile=response.getTotalRatioOfOfficeAndDonvile();
         }
+
         else{
             this.enterprise = Float.valueOf(response.getReportDemarcation());
         }

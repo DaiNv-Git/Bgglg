@@ -7,8 +7,6 @@ y
 Isrc/main/java/com/example/itspower/service/impl/GroupRoleServiceImpl.java,1\0\10f2eaf948260f3ba2c95c15e7160096d98b3ce4
 m
 =src/main/java/com/example/itspower/service/ReportService.java,5\c\5c55094a64a353212c9a2c7313ca0df30306a74d
-z
-Jsrc/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java,4\2\42cc696565d19963eb7d3dc0552ec676648d2148
 :
 
 Dockerfile,6\6\6651ddff6eb82c840ced7c1dddee15c6e1913dd4
@@ -32,3 +30,9 @@ q
 Asrc/main/java/com/example/itspower/model/entity/ReportEntity.java,b\8\b8e31ea4216c52710d463067cdc015f2b6c875bc
 z
 Jsrc/main/java/com/example/itspower/filter/JwtAuthenticationEntryPoint.java,b\6\b653f3290a231eac89ac27f11597e3be1749af57
+ƒ
+Ssrc/main/java/com/example/itspower/repository/repositoryjpa/GroupJpaRepository.java,5\7\578dd5b64a428d0580823a4db38bc284ab531a76
+r
+Bsrc/main/java/com/example/itspower/model/resultset/ViewAllDto.java,f\5\f5359e9105ae243055299324bcd698df8580a128
+k
+;src/main/java/com/example/itspower/ItsPowerApplication.java,1\0\105825a180c7932a47f47e2e8042f7d4f8704261
