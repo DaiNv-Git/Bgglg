@@ -76,7 +76,7 @@ public class ExportExcel {
         font1.setFontHeight(14);
 
         style.setFont(font);
-        style.setBorderTop(BorderStyle.THIN); // Đường viền mỏng phía dưới
+//        style.setBorderTop(BorderStyle.THIN); // Đường viền mỏng phía dưới
         style.setBorderBottom(BorderStyle.THIN); // Đường viền mỏng phía dưới
         style.setBorderLeft(BorderStyle.THIN); // Đường viền mỏng phía dưới
         style.setBorderRight(BorderStyle.THIN);

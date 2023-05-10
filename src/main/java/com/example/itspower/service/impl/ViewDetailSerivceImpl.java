@@ -44,7 +44,6 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
         List<ReasonResponse> reasonResponseList = groupJpaRepository.getReasonResponse(reportDate);
         List<ListNameRestResponse> listNameReasonList = groupJpaRepository.getListNameReason(reportDate);
         List<RootNameDto> idRootList = groupJpaRepository.getAllRoot();
-        List<RootResponse> rootId = groupJpaRepository.getRoot();
         List<ViewAllDto> viewAllDtoList = groupRoleRepository.searchAllView(reportDate);
         List<ViewAllDto> response = getLogicParent(viewAllDtoList, idRootList);
         for (ViewAllDto viewAllDto : viewAllDtoList) {
@@ -75,6 +74,7 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
                     addChild.put(reasonName, total);
                 }
             }
+            //tinh tong
             Map<String, Integer> sumMap = new HashMap<>();
             for (String key : addChild.keySet()) {
                 int value = addChild.get(key);
@@ -82,6 +82,7 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
                 sumMap.put(key, sum);
             }
             List<ReasonRest> reason = new ArrayList<>();
+            //add ngược lại để tính tổng parent
             for (String key : sumMap.keySet()) {
                 int sum = sumMap.get(key);
                 reason.add(new ReasonRest(sum,key));

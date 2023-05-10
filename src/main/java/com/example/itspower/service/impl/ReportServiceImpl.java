@@ -6,6 +6,7 @@ import com.example.itspower.model.resultset.RestDto;
 import com.example.itspower.repository.*;
 import com.example.itspower.repository.repositoryjpa.EmpTerminationContractRepository;
 import com.example.itspower.repository.repositoryjpa.EmployeeGroupRepository;
+import com.example.itspower.repository.repositoryjpa.ReportJpaRepository;
 import com.example.itspower.request.ReportRequest;
 import com.example.itspower.response.SuccessResponse;
 import com.example.itspower.response.report.ReportResponse;
@@ -23,6 +24,8 @@ import java.util.*;
 public class ReportServiceImpl implements ReportService {
     @Autowired
     private ReportRepository reportRepository;
+    @Autowired
+    private ReportJpaRepository reportJpaRepository;
     @Autowired
     private RestRepository restRepository;
     @Autowired
@@ -48,7 +51,25 @@ public class ReportServiceImpl implements ReportService {
         Optional<RiceEntity> riceEntity = riceRepository.getByRiceDetail(reportDto.getId());
         return new ReportResponse(reportDto, riceEntity.get(), restDtos, transferEntities);
     }
-
+    public Object callDataByDate(int groupId) {
+        List<ReportEntity> data = reportJpaRepository.findLastDate(groupId);
+        if(!data.isEmpty()){
+            String date =DateUtils.formatDate(data.get(0).getReportDate(),DateUtils.FORMAT_DATE);
+            return getYesterday(date,groupId);
+        }
+        return null;
+    }
+    public Object getYesterday(String reportDate, int groupId) {
+        Optional<ReportEntity> entity = reportRepository.findByReportDateAndGroupId(reportDate, groupId);
+        if (entity.isEmpty()) {
+            return null;
+        }
+        ReportDto reportDto = reportRepository.reportDto(reportDate, groupId);
+        List<RestDto> restDtos = restRepository.getRests(reportDto.getId());
+        List<TransferEntity> transferEntities = transferRepository.findByReportId(reportDto.getId());
+        Optional<RiceEntity> riceEntity = riceRepository.getByRiceDetail(reportDto.getId());
+        return new ReportResponse(reportDto, riceEntity.get(), restDtos, transferEntities);
+    }
     @Override
     public Object save(ReportRequest request, int groupId) {
         Calendar calendar = Calendar.getInstance();

@@ -30,7 +30,10 @@ public class ReportController {
         String strDate = dateFormat.format(newDate);
         return reportService.reportDto(strDate, groupId);
     }
-
+    @GetMapping("/getReportByYesterday")
+    public Object getReportByYesterday( @RequestParam("groupId") int groupId) throws ParseException {
+        return reportService.callDataByDate( groupId);
+    }
     @PostMapping("/report/save")
     public ResponseEntity<Object> save(@RequestBody ReportRequest reportRequest, @RequestParam("groupId") int groupId) throws GeneralException {
         try {

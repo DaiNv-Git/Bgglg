@@ -16,7 +16,7 @@ public class ReportDto {
     private Integer laborProductivity;
     private Integer transferNum;
     private Integer supportNum;
-    private Integer restNum;
+    private Double restNum;
     private Integer partTimeNum;
     private Integer studentNum;
     private Integer totalRice;
