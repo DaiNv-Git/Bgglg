@@ -99,7 +99,7 @@ public class ReportServiceImpl implements ReportService {
             riceRepository.updateRice(request.getRiceRequests(), reportEntity.getId());
         }
         request.getRestRequests().forEach(z -> {
-            if (z.getRestId() != null && z.getRestId() != 0) {
+            if (z.getRestId() != null ) {
                 restRepository.updateRest(request.getRestRequests(), reportEntity.getId());
             }
         });

@@ -107,26 +107,21 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
                 }
             }
         }
-
         int officeId = response.stream()
                 .filter(i -> i.getGroupName().equalsIgnoreCase("văn phòng"))
                 .findFirst()
                 .map(ViewAllDto::getGroupId)
                 .orElse(0);
-
         List<ViewDetailGroups> viewDetailsRes = response.stream()
                 .map(i -> new ViewDetailGroups(i, officeId))
                 .collect(Collectors.toList());
-
         int studentSum = viewAllDtoList.stream()
                 .collect(Collectors.summingInt(ViewAllDto::getStudentNum));
-
         int partTimeToMaySum = viewAllDtoList.stream()
                 .filter(i -> i.getGroupName().trim().equalsIgnoreCase("Tổ may"))
                 .mapToInt(ViewAllDto::getPartTimeNum)
                 .findFirst()
                 .orElse(0);
-
         int partTimeDonViLeSum = viewAllDtoList.stream()
                 .filter(i -> i.getGroupName().trim().equalsIgnoreCase("Đơn vị lẻ"))
                 .mapToInt(ViewAllDto::getPartTimeNum)

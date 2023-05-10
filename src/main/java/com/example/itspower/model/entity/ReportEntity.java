@@ -71,7 +71,7 @@ import java.util.Date;
         query = "select gr.group_name as groupName," +
                 "IFNULL(ri.rice_emp,0) as riceEmp," +
                 "IFNULL(ri.rice_cus,0) as riceCus," +
-                "DATE_FORMAT(r.report_date ,'%Y-%m-%d') as reportDate " +
+                "DATE_FORMAT(r.report_date ,'%m-%d-%Y') as reportDate " +
                 "from rice ri " +
                 "join report r on r.id= ri.report_id " +
                 "join group_role gr on r.group_id = gr.id " +
@@ -122,7 +122,7 @@ import java.util.Date;
 
 @NamedNativeQuery(
         name = "find_by_employee_rest",
-        query = "select DATE_FORMAT(r.report_date ,'%Y%m%d') as reportDate,r2.rest_name as restName,\n" +
+        query = "select DATE_FORMAT(r.report_date ,'%Y-%m-%d') as reportDate,r2.rest_name as restName,\n" +
                 "r2.employee_labor as labor,\n" +
                 "gr.group_name as groupName,r3.name as reasonName\n" +
                 "from report r join rest r2 on r.id = r2.report_id\n" +

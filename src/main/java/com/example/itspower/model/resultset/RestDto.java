@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RestDto {
-    private int restId;
+    private Integer restId;
     private String restName;
     private String session;
     private Float workTime;

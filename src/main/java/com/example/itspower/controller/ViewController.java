@@ -17,7 +17,6 @@ import java.util.Calendar;
 import java.util.Date;
 import static com.example.itspower.component.enums.StatusReason.ERROR;
 import static com.example.itspower.component.enums.StatusReason.SUCCESS;
-
 @RestController
 @RequestMapping("/view")
 public class ViewController {
@@ -26,12 +25,10 @@ public class ViewController {
 
     @Autowired
     private ViewDetailService viewDetailService;
-
     @GetMapping("/all")
     public ResponseEntity<Object> getAll(@RequestParam("date") String date) {
         return ResponseEntity.status(HttpStatus.OK).body(viewService.getView(date));
     }
-
     @GetMapping("/groupRoleViewDetails")
     public ResponseEntity<BaseResponse<Object>> searchAllViewDetails(@RequestParam("reportDate") String reportDate) {
         try {

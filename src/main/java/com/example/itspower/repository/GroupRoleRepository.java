@@ -1,5 +1,4 @@
 package com.example.itspower.repository;
-
 import com.example.itspower.model.entity.GroupEntity;
 import com.example.itspower.model.resultset.GroupRoleDto;
 import com.example.itspower.model.resultset.ViewAllDto;
@@ -12,7 +11,6 @@ import com.example.itspower.response.group.ViewGroupRoot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 import java.util.Optional;
 
