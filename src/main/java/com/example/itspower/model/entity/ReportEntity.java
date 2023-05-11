@@ -20,7 +20,7 @@ import java.util.Date;
                         @ColumnResult(name = "id", type = Integer.class),
                         @ColumnResult(name = "groupId", type = Integer.class),
                         @ColumnResult(name = "demarcation", type = Integer.class),
-                        @ColumnResult(name = "laborProductivity", type = Integer.class),
+                        @ColumnResult(name = "laborProductivity", type = Double.class),
                         @ColumnResult(name = "transferNum", type = Integer.class),
                         @ColumnResult(name = "supportNum", type = Integer.class),
                         @ColumnResult(name = "restNum", type = Double.class),
