@@ -11,7 +11,7 @@ public class ViewAllDto {
     private Integer groupParentId;
     private String groupName;
     Integer reportDemarcation;
-    private Integer laborProductivity;
+    private Double laborProductivity;
     private Integer partTimeNum;
     private Integer restNum;
     private Integer studentNum;
@@ -23,7 +23,7 @@ public class ViewAllDto {
     private Float totalLaborProductivity;
     private RestObjectResponse restObjectResponse;
 
-    public ViewAllDto(Integer groupId, Integer groupParentId, String groupName, Integer reportDemarcation, Integer laborProductivity, Integer partTimeNum, Integer restNum, Integer studentNum, Integer riceCus, Integer riceEmp, Integer riceVip, Float ratio, Float totalRatioOfOfficeAndDonvile, Float totalLaborProductivity, RestObjectResponse restObjectResponse) {
+    public ViewAllDto(Integer groupId, Integer groupParentId, String groupName, Integer reportDemarcation, Double laborProductivity, Integer partTimeNum, Integer restNum, Integer studentNum, Integer riceCus, Integer riceEmp, Integer riceVip, Float ratio, Float totalRatioOfOfficeAndDonvile, Float totalLaborProductivity, RestObjectResponse restObjectResponse) {
         this.groupId = groupId;
         this.groupParentId = groupParentId;
         this.groupName = groupName;
@@ -47,7 +47,7 @@ public class ViewAllDto {
         this.groupParentId = groupParentId;
         this.groupName = groupName;
         this.reportDemarcation = reportDemarcation == null ? 0 : reportDemarcation;
-        this.laborProductivity = laborProductivity == null ? 0 : laborProductivity;
+        this.laborProductivity = laborProductivity == null ? 0.0 : laborProductivity;
         this.partTimeNum = partTimeNum == null ? 0 : partTimeNum;
         this.restNum = restNum == null ? 0 : restNum;
         this.studentNum = studentNum == null ? 0 : studentNum;
@@ -58,7 +58,7 @@ public class ViewAllDto {
     }
 
     public ViewAllDto(Integer groupId, Integer groupParentId, String groupName,
-                      Integer reportDemarcation, Integer laborProductivity, Integer partTimeNum,
+                      Integer reportDemarcation, Double laborProductivity, Integer partTimeNum,
                       Integer restNum, Integer studentNum,
                       Integer riceCus, Integer riceEmp, Integer riceVip, Float ratio, Float totalLaborProductivity
             , Float totalRatioOfOfficeAndDonvile) {
@@ -66,7 +66,7 @@ public class ViewAllDto {
         this.groupParentId = groupParentId;
         this.groupName = groupName;
         this.reportDemarcation = reportDemarcation == null ? 0 : reportDemarcation;
-        this.laborProductivity = laborProductivity == null ? 0 : laborProductivity;
+        this.laborProductivity = laborProductivity == null ? 0.0 : laborProductivity;
         this.partTimeNum = partTimeNum == null ? 0 : partTimeNum;
         this.restNum = restNum == null ? 0 : restNum;
         this.studentNum = studentNum == null ? 0 : studentNum;
@@ -86,7 +86,7 @@ public class ViewAllDto {
         this.groupParentId = groupParentId;
         this.groupName = groupName;
         this.reportDemarcation = reportDemarcation == null ? 0 : reportDemarcation;
-        this.laborProductivity = Integer.valueOf(laborProductivity == null ? 0 : Integer.valueOf(String.valueOf(laborProductivity)));
+        this.laborProductivity = laborProductivity == null ? 0.0 : Integer.valueOf(String.valueOf(laborProductivity));
         this.partTimeNum = partTimeNum == null ? 0 : partTimeNum;
         this.restNum = restNum == null ? 0 : restNum;
         this.studentNum = studentNum == null ? 0 : studentNum;

@@ -13,7 +13,7 @@ public class ViewDetailsResponse {
     private Float ratio;
     private String groupName;
     private Integer reportDemarcation;
-    private Integer laborProductivity;
+    private Double laborProductivity;
     private Integer partTimeNum;
     private Integer restNum;
     private Integer studentNum;

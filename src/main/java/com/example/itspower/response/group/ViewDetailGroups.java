@@ -18,7 +18,7 @@ public class ViewDetailGroups {
     private String name;
     private Float office;
     private Float enterprise;
-    private Float laborProductivity;
+    private Double laborProductivity;
     private Float ratio;
     private Float totalLaborProductivity;
     private Integer numberLeave;
@@ -45,7 +45,7 @@ public class ViewDetailGroups {
         else{
             this.enterprise = Float.valueOf(response.getReportDemarcation());
         }
-        this.laborProductivity = Float.valueOf(response.getLaborProductivity());
+        this.laborProductivity =response.getLaborProductivity();
         this.numberLeave = response.getRestNum();
         this.ratio = response.getRatio();
         this.rice = new RiceResponse(response.getRiceCus(), response.getRiceVip(), response.getRiceEmp());
