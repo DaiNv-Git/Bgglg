@@ -27,7 +27,7 @@ import javax.persistence.*;
         resultSetMapping = "getEmployee"
         )
 @Entity
-@Table(name = "group_Employee")
+@Table(name = "group_employee")
 @Data
 public class EmployeeGroupEntity {
     @Id

@@ -127,13 +127,25 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
                 .mapToInt(ViewAllDto::getPartTimeNum)
                 .findFirst()
                 .orElse(0);
+        int  hoanThien1NangSuatPartTime= viewAllDtoList.stream()
+                .filter(i -> i.getGroupName().trim().equalsIgnoreCase("hoàn thiện 1"))
+                .mapToInt(ViewAllDto::getPartTimeNum)
+                .findFirst()
+                .orElse(0);
+        int  hoanThien1NangSuatPartTime2= viewAllDtoList.stream()
+                .filter(i -> i.getGroupName().trim().equalsIgnoreCase("hoàn thiện 1"))
+                .mapToInt(ViewAllDto::getPartTimeNum)
+                .findFirst()
+                .orElse(0);
+        Double nangSuatPartTimeToMay=partTimeToMaySum/2.0;
+        Double nangSuatPartTimeDvl=partTimeDonViLeSum/2.0;
         ViewDetailGroups studentNangsuat =
-                new ViewDetailGroups(new ViewAllDto(-1, 0, "Học sinh chưa báo năng suất", studentSum, 0
+                new ViewDetailGroups(new ViewAllDto(-1, 0, "Học sinh chưa báo năng suất", studentSum, 0.0
                         , 0, 0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
         ViewDetailGroups thoiVuToMay =
-                new ViewDetailGroups(new ViewAllDto(-2, 0, "Thời vụ tổ may", partTimeToMaySum, partTimeDonViLeSum
+                new ViewDetailGroups(new ViewAllDto(-2, 0, "Thời vụ tổ may", partTimeToMaySum, nangSuatPartTimeToMay
                         , 0, 0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
-        ViewDetailGroups thoiVuDonViLe = new ViewDetailGroups(new ViewAllDto(-3, 0, "Thời vụ đơn vị lẻ ", partTimeToMaySum, partTimeDonViLeSum
+        ViewDetailGroups thoiVuDonViLe = new ViewDetailGroups(new ViewAllDto(-3, 0, "Thời vụ đơn vị lẻ ", partTimeDonViLeSum, nangSuatPartTimeDvl
                 , 0, 0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
 
         List<ViewDetailGroups> res = children(viewDetailsRes);
@@ -193,7 +205,7 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
     }
 
     List<ViewAllDto> getLogicParent(List<ViewAllDto> viewAllDtoList, List<RootNameDto> getIdRoot) {
-        Float totalLaborProductivity = (float) viewAllDtoList.stream().mapToInt(ViewAllDto::getLaborProductivity).sum();
+        Float totalLaborProductivity = (float) viewAllDtoList.stream().mapToDouble(ViewAllDto::getLaborProductivity).sum();
         Float totalRatioOfOfficeAndDonvile = 0.0f;
         for (RootNameDto id : getIdRoot) {
             List<ViewAllDto> parent = viewAllDtoList.stream()
@@ -207,9 +219,9 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
             String groupName = parent.get(0).getGroupName();
             Integer reportDemarcation = child.stream().map(i -> i.getReportDemarcation()).mapToInt(Integer::intValue).sum();
             Float laborProductivity2 = Float.valueOf(String.valueOf(child.stream().map(i ->
-                    i.getLaborProductivity()).mapToInt(Integer::intValue).sum()));
-            Integer laborProductivity1 = child.stream().map(i ->
-                    i.getLaborProductivity()).mapToInt(Integer::intValue).sum();
+                    i.getLaborProductivity()).mapToDouble(Double::doubleValue).sum()));
+            Double laborProductivity1 = child.stream().map(i ->
+                    i.getLaborProductivity()).mapToDouble(Double::intValue).sum();;
             int partTimeNumber = child.stream()
                     .mapToInt(ViewAllDto::getPartTimeNum)
                     .sum();
@@ -239,13 +251,13 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
                     , partTimeNumber, restNum, studentNum, riceCus, riceEmp, riceVip, ratio, totalLaborProductivity, totalRatioOfOfficeAndDonvile));
         }
 
-        float officeLaborProductivity = viewAllDtoList.stream()
+        float officeLaborProductivity = (float) viewAllDtoList.stream()
                 .filter(i -> i.getGroupName().equalsIgnoreCase("văn phòng"))
-                .mapToInt(ViewAllDto::getLaborProductivity)
+                .mapToDouble(ViewAllDto::getLaborProductivity)
                 .sum();
-        float donViLeLaborProductivity = viewAllDtoList.stream()
+        float donViLeLaborProductivity = (float) viewAllDtoList.stream()
                 .filter(i -> i.getGroupName().equalsIgnoreCase("đơn vị lẻ"))
-                .mapToInt(ViewAllDto::getLaborProductivity)
+                .mapToDouble(ViewAllDto::getLaborProductivity)
                 .sum();
         if (officeLaborProductivity > 0 && donViLeLaborProductivity > 0) {
             float officeRatio = officeLaborProductivity / totalLaborProductivity * 100;
@@ -258,8 +270,8 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
                     || viewAllDto.getGroupName().equalsIgnoreCase("Đơn vị lẻ")) {
                 viewAllDto.setTotalRatioOfOfficeAndDonvile(totalRatioOfOfficeAndDonvile);
             }
-            float laborProductivity2 = viewAllDto.getLaborProductivity();
-            float ratio = (laborProductivity2 / totalLaborProductivity) * 100;
+            Double laborProductivity2 = viewAllDto.getLaborProductivity();
+            float ratio = (float) ((laborProductivity2 / totalLaborProductivity) * 100);
             ratio = Float.parseFloat(decimalFormat.format(ratio));
             if (Float.isNaN(ratio)) {
                 ratio = 0.0f;
