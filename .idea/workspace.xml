@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8e811f7-ab85-440d-81dd-29fe6388095e" name="Changes" comment="fix api update report">
+    <list default="true" id="d8e811f7-ab85-440d-81dd-29fe6388095e" name="Changes" comment="add api get All User">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/resultset/RestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/resultset/RestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/request/RestRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/request/RestRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ReportServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/ReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/group/ViewDetailGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/group/ViewDetailGroups.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,16 +278,11 @@
       <workItem from="1682860121117" duration="904000" />
       <workItem from="1683101593080" duration="2476000" />
       <workItem from="1683123208676" duration="5231000" />
-      <workItem from="1683612506487" duration="325000" />
-      <workItem from="1683684012432" duration="1691000" />
-      <workItem from="1683687850268" duration="3802000" />
-    </task>
-    <task id="LOCAL-00053" summary="api /groupRole/demarcation get and update">
-      <created>1680187205183</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1680187205184</updated>
+      <workItem from="1683212062137" duration="593000" />
+      <workItem from="1683425279880" duration="2786000" />
+      <workItem from="1683452893303" duration="858000" />
+      <workItem from="1683640617122" duration="1815000" />
+      <workItem from="1683729160858" duration="522000" />
     </task>
     <task id="LOCAL-00054" summary="api /groupRole/demarcation get and update">
       <created>1680187496312</created>
@@ -605,28 +599,35 @@
       <option name="project" value="LOCAL" />
       <updated>1683206463616</updated>
     </task>
-    <task id="LOCAL-00099" summary="add api get dvl">
-      <created>1683684440562</created>
+    <task id="LOCAL-00099" summary="add api get All User">
+      <created>1683209052379</created>
       <option name="number" value="00099" />
       <option name="presentableId" value="LOCAL-00099" />
       <option name="project" value="LOCAL" />
-      <updated>1683684440563</updated>
+      <updated>1683209052379</updated>
     </task>
-    <task id="LOCAL-00100" summary="add api get dvl">
-      <created>1683689910770</created>
+    <task id="LOCAL-00100" summary="add api get All User">
+      <created>1683427338252</created>
       <option name="number" value="00100" />
       <option name="presentableId" value="LOCAL-00100" />
       <option name="project" value="LOCAL" />
-      <updated>1683689910770</updated>
+      <updated>1683427338252</updated>
     </task>
-    <task id="LOCAL-00101" summary="fix api update report">
-      <created>1683714280464</created>
+    <task id="LOCAL-00101" summary="add api get All User">
+      <created>1683428365038</created>
       <option name="number" value="00101" />
       <option name="presentableId" value="LOCAL-00101" />
       <option name="project" value="LOCAL" />
-      <updated>1683714280464</updated>
+      <updated>1683428365038</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="add api get All User">
+      <created>1683564975688</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1683564975688</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -658,10 +659,9 @@
     <MESSAGE value="fix bug search view" />
     <MESSAGE value="fix api add request rest" />
     <MESSAGE value="fix api export excel" />
-    <MESSAGE value="add api get All User" />
     <MESSAGE value="add api get dvl" />
-    <MESSAGE value="fix api update report" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix api update report" />
+    <MESSAGE value="add api get All User" />
+    <option name="LAST_COMMIT_MESSAGE" value="add api get All User" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
