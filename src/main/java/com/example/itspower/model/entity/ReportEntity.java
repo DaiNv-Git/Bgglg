@@ -129,7 +129,7 @@ import java.util.Date;
                 "left join group_role gr on gr.id = r.group_id\n" +
                 "left join reason r3 on r2.reason_id = r3.id\n" +
                 "where DATE_FORMAT(r.report_date ,'%Y%m%d') = DATE_FORMAT(:reportDate ,'%Y%m%d')",
-        resultSetMapping = "ExportExcelEmpRest"
+         resultSetMapping = "ExportExcelEmpRest"
 )
 public class ReportEntity {
     @Id

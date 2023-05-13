@@ -10,7 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReportDto {
-    private Integer id;
+     private Integer id;
     private Integer groupId;
     private Integer demarcation;
     private Double laborProductivity;

@@ -22,7 +22,7 @@ public class ReportController {
     @GetMapping("/report")
     public Object report(@RequestParam("reportDate") String reportDate, @RequestParam("groupId") int groupId) throws ParseException {
         Date date = new SimpleDateFormat("yyyy/MM/dd").parse(reportDate);
-        Calendar calendar = Calendar.getInstance();
+         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date); // yourDate là thời gian hiện tại của bạn
         calendar.add(Calendar.HOUR_OF_DAY, 7); // thêm 7 giờ vào thời gian hiện tại
         Date newDate = calendar.getTime();
