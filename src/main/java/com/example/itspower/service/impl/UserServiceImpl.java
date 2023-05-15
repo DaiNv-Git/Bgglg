@@ -86,10 +86,10 @@ public class UserServiceImpl implements UserService {
             user.setId(user.getId());
             user.setUserLogin(userEntity.getUsername());
             user.setPassword(passwordEncoder.encode(userUpdateRequest.getPassword()));
-            user.setEdit(userUpdateRequest.isEdit());
-            user.setView(userUpdateRequest.isView());
-            user.setReport(userUpdateRequest.isReport());
-            user.setAdmin(userUpdateRequest.isAdmin());
+            user.setEdit(user.isEdit());
+            user.setView(user.isView());
+            user.setReport(user.isReport());
+            user.setAdmin(user.isAdmin());
             user = userRepository.save(user);
             return ResponseEntity.ok().body(new UserResponseSave(user, groupEntity, userGroupEntity.get()));
         } catch (Exception e) {
