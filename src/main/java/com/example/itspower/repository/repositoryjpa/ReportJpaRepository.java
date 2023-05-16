@@ -20,7 +20,7 @@ import java.util.Optional;
 public interface ReportJpaRepository extends JpaRepository<ReportEntity, Integer>, JpaSpecificationExecutor<ReportEntity> {
     @Query(name = "find_by_report", nativeQuery = true)
      ReportDto findByReport(@Param("reportDate") String reportDate, @Param("groupId") int groupId);
-    @Query(value = "SELECT SUM(transfer_num)   from transfer tr inner join report r on r.id =tr.report_id\n" +
+      @Query(value = "SELECT SUM(transfer_num)   from transfer tr inner join report r on r.id =tr.report_id\n" +
             "where tr.group_id =?2 and  DATE_FORMAT(r.report_date, '%Y%m%d') = DATE_FORMAT(?1, '%Y%m%d')", nativeQuery = true)
     Integer getTransferNumer(@Param("reportDate") String reportDate, @Param("groupId") int groupId);
     @Query(name = "find_by_excel", nativeQuery = true)

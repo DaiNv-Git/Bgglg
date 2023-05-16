@@ -140,8 +140,8 @@ public class ReportServiceImpl implements ReportService {
         if (laborEmps.size() != 0) {
             List<EmployeeTerminationOfContractEntity> entities = new ArrayList<>();
             for (String laborEmp : laborEmps) {
-                Optional<EmployeeGroupEntity> employeeGroup = employeeGroupRepository.findByLaborCode(laborEmp);
-                if (employeeGroup.isPresent()) {
+                 Optional<EmployeeGroupEntity> employeeGroup = employeeGroupRepository.findByLaborCode(laborEmp);
+                 if (employeeGroup.isPresent()) {
                     EmployeeTerminationOfContractEntity entityTerOfContract = new EmployeeTerminationOfContractEntity();
                     entityTerOfContract.setEmployeeLabor(employeeGroup.get().getLaborCode());
                     entityTerOfContract.setEmployeeName(employeeGroup.get().getName());
