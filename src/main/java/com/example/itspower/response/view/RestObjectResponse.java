@@ -6,16 +6,16 @@ import java.util.List;
 
 @Data
 public class RestObjectResponse {
-    private Integer restNum;
+    private Double restNum;
     private List<ReasonRest> reason;
     private List<reasonEmployee> employeeRest;
 
-    public RestObjectResponse(Integer restNum, List<ReasonRest> reason) {
+    public RestObjectResponse(Double restNum, List<ReasonRest> reason) {
         this.restNum = restNum;
         this.reason = reason;
     }
 
-    public RestObjectResponse(Integer restNum, List<ReasonRest> reason, List<reasonEmployee> employeeRest) {
+    public RestObjectResponse(Double restNum, List<ReasonRest> reason, List<reasonEmployee> employeeRest) {
         this.restNum = restNum;
         this.reason = reason;
         this.employeeRest = employeeRest;

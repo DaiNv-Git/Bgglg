@@ -15,7 +15,7 @@ public class ViewDetailsResponse {
     private Integer reportDemarcation;
     private Double laborProductivity;
     private Integer partTimeNum;
-    private Integer restNum;
+    private Double restNum;
     private Integer studentNum;
     private Integer riceCus;
     private Integer riceEmp;

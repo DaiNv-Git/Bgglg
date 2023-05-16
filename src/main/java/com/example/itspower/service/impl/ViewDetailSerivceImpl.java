@@ -87,8 +87,8 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
                 int sum = sumMap.get(key);
                 reason.add(new ReasonRest(sum,key));
             }
-            int numberRest = reason.stream()
-                    .mapToInt(ReasonRest::getTotal)
+            Double numberRest = reason.stream()
+                    .mapToDouble(ReasonRest::getTotal)
                     .sum();
            viewAllDtoList.stream()
                     .filter(setResponse -> setResponse.getGroupId().equals(id.getId()))
@@ -141,12 +141,12 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
         Double nangSuatPartTimeDvl=partTimeDonViLeSum/2.0;
         ViewDetailGroups studentNangsuat =
                 new ViewDetailGroups(new ViewAllDto(-1, 0, "Học sinh chưa báo năng suất", studentSum, 0.0
-                        , 0, 0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
+                        , 0, 0.0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
         ViewDetailGroups thoiVuToMay =
                 new ViewDetailGroups(new ViewAllDto(-2, 0, "Thời vụ tổ may", partTimeToMaySum, nangSuatPartTimeToMay
-                        , 0, 0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
+                        , 0, 0.0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
         ViewDetailGroups thoiVuDonViLe = new ViewDetailGroups(new ViewAllDto(-3, 0, "Thời vụ đơn vị lẻ ", partTimeDonViLeSum, nangSuatPartTimeDvl
-                , 0, 0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
+                , 0, 0.0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
 
         List<ViewDetailGroups> res = children(viewDetailsRes);
         res.add(studentNangsuat);
@@ -228,8 +228,8 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
             int studentNum = child.stream()
                     .mapToInt(ViewAllDto::getStudentNum)
                     .sum();
-            int restNum = child.stream()
-                    .mapToInt(ViewAllDto::getRestNum)
+            Double restNum = child.stream()
+                    .mapToDouble(ViewAllDto::getRestNum)
                     .sum();
             int riceCus = child.stream()
                     .mapToInt(ViewAllDto::getRiceCus)

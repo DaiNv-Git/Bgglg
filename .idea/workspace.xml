@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8e811f7-ab85-440d-81dd-29fe6388095e" name="Changes" comment="add api get All Usessadr">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/ReportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/resultset/ReportDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/resultset/ReportDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/ReportRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/repositoryjpa/ReportJpaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/repositoryjpa/ReportJpaRepository.java" afterDir="false" />
+    <list default="true" id="d8e811f7-ab85-440d-81dd-29fe6388095e" name="Changes" comment="fix api update report">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/resultset/ViewAllDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/resultset/ViewAllDto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,20 +281,9 @@
       <workItem from="1683452893303" duration="858000" />
       <workItem from="1683640617122" duration="1815000" />
       <workItem from="1683729160858" duration="522000" />
-    </task>
-    <task id="LOCAL-00054" summary="api /groupRole/demarcation get and update">
-      <created>1680187496312</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1680187496312</updated>
-    </task>
-    <task id="LOCAL-00055" summary="api /groupRole/demarcation get and update">
-      <created>1681030926672</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1681030926673</updated>
+      <workItem from="1684131697170" duration="772000" />
+      <workItem from="1684136200749" duration="349000" />
+      <workItem from="1684144700158" duration="2020000" />
     </task>
     <task id="LOCAL-00056" summary="api /groupRole/demarcation get and update">
       <created>1681035431842</created>
@@ -629,7 +614,21 @@
       <option name="project" value="LOCAL" />
       <updated>1683564975688</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="fix api update report">
+      <created>1683788557099</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1683788557099</updated>
+    </task>
+    <task id="LOCAL-00104" summary="fix api update report">
+      <created>1684201943273</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1684201943275</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -663,7 +662,8 @@
     <MESSAGE value="fix api export excel" />
     <MESSAGE value="add api get dvl" />
     <MESSAGE value="add api get All User" />
-    <option name="LAST_COMMIT_MESSAGE" value="add api get All User" />
+    <MESSAGE value="fix api update report" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix api update report" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
