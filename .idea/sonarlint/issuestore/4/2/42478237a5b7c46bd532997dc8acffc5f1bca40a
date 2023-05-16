@@ -1,0 +1,7 @@
+
+v
+java:S36554"TCall "riceEntity.isPresent()" or "!riceEntity.isEmpty()" before accessing the value.(›¦˜õıÿÿÿÿ8åÛÀ©€1
+v
+java:S3655G"TCall "riceEntity.isPresent()" or "!riceEntity.isEmpty()" before accessing the value.(›¦˜õıÿÿÿÿ8åÛÀ©€1
+a
+java:S1155‡">Use isEmpty() to check whether the collection is empty or not.(®»âÃüÿÿÿÿ8õÛÀ©€1

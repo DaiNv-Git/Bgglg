@@ -49,17 +49,17 @@ public class ViewAllDto {
         this.reportDemarcation = reportDemarcation == null ? 0 : reportDemarcation;
         this.laborProductivity = laborProductivity == null ? 0.0 : laborProductivity;
         this.partTimeNum = partTimeNum == null ? 0 : partTimeNum;
-        this.restNum = restNum == null ? 0.0 : restNum;
+        t his.restNum = restNum == null ? 0.0 : restNum;
         this.studentNum = studentNum == null ? 0 : studentNum;
         this.riceCus = riceCus == null ? 0 : riceCus;
-        this.riceEmp = riceEmp == null ? 0 : riceEmp;
+         this.riceEmp = riceEmp == null ? 0 : riceEmp;
         this.riceVip = riceVip == null ? 0 : riceVip;
 
     }
 
     public ViewAllDto(Integer groupId, Integer groupParentId, String groupName,
                       Integer reportDemarcation, Double laborProductivity, Integer partTimeNum,
-                      Double restNum, Integer studentNum,
+                       Double restNum, Integer studentNum,
                       Integer riceCus, Integer riceEmp, Integer riceVip, Float ratio, Float totalLaborProductivity
             , Float totalRatioOfOfficeAndDonvile) {
         this.groupId = groupId;
