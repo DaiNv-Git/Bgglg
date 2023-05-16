@@ -49,7 +49,7 @@ public class ViewAllDto {
         this.reportDemarcation = reportDemarcation == null ? 0 : reportDemarcation;
         this.laborProductivity = laborProductivity == null ? 0.0 : laborProductivity;
         this.partTimeNum = partTimeNum == null ? 0 : partTimeNum;
-        t his.restNum = restNum == null ? 0.0 : restNum;
+        this.restNum = restNum == null ? 0.0 : restNum;
         this.studentNum = studentNum == null ? 0 : studentNum;
         this.riceCus = riceCus == null ? 0 : riceCus;
          this.riceEmp = riceEmp == null ? 0 : riceEmp;
