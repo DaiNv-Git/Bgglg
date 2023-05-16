@@ -23,7 +23,7 @@ public class ReportRepository {
     private ReportJpaRepository reportJpaRepository;
 
     public ReportDto reportDto(String reportDate, int groupId) {
-        return reportJpaRepository.findByReport(reportDate, groupId);
+         return reportJpaRepository.findByReport(reportDate, groupId);
     }
 
     public List<ExportExcelDtoReport> findByReportExcel(String reportDate) {

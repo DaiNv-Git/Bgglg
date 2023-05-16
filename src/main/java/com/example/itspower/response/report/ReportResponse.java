@@ -15,7 +15,7 @@ import java.util.List;
 public class ReportResponse {
     private int id;
     private int demarcation;
-    private int laborProductivity;
+    private Double laborProductivity;
     private int transferNum;
     private int supportNum;
     private Double restNum;

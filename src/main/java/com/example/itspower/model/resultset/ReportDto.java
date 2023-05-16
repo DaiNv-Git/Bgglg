@@ -10,10 +10,10 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReportDto {
-    private Integer id;
+     private Integer id;
     private Integer groupId;
     private Integer demarcation;
-    private Integer laborProductivity;
+    private Double laborProductivity;
     private Integer transferNum;
     private Integer supportNum;
     private Double restNum;

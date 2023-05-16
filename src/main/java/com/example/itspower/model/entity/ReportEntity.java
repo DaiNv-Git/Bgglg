@@ -20,7 +20,7 @@ import java.util.Date;
                         @ColumnResult(name = "id", type = Integer.class),
                         @ColumnResult(name = "groupId", type = Integer.class),
                         @ColumnResult(name = "demarcation", type = Integer.class),
-                        @ColumnResult(name = "laborProductivity", type = Integer.class),
+                        @ColumnResult(name = "laborProductivity", type = Double.class),
                         @ColumnResult(name = "transferNum", type = Integer.class),
                         @ColumnResult(name = "supportNum", type = Integer.class),
                         @ColumnResult(name = "restNum", type = Double.class),
@@ -129,7 +129,7 @@ import java.util.Date;
                 "left join group_role gr on gr.id = r.group_id\n" +
                 "left join reason r3 on r2.reason_id = r3.id\n" +
                 "where DATE_FORMAT(r.report_date ,'%Y%m%d') = DATE_FORMAT(:reportDate ,'%Y%m%d')",
-        resultSetMapping = "ExportExcelEmpRest"
+         resultSetMapping = "ExportExcelEmpRest"
 )
 public class ReportEntity {
     @Id

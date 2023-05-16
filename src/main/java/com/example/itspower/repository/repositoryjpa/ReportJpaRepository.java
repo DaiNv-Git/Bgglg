@@ -19,7 +19,7 @@ import java.util.Optional;
 @Repository
 public interface ReportJpaRepository extends JpaRepository<ReportEntity, Integer>, JpaSpecificationExecutor<ReportEntity> {
     @Query(name = "find_by_report", nativeQuery = true)
-    ReportDto findByReport(@Param("reportDate") String reportDate, @Param("groupId") int groupId);
+     ReportDto findByReport(@Param("reportDate") String reportDate, @Param("groupId") int groupId);
 
     @Query(name = "find_by_excel", nativeQuery = true)
     List<ExportExcelDtoReport> findByReportExcel(@Param("reportDate") String reportDate);
