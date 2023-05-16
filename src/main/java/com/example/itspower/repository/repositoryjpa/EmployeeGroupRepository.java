@@ -27,5 +27,6 @@ public interface EmployeeGroupRepository extends JpaRepository<EmployeeGroupEnti
     @Modifying
     void deleteByGroupIdAndLaborCodeIn(Integer groupId,List<String> laborCode);
 
-    Optional<EmployeeGroupEntity> findByLaborCodeAndGroupId(String laborCode,Integer groupId);
+    Optional<EmployeeGroupEntity> findByLaborCode(String laborCode);
+    A
 }
