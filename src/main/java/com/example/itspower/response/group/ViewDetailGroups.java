@@ -21,7 +21,7 @@ public class ViewDetailGroups {
     private Double laborProductivity;
     private Float ratio;
     private Float totalLaborProductivity;
-    private Integer numberLeave;
+    private Double numberLeave;
     private Integer partTimeEmp;
     private Float totalRatioOfOfficeAndDonvile;
     private RiceResponse rice;
@@ -40,6 +40,8 @@ public class ViewDetailGroups {
              this.totalLaborProductivity=response.getTotalLaborProductivity();
         }else if (name.equalsIgnoreCase("Đơn vị lẻ")){
             this.totalRatioOfOfficeAndDonvile=response.getTotalRatioOfOfficeAndDonvile();
+            this.enterprise = Float.valueOf(response.getReportDemarcation());
+        }else if (response.getGroupId() <0){
             this.enterprise = Float.valueOf(response.getReportDemarcation());
         }
         else{

@@ -93,7 +93,7 @@ import java.io.Serializable;
                 @ColumnResult(name = "reportDemarcation", type = Integer.class),
                 @ColumnResult(name = "laborProductivity", type = Integer.class),
                 @ColumnResult(name = "partTimeNum", type = Integer.class),
-                @ColumnResult(name = "restNum", type = Integer.class),
+                @ColumnResult(name = "restNum", type = Double.class),
                 @ColumnResult(name = "studentNum", type = Integer.class),
                 @ColumnResult(name = "riceCus", type = Integer.class),
                 @ColumnResult(name = "riceEmp", type = Integer.class),
@@ -101,6 +101,7 @@ import java.io.Serializable;
         }
         )
 )
+
 @NamedNativeQuery(name = "findAllRoleView", query = "SELECT groupId,groupName,groupParentId,reportDemarcation,\n" +
         "laborProductivity,partTimeNum,restNum,studentNum,riceCus,riceEmp,riceVip\n" +
         "FROM (\n" +
