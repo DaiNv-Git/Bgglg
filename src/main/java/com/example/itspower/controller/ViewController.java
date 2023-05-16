@@ -29,6 +29,7 @@ public class ViewController {
     public ResponseEntity<Object> getAll(@RequestParam("date") String date) {
         return ResponseEntity.status(HttpStatus.OK).body(viewService.getView(date));
     }
+
     @GetMapping("/groupRoleViewDetails")
     public ResponseEntity<BaseResponse<Object>> searchAllViewDetails(@RequestParam("reportDate") String reportDate) {
         try {

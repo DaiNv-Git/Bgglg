@@ -14,4 +14,5 @@ public interface ReportService {
     void deleteRestIdsAndReportId(Integer reportId,List<Integer> restIds);
 
     void deleteRestEmployee(Integer groupId, List<String> laborEmp);
+    Integer getTransfer(String reportDate,Integer groupId);
 }
