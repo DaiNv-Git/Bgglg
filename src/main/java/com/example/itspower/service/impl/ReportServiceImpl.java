@@ -131,12 +131,17 @@ public class ReportServiceImpl implements ReportService {
         }
     }
 
+    @Override
+    public Integer getTransfer(String reportDate, Integer groupId) {
+        return reportJpaRepository.getTransferNumer(reportDate,groupId);
+    }
+
     private void addEmpTerminationContract(Integer groupId, List<String> laborEmps, Date date) {
         if (laborEmps.size() != 0) {
             List<EmployeeTerminationOfContractEntity> entities = new ArrayList<>();
             for (String laborEmp : laborEmps) {
-                Optional<EmployeeGroupEntity> employeeGroup = employeeGroupRepository.findByLaborCode(laborEmp);
-                if (employeeGroup.isPresent()) {
+                 Optional<EmployeeGroupEntity> employeeGroup = employeeGroupRepository.findByLaborCode(laborEmp);
+                 if (employeeGroup.isPresent()) {
                     EmployeeTerminationOfContractEntity entityTerOfContract = new EmployeeTerminationOfContractEntity();
                     entityTerOfContract.setEmployeeLabor(employeeGroup.get().getLaborCode());
                     entityTerOfContract.setEmployeeName(employeeGroup.get().getName());

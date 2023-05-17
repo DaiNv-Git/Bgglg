@@ -63,4 +63,15 @@ public class ReportController {
         reportService.deleteRestEmployee(groupRequest.getGroupId(), groupRequest.getLaborEmp());
         return ResponseEntity.ok(new SuccessResponse<>(HttpStatus.OK.value(), "delete success"));
     }
+    @GetMapping("/getTransfer")
+    public ResponseEntity<Object> getTransfer(@RequestParam("date") String reportDate,@RequestParam("groupID")Integer groupID) throws ParseException {
+        Date date = new SimpleDateFormat("yyyy/MM/dd").parse(reportDate);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date); // yourDate là thời gian hiện tại của bạn
+         calendar.add(Calendar.HOUR_OF_DAY, 7); // thêm 7 giờ vào thời gian hiện tại
+        Date newDate = calendar.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String strDate = dateFormat.format(newDate);
+        return ResponseEntity.status(HttpStatus.OK).body(reportService.getTransfer(strDate,groupID));
+    }
 }
