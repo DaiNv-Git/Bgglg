@@ -1,5 +1,4 @@
 package com.example.itspower.service.impl;
-
 import com.example.itspower.model.entity.*;
 import com.example.itspower.model.resultset.ReportDto;
 import com.example.itspower.model.resultset.RestDto;
@@ -16,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.*;
 
@@ -51,14 +49,16 @@ public class ReportServiceImpl implements ReportService {
         Optional<RiceEntity> riceEntity = riceRepository.getByRiceDetail(reportDto.getId());
         return new ReportResponse(reportDto, riceEntity.get(), restDtos, transferEntities);
     }
+
     public Object callDataByDate(int groupId) {
         List<ReportEntity> data = reportJpaRepository.findLastDate(groupId);
-        if(!data.isEmpty()){
-            String date =DateUtils.formatDate(data.get(0).getReportDate(),DateUtils.FORMAT_DATE);
-            return getYesterday(date,groupId);
+        if (!data.isEmpty()) {
+            String date = DateUtils.formatDate(data.get(0).getReportDate(), DateUtils.FORMAT_DATE);
+            return getYesterday(date, groupId);
         }
         return null;
     }
+
     public Object getYesterday(String reportDate, int groupId) {
         Optional<ReportEntity> entity = reportRepository.findByReportDateAndGroupId(reportDate, groupId);
         if (entity.isEmpty()) {
@@ -70,6 +70,7 @@ public class ReportServiceImpl implements ReportService {
         Optional<RiceEntity> riceEntity = riceRepository.getByRiceDetail(reportDto.getId());
         return new ReportResponse(reportDto, riceEntity.get(), restDtos, transferEntities);
     }
+
     @Override
     public Object save(ReportRequest request, int groupId) {
         Calendar calendar = Calendar.getInstance();
@@ -99,7 +100,7 @@ public class ReportServiceImpl implements ReportService {
             riceRepository.updateRice(request.getRiceRequests(), reportEntity.getId());
         }
         request.getRestRequests().forEach(z -> {
-            if (z.getRestId() != null ) {
+            if (z.getRestId() != null) {
                 restRepository.updateRest(request.getRestRequests(), reportEntity.getId());
             }
         });
@@ -115,7 +116,6 @@ public class ReportServiceImpl implements ReportService {
     public void deleteRestIdsAndReportId(Integer reportId, List<Integer> restIds) {
         restRepository.deleteRestIdsAndReportId(reportId, restIds);
     }
-
 
     public void deleteRestEmployee(Integer groupId, List<String> laborEmps) {
         Calendar calendar = Calendar.getInstance();

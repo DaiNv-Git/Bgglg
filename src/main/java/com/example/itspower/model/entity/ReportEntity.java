@@ -62,7 +62,7 @@ import java.util.Date;
                 "IFNULL(r.profession_not_labor,0) as professionNotLabor,IFNULL(r.profession_labor,0) as professionLabor   " +
                 "from report r  " +
                 "left join rice r3 on r3.report_id = r.id  " +
-                "where DATE_FORMAT(r.report_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d') AND r.group_id = :groupId ",
+                "where DATE_FORMAT(r.report_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d') AND r.group_id = :groupId  ",
         resultSetMapping = "report_dto"
 )
 
@@ -75,7 +75,8 @@ import java.util.Date;
                 "from rice ri " +
                 "join report r on r.id= ri.report_id " +
                 "join group_role gr on r.group_id = gr.id " +
-                "where DATE_FORMAT(r.report_date ,'%Y%m%d') =DATE_FORMAT(:reportDate ,'%Y%m%d') ",
+                "where DATE_FORMAT(r.report_date ,'%Y%m%d') =DATE_FORMAT(:reportDate ,'%Y%m%d') and gr.sort is not null " +
+                " order by gr.sort  asc",
         resultSetMapping = "Export_Excel_Report"
 )
 @SqlResultSetMapping(

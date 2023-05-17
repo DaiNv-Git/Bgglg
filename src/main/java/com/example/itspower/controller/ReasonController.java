@@ -24,10 +24,9 @@ public class ReasonController {
         try {
             BaseResponse<Object> res = new BaseResponse<>(HttpStatus.CREATED.value(), SUCCESS, reasonService.searchALl());
             return ResponseEntity.status(HttpStatus.OK).body(res);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new ReasonException(HttpStatus.BAD_REQUEST.value(), ERROR, e);
         }
-
     }
 
     @PostMapping("/reason/save")
@@ -35,61 +34,59 @@ public class ReasonController {
         try {
             BaseResponse<Object> res = new BaseResponse<>(HttpStatus.CREATED.value(), SUCCESS, reasonService.save(reasonRequest));
             return ResponseEntity.status(HttpStatus.OK).body(res);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new ReasonException(HttpStatus.BAD_REQUEST.value(), ERROR, e);
         }
-
     }
 
     @PutMapping("/reason/edit")
-    public ResponseEntity<BaseResponse<Object>>  edit(@RequestParam("id") int id, @RequestBody ReasonRequest reasonRequest) {
+    public ResponseEntity<BaseResponse<Object>> edit(@RequestParam("id") int id, @RequestBody ReasonRequest reasonRequest) {
         try {
-            if (reasonService.edit(reasonRequest,id) ==null){
+            if (reasonService.edit(reasonRequest, id) == null) {
                 BaseResponse<Object> res = new BaseResponse<>(HttpStatus.CREATED.value(), SUCCESS, null);
                 return ResponseEntity.status(HttpStatus.OK).body(res);
-            }else {
-                BaseResponse<Object> res = new BaseResponse<>(HttpStatus.OK.value(), SUCCESS, reasonService.edit(reasonRequest,id));
+            } else {
+                BaseResponse<Object> res = new BaseResponse<>(HttpStatus.OK.value(), SUCCESS, reasonService.edit(reasonRequest, id));
                 return ResponseEntity.status(HttpStatus.OK).body(res);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new ReasonException(HttpStatus.BAD_REQUEST.value(), ERROR, e);
         }
-
     }
 
     @GetMapping("/reason/details")
-    public ResponseEntity<BaseResponse<Object>>  details(@RequestParam("id") int id) {
-        try{
-            if(reasonService.searchById(id).size() == 0){
+    public ResponseEntity<BaseResponse<Object>> details(@RequestParam("id") int id) {
+        try {
+            if (reasonService.searchById(id).size() == 0) {
                 BaseResponse<Object> res = new BaseResponse<>(HttpStatus.OK.value(), "Reason no exit", reasonService.searchById(id));
                 return ResponseEntity.status(HttpStatus.OK).body(res);
-            }else {
+            } else {
                 BaseResponse<Object> res = new BaseResponse<>(HttpStatus.OK.value(), SUCCESS, reasonService.searchById(id));
                 return ResponseEntity.status(HttpStatus.OK).body(res);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new ReasonException(HttpStatus.BAD_REQUEST.value(), ERROR, e);
         }
     }
 
     @DeleteMapping("/reason/deleteALl")
-    public ResponseEntity<BaseResponse<Object>>  deleteAll() {
-        try{
+    public ResponseEntity<BaseResponse<Object>> deleteAll() {
+        try {
             reasonService.deleteAll();
             BaseResponse<Object> res = new BaseResponse<>(HttpStatus.OK.value(), SUCCESS, null);
             return ResponseEntity.status(HttpStatus.OK).body(res);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new ReasonException(HttpStatus.BAD_REQUEST.value(), ERROR, e);
         }
-
     }
+
     @DeleteMapping("/reason/delete")
     public ResponseEntity<Object> delete(@RequestParam("id") int id) {
-        try{
+        try {
             reasonService.deleteById(id);
             BaseResponse<Object> res = new BaseResponse<>(HttpStatus.OK.value(), SUCCESS, null);
             return ResponseEntity.status(HttpStatus.OK).body(res);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new ReasonException(HttpStatus.BAD_REQUEST.value(), ERROR, e);
         }
     }

@@ -29,6 +29,7 @@ public class EmployeeGroupController {
     EmployeeGroupService employeeGroupService;
     @Autowired
     ImportEmployee importEmployee;
+
     @PostMapping("/save")
     public SuccessResponse save(@RequestBody List<addUserRequest> addUser) {
         try {
@@ -72,16 +73,17 @@ public class EmployeeGroupController {
             throw new ReasonException(HttpStatus.BAD_REQUEST.value(), ERROR, e);
         }
     }
+
     @PostMapping("/import")
-    public ResponseEntity<Object>  importExcel(@RequestParam MultipartFile file) throws IOException, GeneralException {
+    public ResponseEntity<Object> importExcel(@RequestParam MultipartFile file) throws IOException, GeneralException {
         try {
             String extension = FilenameUtils.getExtension(file.getOriginalFilename());
             if (!extension.equalsIgnoreCase("xlsx") && !extension.equalsIgnoreCase("xls")) {
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("fail"+
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("fail" +
                         "The file is not in the correct excel format!");
             }
             importEmployee.getSheetFileExcel(file);
-            return ResponseEntity.ok( new SuccessResponse<>(HttpStatus.CREATED.value(),"ok"));
+            return ResponseEntity.ok(new SuccessResponse<>(HttpStatus.CREATED.value(), "ok"));
         } catch (Exception e) {
             throw new GeneralException(e.getMessage());
         }

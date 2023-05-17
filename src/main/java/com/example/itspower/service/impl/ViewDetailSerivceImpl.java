@@ -1,5 +1,4 @@
 package com.example.itspower.service.impl;
-import com.example.itspower.model.entity.GroupEntity;
 import com.example.itspower.model.resultset.RootNameDto;
 import com.example.itspower.model.resultset.ViewAllDto;
 import com.example.itspower.repository.GroupRoleRepository;
@@ -12,7 +11,10 @@ import com.example.itspower.response.export.ExportExcelDtoReport;
 import com.example.itspower.response.export.ExportExcelEmpRest;
 import com.example.itspower.response.group.GroupRoleResponse;
 import com.example.itspower.response.group.ViewDetailGroups;
-import com.example.itspower.response.view.*;
+import com.example.itspower.response.view.ListNameRestResponse;
+import com.example.itspower.response.view.ReasonResponse;
+import com.example.itspower.response.view.ReasonRest;
+import com.example.itspower.response.view.RestObjectResponse;
 import com.example.itspower.service.ViewDetailService;
 import com.example.itspower.service.exportexcel.ExportExcel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,10 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -138,7 +143,7 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
                 .findFirst()
                 .orElse(0);
         Double nangSuatPartTimeToMay=partTimeToMaySum/2.0;
-        Double nangSuatPartTimeDvl=partTimeDonViLeSum/2.0;
+        Double nangSuatPartTimeDvl=(partTimeDonViLeSum-hoanThien1NangSuatPartTime-hoanThien1NangSuatPartTime2)/2.0;
         ViewDetailGroups studentNangsuat =
                 new ViewDetailGroups(new ViewAllDto(-1, 0, "Học sinh chưa báo năng suất", studentSum, 0.0
                         , 0, 0.0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
@@ -165,22 +170,6 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
                 mapData.stream().collect(Collectors.groupingBy(GroupRoleResponse::getParentId));
         mapData.forEach(p -> p.setChildren(parentIdToChildren.get(p.getValue())));
         return parentIdToChildren.get(0);
-    }
-
-    public void removeGroupRoleById(List<GroupRoleResponse> list) {
-        List<String> groupName = Arrays.asList("Đơn vị lẻ");
-        List<GroupEntity> entities = groupRoleRepository.findByGroupNameIn(groupName);
-        for (GroupRoleResponse groupRole : list) {
-            for (GroupEntity entity : entities) {
-                if (groupRole.getValue() == entity.getId()) {
-                    list.remove(groupRole);
-                }
-                if (groupRole.getChildren() != null) {
-                    removeGroupRoleById(groupRole.getChildren());
-                }
-            }
-        }
-
     }
 
     @Override
@@ -221,7 +210,7 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
             Float laborProductivity2 = Float.valueOf(String.valueOf(child.stream().map(i ->
                     i.getLaborProductivity()).mapToDouble(Double::doubleValue).sum()));
             Double laborProductivity1 = child.stream().map(i ->
-                    i.getLaborProductivity()).mapToDouble(Double::intValue).sum();;
+                    i.getLaborProductivity()).mapToDouble(Double::intValue).sum();
             int partTimeNumber = child.stream()
                     .mapToInt(ViewAllDto::getPartTimeNum)
                     .sum();
@@ -240,7 +229,6 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
             int riceVip = child.stream()
                     .mapToInt(ViewAllDto::getRiceVip)
                     .sum();
-
             Float ratio = (laborProductivity2 / totalLaborProductivity) * 100;
             ratio = Float.valueOf(decimalFormat.format(ratio));
             if (ratio.isNaN() == true) {
@@ -250,7 +238,6 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
             viewAllDtoList.add(new ViewAllDto(groupID, groupParentId, groupName, reportDemarcation, laborProductivity1
                     , partTimeNumber, restNum, studentNum, riceCus, riceEmp, riceVip, ratio, totalLaborProductivity, totalRatioOfOfficeAndDonvile));
         }
-
         float officeLaborProductivity = (float) viewAllDtoList.stream()
                 .filter(i -> i.getGroupName().equalsIgnoreCase("văn phòng"))
                 .mapToDouble(ViewAllDto::getLaborProductivity)

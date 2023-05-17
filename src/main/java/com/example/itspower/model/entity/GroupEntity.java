@@ -106,17 +106,17 @@ import java.io.Serializable;
         "laborProductivity,partTimeNum,restNum,studentNum,riceCus,riceEmp,riceVip\n" +
         "FROM (\n" +
         "    SELECT gr.id AS groupId,\n" +
-        "           gr.group_name AS groupName,\n" +
-        "           IF(gr.parent_id IS NULL, 0, gr.parent_id) AS groupParentId,\n" +
-        "           rp.demarcation AS reportDemarcation,\n" +
-        "           rp.labor_productivity AS laborProductivity,\n" +
-        "           rp.part_time_num AS partTimeNum,\n" +
-        "           rp.rest_num AS restNum,\n" +
-        "           rp.student_num AS studentNum,\n" +
-        "           r.rice_cus AS riceCus,\n" +
-        "           r.rice_emp AS riceEmp,\n" +
-        "           r.rice_vip AS riceVip,\n" +
-        "           rp.report_date AS reportDate\n" +
+        "           gr.group_name AS groupName, " +
+        "           IF(gr.parent_id IS NULL, 0, gr.parent_id) AS groupParentId, " +
+        "           rp.demarcation AS reportDemarcation, " +
+        "           rp.labor_productivity AS laborProductivity, " +
+        "           rp.part_time_num AS partTimeNum, " +
+        "           rp.rest_num AS restNum, " +
+        "           rp.student_num AS studentNum, " +
+        "           r.rice_cus AS riceCus, " +
+        "           r.rice_emp AS riceEmp,  " +
+        "           r.rice_vip AS riceVip, " +
+        "           rp.report_date AS reportDate  " +
         "    FROM group_role gr\n" +
         "    LEFT JOIN report rp ON gr.id = rp.group_id \n" +
         "    LEFT JOIN rice r ON rp.id = r.report_id \n" +
@@ -200,10 +200,10 @@ import java.io.Serializable;
         )
 )
 @NamedNativeQuery(name = "view_reason", query = "SELECT r3.group_id as groupId, r.name as reasonName,count(r2.reason_id) as total," +
-        " gr.parent_id as parentId \n" +
-        "from reason r inner join\n" +
-        "rest r2 on r.id = r2.reason_id\n" +
-        "INNER join report r3 on r2.report_id =r3.id inner join group_role gr on gr.id = r3.group_id\n" +
+        " gr.parent_id as parentId " +
+        "from reason r inner join " +
+        "rest r2 on r.id = r2.reason_id " +
+        "INNER join report r3 on r2.report_id =r3.id inner join group_role gr on gr.id = r3.group_id " +
         "where  DATE_FORMAT(r3.report_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d')" +
         "GROUP by r2.reason_id,r3.group_id",
         resultSetMapping = "reasonResponse"
@@ -218,7 +218,7 @@ import java.io.Serializable;
         }
         )
 )
-@NamedNativeQuery(name = "view_list_reason", query = "SELECT  r3.group_id as groupId,rest_name as nameEmployee,r2.name as reasonName,employee_labor as labor from\n" +
+@NamedNativeQuery(name = "view_list_reason", query = "SELECT  r3.group_id as groupId,rest_name as nameEmployee,r2.name as reasonName,employee_labor as labor from \n" +
         "rest r inner join " +
         "reason r2 on r.reason_id =r2.id " +
         "inner join report r3 on r.report_id =r3.id where  DATE_FORMAT(r3.report_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d')",

@@ -39,5 +39,6 @@ public class EmployeeGroupEntity {
     private String laborCode;
     @Column(name = "group_id")
     private Integer groupId;
-
+    @Column(name = "createDate")
+    private String createDate;
 }
