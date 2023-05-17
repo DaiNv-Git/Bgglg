@@ -1,5 +1,4 @@
 package com.example.itspower.repository;
-
 import com.example.itspower.exception.ResourceNotFoundException;
 import com.example.itspower.model.entity.ReportEntity;
 import com.example.itspower.model.resultset.ReportDto;
@@ -10,13 +9,11 @@ import com.example.itspower.response.export.ExportExcelEmpRest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-
 import javax.transaction.Transactional;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
 @Component
 public class ReportRepository {
     @Autowired

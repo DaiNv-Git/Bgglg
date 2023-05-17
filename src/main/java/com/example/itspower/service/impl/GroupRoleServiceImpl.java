@@ -32,12 +32,6 @@ public class GroupRoleServiceImpl implements GroupRoleService {
     @Autowired
     private GroupJpaRepository groupJpaRepository;
 
-    private static final String OFFICE = "Office";
-    private static final String VANPHONG = "Văn phòng";
-    private static final String DONVILE = "Đơn vị lẻ";
-    private static final String HOC_SINH_CHUA_BAO_NANG_SUAT = "Học sinh chưa báo năng suất";
-    private static final String THOI_VU_TO_MAY = "Thời vụ tổ may";
-
     @Override
     public List<GroupRoleResponse> searchAll() {
         return getSubListChildren(groupRoleRepository.searchAll());
@@ -55,7 +49,6 @@ public class GroupRoleServiceImpl implements GroupRoleService {
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
-
     }
 
     @Override
