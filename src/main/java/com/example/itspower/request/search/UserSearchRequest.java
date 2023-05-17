@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class UserSearchRequest {
-    private String userName;
+     private String userName;
     private String groupName;
 }

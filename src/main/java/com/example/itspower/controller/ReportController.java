@@ -54,7 +54,7 @@ public class ReportController {
 
     @PostMapping("/report/delete-rest")
     public ResponseEntity<Object> deleteRest(@RequestBody RestRequestDelete reportRequest) {
-        reportService.deleteRestIdsAndReportId(reportRequest.getReportId(), reportRequest.getRestIds());
+         reportService.deleteRestIdsAndReportId(reportRequest.getReportId(), reportRequest.getRestIds());
         return ResponseEntity.ok(new SuccessResponse<>(HttpStatus.OK.value(), "delete success"));
     }
 

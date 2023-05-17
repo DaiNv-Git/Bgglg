@@ -95,7 +95,7 @@ public class UserController {
                                     @RequestParam(defaultValue = "10") int pageSize,
                                     @RequestParam(defaultValue = "1") int pageNo) {
         try {
-            UserSearchRequest searchForm = request.orElse(new UserSearchRequest());
+             UserSearchRequest searchForm = request.orElse(new UserSearchRequest());
             return ResponseEntity.ok(userService.getAllUser(searchForm, pageSize, pageNo));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());

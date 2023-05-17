@@ -20,10 +20,10 @@ import java.util.Optional;
 @Component
 public class ReportRepository {
     @Autowired
-    private ReportJpaRepository reportJpaRepository;
+      private ReportJpaRepository reportJpaRepository;
 
     public ReportDto reportDto(String reportDate, int groupId) {
-          return reportJpaRepository.findByReport(reportDate, groupId);
+           return reportJpaRepository.findByReport(reportDate, groupId);
     }
 
      public List<ExportExcelDtoReport> findByReportExcel(String reportDate) {
@@ -31,12 +31,12 @@ public class ReportRepository {
     }
 
     public List<ExportExcelEmpRest> findByReportExcelEmpRest(String reportDate) {
-        return reportJpaRepository.findByReportExcelEmpRest(reportDate);
+         return reportJpaRepository.findByReportExcelEmpRest(reportDate);
     }
 
     public ReportEntity saveReport(ReportRequest request, int groupId) {
-        ReportEntity reportEntity = new ReportEntity();
-        reportEntity.setDemarcation(request.getDemarcation());
+         ReportEntity reportEntity = new ReportEntity();
+         reportEntity.setDemarcation(request.getDemarcation());
         reportEntity.setGroupId(groupId);
         reportEntity.setRestNum(request.getRestNum());
         reportEntity.setStudentNum(request.getStudentNum());
