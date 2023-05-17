@@ -73,7 +73,7 @@ public class ReportRepository {
     }
 
     public Optional<ReportEntity> findByReportDateAndGroupId(String reportDate, int groupId) {
-        return reportJpaRepository.findByReportDateAndGroupId(reportDate, groupId);
+         return reportJpaRepository.findByReportDateAndGroupId(reportDate, groupId);
     }
 
     public Optional<ReportEntity> findByIdAndGroupId(int id, int groupId) {

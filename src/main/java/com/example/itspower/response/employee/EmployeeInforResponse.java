@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class EmployeeInforResponse {
-    private String name;
+     private String name;
     private String labor;
 }

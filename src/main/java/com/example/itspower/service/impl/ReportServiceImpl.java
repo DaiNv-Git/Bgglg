@@ -93,7 +93,7 @@ public class ReportServiceImpl implements ReportService {
     public Object update(ReportRequest request, int groupId) {
         Optional<ReportEntity> entity = reportRepository.findByIdAndGroupId(request.getId(), groupId);
         if (entity.isEmpty()) {
-            return new SuccessResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), "report is not Exits", HttpStatus.INTERNAL_SERVER_ERROR.name());
+             return new SuccessResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), "report is not Exits", HttpStatus.INTERNAL_SERVER_ERROR.name());
         }
         ReportEntity reportEntity = reportRepository.updateReport(request, groupId);
         if (request.getRiceRequests().getRiceId() != null && request.getRiceRequests().getRiceId() != 0) {

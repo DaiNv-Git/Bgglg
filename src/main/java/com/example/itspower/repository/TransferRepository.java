@@ -33,13 +33,13 @@ public class TransferRepository {
     private EmployeeTransferRepository transferRepository;
 
     public List<TransferEntity> findByReportId(Integer reportId) {
-        List<TransferEntity> entities = transferJpaRepository.findByReportId(reportId);
+         List<TransferEntity> entities = transferJpaRepository.findByReportId(reportId);
         return entities;
     }
 
     public Object saveTransfer(List<TransferRequest> requests, Integer reportId) {
         List<TransferEntity> entities = new ArrayList<>();
-        List<EmployeeTransferEntity> employees = new ArrayList<>();
+         List<EmployeeTransferEntity> employees = new ArrayList<>();
         for (TransferRequest transfer : requests) {
             TransferEntity entity = new TransferEntity();
             entity.setReportId(reportId);

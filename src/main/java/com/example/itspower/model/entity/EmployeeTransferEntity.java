@@ -17,7 +17,7 @@ public class EmployeeTransferEntity {
     private Long id;
     private String name;
     private String labor;
-    private Integer transferType;
+     private Integer transferType;
     private Integer groupID;
     private String transferDate;
 }

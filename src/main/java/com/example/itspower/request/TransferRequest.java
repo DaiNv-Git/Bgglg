@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 public class TransferRequest {
     private Integer groupId ;
-    private Integer transferId;
+     private Integer transferId;
     private Integer transferNum;
     private int type;
     List<EmployeeInforResponse> employees;
