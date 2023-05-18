@@ -36,10 +36,10 @@ public class ReportResponse {
         this.demarcation = reportDto.getDemarcation();
         this.laborProductivity = reportDto.getLaborProductivity();
         this.transferNum = reportDto.getTransferNum();
-        this.supportNum = reportDto.getSupportNum();
-        this.restNum = reportDto.getRestNum();
-        this.partTimeNum = reportDto.getPartTimeNum();
-        this.studentNum = reportDto.getStudentNum();
+        this.supportNum = reportDto.getSupportNum()==null ?0 :reportDto.getSupportNum();
+        this.restNum = reportDto.getRestNum()==null ?0 :reportDto.getRestNum();
+        this.partTimeNum = reportDto.getPartTimeNum()==null ?0:reportDto.getPartTimeNum();
+        this.studentNum = reportDto.getStudentNum()==null ?0:reportDto.getStudentNum();
         this.totalRice = reportDto.getTotalRice();
         this.groupId = reportDto.getGroupId();
         this.rice = rice;

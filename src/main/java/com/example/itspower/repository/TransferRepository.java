@@ -6,10 +6,8 @@ import com.example.itspower.repository.repositoryjpa.EmployeeTransferRepository;
 import com.example.itspower.repository.repositoryjpa.GroupJpaRepository;
 import com.example.itspower.repository.repositoryjpa.TransferJpaRepository;
 import com.example.itspower.request.TransferRequest;
-import com.example.itspower.response.employee.EmployeeInforResponse;
 import com.example.itspower.response.transfer.TransferNumAccept;
 import com.example.itspower.response.transfer.TransferResponseGroup;
-import com.example.itspower.util.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Component;
@@ -48,15 +46,15 @@ public class TransferRepository {
             entity.setTransferNum(transfer.getTransferNum());
             entity.setType(transfer.getType());
             entities.add(entity);
-            for(EmployeeInforResponse employeeTransfer :transfer.getEmployees()){
-                EmployeeTransferEntity employeeTransferSave = new EmployeeTransferEntity();
-                employeeTransferSave.setTransferType(transfer.getType());
-                employeeTransferSave.setName(employeeTransfer.getName());
-                employeeTransferSave.setGroupID(transfer.getGroupId());
-                employeeTransferSave.setTransferDate(DateUtils.formatDate(new Date(),DateUtils.FORMAT_DATE));
-                employeeTransferSave.setLabor(employeeTransfer.getLabor());
-                employees.add(employeeTransferSave);
-            }
+//            for(EmployeeInforResponse employeeTransfer :transfer.getEmployees()){
+//                EmployeeTransferEntity employeeTransferSave = new EmployeeTransferEntity();
+//                employeeTransferSave.setTransferType(transfer.getType());
+//                employeeTransferSave.setName(employeeTransfer.getName());
+//                employeeTransferSave.setGroupID(transfer.getGroupId());
+//                employeeTransferSave.setTransferDate(DateUtils.formatDate(new Date(),DateUtils.FORMAT_DATE));
+//                employeeTransferSave.setLabor(employeeTransfer.getLabor());
+//                employees.add(employeeTransferSave);
+//            }
         }
         transferRepository.saveAll(employees);
         return transferJpaRepository.saveAll(entities);
