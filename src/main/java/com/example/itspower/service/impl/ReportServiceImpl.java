@@ -11,31 +11,34 @@ import com.example.itspower.response.SuccessResponse;
 import com.example.itspower.response.report.ReportResponse;
 import com.example.itspower.service.ReportService;
 import com.example.itspower.util.DateUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import javax.transaction.Transactional;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.*;
 
 @Service
 public class ReportServiceImpl implements ReportService {
-    @Autowired
-    private ReportRepository reportRepository;
-    @Autowired
-    private ReportJpaRepository reportJpaRepository;
-    @Autowired
-    private RestRepository restRepository;
-    @Autowired
-    private TransferRepository transferRepository;
-    @Autowired
-    private GroupRoleRepository groupRoleRepository;
-    @Autowired
-    private RiceRepository riceRepository;
-    @Autowired
-    private EmpTerminationContractRepository empTerminationContractRepository;
-    @Autowired
-    private EmployeeGroupRepository employeeGroupRepository;
+    private final ReportRepository reportRepository;
+    private final ReportJpaRepository reportJpaRepository;
+    private final RestRepository restRepository;
+    private final TransferRepository transferRepository;
+    private final GroupRoleRepository groupRoleRepository;
+    private final RiceRepository riceRepository;
+    private final EmpTerminationContractRepository empTerminationContractRepository;
+    private final EmployeeGroupRepository employeeGroupRepository;
+
+    public ReportServiceImpl(ReportRepository reportRepository, ReportJpaRepository reportJpaRepository, RestRepository restRepository, TransferRepository transferRepository, GroupRoleRepository groupRoleRepository, RiceRepository riceRepository, EmpTerminationContractRepository empTerminationContractRepository, EmployeeGroupRepository employeeGroupRepository) {
+        this.reportRepository = reportRepository;
+        this.reportJpaRepository = reportJpaRepository;
+        this.restRepository = restRepository;
+        this.transferRepository = transferRepository;
+        this.groupRoleRepository = groupRoleRepository;
+        this.riceRepository = riceRepository;
+        this.empTerminationContractRepository = empTerminationContractRepository;
+        this.employeeGroupRepository = employeeGroupRepository;
+    }
 
     @Override
     public Object reportDto(String reportDate, int groupId) {
@@ -60,56 +63,39 @@ public class ReportServiceImpl implements ReportService {
     }
 
     public Object getYesterday(String reportDate, int groupId) {
-        Optional<ReportEntity> entity = reportRepository.findByReportDateAndGroupId(reportDate, groupId);
-        if (entity.isEmpty()) {
-            return null;
+        try {
+            Optional<ReportEntity> entity = reportRepository.findByReportDateAndGroupId(reportDate, groupId);
+            if (entity.isEmpty()) {
+                return null;
+            }
+            ReportDto reportDto = reportRepository.reportDto(reportDate, groupId);
+            List<RestDto> restDtos = restRepository.getRests(reportDto.getId());
+            List<TransferEntity> transferEntities = transferRepository.findByReportId(reportDto.getId());
+            Optional<RiceEntity> riceEntity = riceRepository.getByRiceDetail(reportDto.getId());
+            return new ReportResponse(reportDto, riceEntity.get(), restDtos, transferEntities);
+        } catch (Exception e) {
+            throw new RuntimeException("get pesterDay fail");
         }
-        ReportDto reportDto = reportRepository.reportDto(reportDate, groupId);
-        List<RestDto> restDtos = restRepository.getRests(reportDto.getId());
-        List<TransferEntity> transferEntities = transferRepository.findByReportId(reportDto.getId());
-        Optional<RiceEntity> riceEntity = riceRepository.getByRiceDetail(reportDto.getId());
-        return new ReportResponse(reportDto, riceEntity.get(), restDtos, transferEntities);
     }
 
     @Override
-    public Object save(ReportRequest request, int groupId) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date());
-        calendar.add(Calendar.HOUR_OF_DAY, 7); // thêm 7 giờ vào thời gian hiện tại
-        Date newDate = calendar.getTime();
-        Optional<ReportEntity> entity = reportRepository.findByReportDateAndGroupId(DateUtils.formatDate(newDate), groupId);
-        if (entity.isPresent()) {
-            return new SuccessResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), "report date is exits", HttpStatus.INTERNAL_SERVER_ERROR.name());
-        }
-        ReportEntity reportEntity = reportRepository.saveReport(request, groupId);
-        riceRepository.saveRice(request.getRiceRequests(), reportEntity.getId());
-        restRepository.saveRest(request.getRestRequests(), reportEntity.getId());
-        transferRepository.saveTransfer(request.getTransferRequests(), reportEntity.getId());
-        return ResponseEntity.ok(new SuccessResponse<>(HttpStatus.CREATED.value(), "report success", reportDto(DateUtils.formatDate(reportEntity.getReportDate()), reportEntity.getGroupId())));
-    }
-
-    @Override
-    @Transactional
-    public Object update(ReportRequest request, int groupId) {
-        Optional<ReportEntity> entity = reportRepository.findByIdAndGroupId(request.getId(), groupId);
-        if (entity.isEmpty()) {
-             return new SuccessResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), "report is not Exits", HttpStatus.INTERNAL_SERVER_ERROR.name());
-        }
-        ReportEntity reportEntity = reportRepository.updateReport(request, groupId);
-        if (request.getRiceRequests().getRiceId() != null && request.getRiceRequests().getRiceId() != 0) {
-            riceRepository.updateRice(request.getRiceRequests(), reportEntity.getId());
-        }
-        request.getRestRequests().forEach(z -> {
-            if (z.getRestId() != null) {
-                restRepository.updateRest(request.getRestRequests(), reportEntity.getId());
+    public void save(ReportRequest request, int groupId) {
+        try {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new Date());
+            calendar.add(Calendar.HOUR_OF_DAY, 7);
+            Date newDate = calendar.getTime();
+            Optional<ReportEntity> entity = reportRepository.findByReportDateAndGroupId(DateUtils.formatDate(newDate), groupId);
+            if (entity.isPresent()) {
+                throw new RuntimeException(" report date is exits");
             }
-        });
-        request.getTransferRequests().forEach(i -> {
-            if (i.getTransferId() != null && i.getTransferId() != 0) {
-                transferRepository.updateTransfer(request.getTransferRequests(), reportEntity.getId());
-            }
-        });
-        return ResponseEntity.ok(new SuccessResponse<>(HttpStatus.OK.value(), "update report success", reportDto(DateUtils.formatDate(reportEntity.getReportDate()), reportEntity.getGroupId())));
+            ReportEntity reportEntity = reportRepository.saveReport(request, groupId);
+            riceRepository.saveRice(request.getRiceRequests(), reportEntity.getId());
+            restRepository.saveRest(request.getRestRequests(), reportEntity.getId());
+            transferRepository.saveTransfer(request.getTransferRequests(), reportEntity.getId(),groupId);
+        } catch (Exception e) {
+            throw new RuntimeException("save fail");
+        }
     }
 
     @Override
@@ -118,39 +104,46 @@ public class ReportServiceImpl implements ReportService {
     }
 
     public void deleteRestEmployee(Integer groupId, List<String> laborEmps) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date());
-        calendar.add(Calendar.HOUR_OF_DAY, 7); // thêm 7 giờ vào thời gian hiện tại
-        Date newDate = calendar.getTime();
-        Optional<GroupEntity> groupEntity = groupRoleRepository.findById(groupId);
-        if (groupEntity.isPresent()) {
-            addEmpTerminationContract(groupId, laborEmps, newDate);
-            employeeGroupRepository.deleteByGroupIdAndLaborCodeIn(groupId, laborEmps);
-            groupEntity.get().setDemarcationAvailable(groupEntity.get().getDemarcationAvailable() - laborEmps.size());
-            groupRoleRepository.save(groupEntity.get());
+        try {
+            LocalDateTime now = LocalDateTime.now().plusHours(7);
+            Date newDate = Date.from(now.atZone(ZoneId.systemDefault()).toInstant());
+            Optional<GroupEntity> groupEntity = groupRoleRepository.findById(groupId);
+            if (groupEntity.isPresent()) {
+                addEmpTerminationContract(groupId, laborEmps, newDate);
+                employeeGroupRepository.deleteByGroupIdAndLaborCodeIn(groupId, laborEmps);
+                groupEntity.get().setDemarcationAvailable(groupEntity.get().getDemarcationAvailable() - laborEmps.size());
+                groupRoleRepository.save(groupEntity.get());
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
         }
     }
 
     @Override
     public Integer getTransfer(String reportDate, Integer groupId) {
-        return reportJpaRepository.getTransferNumer(reportDate,groupId);
+        return reportJpaRepository.getTransferNumer(reportDate, groupId);
     }
 
     private void addEmpTerminationContract(Integer groupId, List<String> laborEmps, Date date) {
-        if (laborEmps.size() != 0) {
-            List<EmployeeTerminationOfContractEntity> entities = new ArrayList<>();
-            for (String laborEmp : laborEmps) {
-                 Optional<EmployeeGroupEntity> employeeGroup = employeeGroupRepository.findByLaborCode(laborEmp);
-                 if (employeeGroup.isPresent()) {
-                    EmployeeTerminationOfContractEntity entityTerOfContract = new EmployeeTerminationOfContractEntity();
-                    entityTerOfContract.setEmployeeLabor(employeeGroup.get().getLaborCode());
-                    entityTerOfContract.setEmployeeName(employeeGroup.get().getName());
-                    entityTerOfContract.setGroupId(groupId);
-                    entityTerOfContract.setStartDate(date);
-                    entities.add(entityTerOfContract);
+        try {
+            if (laborEmps.size() != 0) {
+                List<EmployeeTerminationOfContractEntity> entities = new ArrayList<>();
+                for (String laborEmp : laborEmps) {
+                    Optional<EmployeeGroupEntity> employeeGroup = employeeGroupRepository.findByLaborCode(laborEmp);
+                    if (employeeGroup.isPresent()) {
+                        EmployeeGroupEntity groupEntity = employeeGroup.get();
+                        EmployeeTerminationOfContractEntity entityTerOfContract = new EmployeeTerminationOfContractEntity();
+                        entityTerOfContract.setEmployeeLabor(groupEntity.getLaborCode());
+                        entityTerOfContract.setEmployeeName(groupEntity.getName());
+                        entityTerOfContract.setGroupId(groupId);
+                        entityTerOfContract.setStartDate(date);
+                        entities.add(entityTerOfContract);
+                    }
                 }
+                empTerminationContractRepository.saveAll(entities);
             }
-            empTerminationContractRepository.saveAll(entities);
+        } catch (Exception e) {
+            throw new RuntimeException("addEmpTerminationContract fail");
         }
     }
 }

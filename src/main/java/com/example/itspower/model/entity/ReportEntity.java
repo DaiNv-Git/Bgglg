@@ -148,6 +148,9 @@ public class ReportEntity {
     private Integer groupId;
     @Column(name = "demarcation")
     private Float demarcation ;
+
+    @Column(name = "demarcationAvailable")
+    private Float demarcationAvailable ;
     @Column(name = "professionLabor")
     private Integer professionLabor = 0;
     @Column(name = "professionNotLabor")

@@ -1,5 +1,4 @@
 package com.example.itspower.model.entity;
-
 import com.example.itspower.model.resultset.GroupRoleDto;
 import com.example.itspower.model.resultset.RootNameDto;
 import com.example.itspower.model.resultset.ViewAllDto;
@@ -10,7 +9,6 @@ import com.example.itspower.response.view.ListNameRestResponse;
 import com.example.itspower.response.view.ReasonResponse;
 import com.example.itspower.response.view.RootResponse;
 import lombok.Data;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
