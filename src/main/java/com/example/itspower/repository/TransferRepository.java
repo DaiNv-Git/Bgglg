@@ -83,21 +83,30 @@ public class TransferRepository {
                     reportJpaRepository.save(reportRoot.get());
                 }
                 for(EmployeeInforResponse employeeTransfer :transfer.getEmployees()){
+                    int index = employeeTransfer.getName().indexOf(" - ");
+                    String name = null;
+                    String labor;
+                    if (index != -1) {
+                         name = employeeTransfer.getName().substring(0, index);
+                         labor = employeeTransfer.getName().substring(index + 3);
+                    } else {
+                        labor = null;
+                    }
                     EmployeeTransferEntity employeeTransferSave = new EmployeeTransferEntity();
-                    employeeTransferSave.setName(employeeTransfer.getName());
+                    employeeTransferSave.setName(name);
                     employeeTransferSave.setGroupID(transfer.getGroupId());
                     employeeTransferSave.setTransferDate(DateUtils.formatDate(new Date(),DateUtils.FORMAT_DATE));
-                    employeeTransferSave.setLabor(employeeTransfer.getLabor());
+                    employeeTransferSave.setLabor(labor);
                     employees.add(employeeTransferSave);
                     EmployeeGroupEntity employeeGroup = new EmployeeGroupEntity();
                     Integer employeeID = employeeGroupEntities.stream()
-                            .filter(i -> i.getLaborCode().equals(employeeTransfer.getLabor()))
+                            .filter(i -> i.getLaborCode().equals(labor))
                             .map(EmployeeGroupEntity::getId)
                             .findFirst()
                             .orElse(null);
                     employeeGroup.setId(employeeID);
-                    employeeGroup.setLaborCode(employeeTransfer.getLabor());
-                    employeeGroup.setName(employeeTransfer.getName());
+                    employeeGroup.setLaborCode(labor);
+                    employeeGroup.setName(name);
                     employeeGroup.setGroupId(transfer.getGroupId());
                     updateGroupEmployee.add(employeeGroup);
                 }
