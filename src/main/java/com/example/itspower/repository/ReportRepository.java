@@ -38,6 +38,7 @@ public class ReportRepository {
         reportEntity.setRestNum(request.getRestNum());
         reportEntity.setStudentNum(request.getStudentNum());
         reportEntity.setLaborProductivity(request.getLaborProductivity());
+        reportEntity.setUnproductiveLabor(request.getUnproductiveLabor());
         reportEntity.setPartTimeNum(request.getPartTimeNum());
         reportEntity.setProfessionLabor(request.getProfessionLabor());
         reportEntity.setProfessionNotLabor(request.getProfessionNotLabor());

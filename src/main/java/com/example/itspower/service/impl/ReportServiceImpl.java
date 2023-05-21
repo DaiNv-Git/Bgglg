@@ -53,6 +53,15 @@ public class ReportServiceImpl implements ReportService {
         return new ReportResponse(reportDto, riceEntity.get(), restDtos, transferEntities);
     }
 
+    @Override
+    public Object search(String reportDate, int groupId) {
+        try{
+            return reportJpaRepository.searchReport(reportDate,groupId);
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
     public Object callDataByDate(int groupId) {
         List<ReportEntity> data = reportJpaRepository.findLastDate(groupId);
         if (!data.isEmpty()) {
@@ -122,6 +131,11 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public Integer getTransfer(String reportDate, Integer groupId) {
         return reportJpaRepository.getTransferNumer(reportDate, groupId);
+    }
+
+    @Override
+    public List<Integer> getIdsToMay() {
+        return reportJpaRepository.getIDsTomay();
     }
 
     private void addEmpTerminationContract(Integer groupId, List<String> laborEmps, Date date) {

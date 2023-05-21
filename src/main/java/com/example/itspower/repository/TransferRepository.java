@@ -3,7 +3,6 @@ package com.example.itspower.repository;
 import com.example.itspower.model.entity.*;
 import com.example.itspower.repository.repositoryjpa.*;
 import com.example.itspower.request.TransferRequest;
-import com.example.itspower.response.employee.EmployeeInforResponse;
 import com.example.itspower.response.transfer.TransferNumAccept;
 import com.example.itspower.response.transfer.TransferResponseGroup;
 import com.example.itspower.util.DateUtils;
@@ -82,13 +81,13 @@ public class TransferRepository {
                     reportRoot.get().setDemarcation(dinhBien);
                     reportJpaRepository.save(reportRoot.get());
                 }
-                for(EmployeeInforResponse employeeTransfer :transfer.getEmployees()){
-                    int index = employeeTransfer.getName().indexOf(" - ");
+                for(String employeeTransfer :transfer.getEmployees()){
+                    int index = employeeTransfer.indexOf(" - ");
                     String name = null;
                     String labor;
                     if (index != -1) {
-                         name = employeeTransfer.getName().substring(0, index);
-                         labor = employeeTransfer.getName().substring(index + 3);
+                         name = employeeTransfer.substring(0, index);
+                         labor = employeeTransfer.substring(index + 3);
                     } else {
                         labor = null;
                     }

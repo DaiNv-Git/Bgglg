@@ -30,7 +30,17 @@ public class ReportController {
             throw new RuntimeException(e.getMessage());
         }
     }
-
+    @GetMapping("/search")
+    public Object search(@RequestParam("reportDate") String reportDate, @RequestParam("groupId") int groupId) throws ParseException {
+        try{
+            LocalDate localDate = LocalDate.parse(reportDate, DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+            LocalDateTime localDateTime = localDate.atStartOfDay().plusHours(7);
+            String strDate = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            return ResponseEntity.ok(reportService.search(strDate, groupId));
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+    }
     @GetMapping("/getReportByYesterday")
     public Object getReportByYesterday(@RequestParam("groupId") int groupId) {
         return reportService.callDataByDate(groupId);
@@ -65,5 +75,11 @@ public class ReportController {
         LocalDateTime localDateTime = localDate.atStartOfDay().plusHours(7);
         String strDate = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         return ResponseEntity.status(HttpStatus.OK).body(reportService.getTransfer(strDate, groupID));
+    }
+
+    @GetMapping("/getIdsTomay")
+    public ResponseEntity<Object> getID() throws ParseException {
+
+        return ResponseEntity.status(HttpStatus.OK).body(reportService.getIdsToMay());
     }
 }

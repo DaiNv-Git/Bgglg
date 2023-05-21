@@ -3,6 +3,7 @@ package com.example.itspower.model.entity;
 import com.example.itspower.model.resultset.ReportDto;
 import com.example.itspower.response.export.ExportExcelDtoReport;
 import com.example.itspower.response.export.ExportExcelEmpRest;
+import com.example.itspower.response.report.ReportSearchResponse;
 import com.example.itspower.response.view.ViewDetailResponse;
 import lombok.Data;
 
@@ -50,7 +51,55 @@ import java.util.Date;
                 }
         )
 )
+@SqlResultSetMapping(
+        name = "reportSearch",
+        classes = {
+                @ConstructorResult(
+                        targetClass = ReportSearchResponse.class,
+                        columns = {
+                                @ColumnResult(name = "id", type = Integer.class),
+                                @ColumnResult(name = "groupId", type = Integer.class),
+                                @ColumnResult(name = "demarcation", type = Integer.class),
+                                @ColumnResult(name = "demarcationAvailable", type = Integer.class),
+                                @ColumnResult(name = "unproductiveLabor", type = Float.class),
+                                @ColumnResult(name = "laborProductivity", type = Double.class),
+                                @ColumnResult(name = "numberStop", type = Integer.class),
+                                @ColumnResult(name = "restNum", type = Double.class),
+                                @ColumnResult(name = "partTimeNum", type = Integer.class),
+                                @ColumnResult(name = "transferReceive", type = Integer.class),
+                                @ColumnResult(name = "transferTo", type = Integer.class),
+                                @ColumnResult(name = "studentNum", type = Integer.class),
+                                @ColumnResult(name = "totalRice", type = Integer.class),
+                                @ColumnResult(name = "reportDate", type = Date.class),
+                                @ColumnResult(name = "professionNotLabor", type = Integer.class),
+                                @ColumnResult(name = "professionLabor", type = Integer.class)
+                        }
+                )
+        }
+)
 
+@NamedNativeQuery(
+        name = "report_Search",
+        query = "SELECT r.id as id,r.demarcation as demarcation,r.group_id as groupId,r.demarcationAvailable as demarcationAvailable, " +
+                "r.unproductive_labor as unproductiveLabor, " +
+                "r.labor_productivity as laborProductivity, r.rest_num  as restNum, " +
+                "r.part_time_num  as partTimeNum, r.student_num  as studentNum , " +
+                "(IFNULL(r3.rice_cus,0) + IFNULL(r3.rice_emp,0) + IFNULL(r3.rice_vip,0)) as totalRice, " +
+                "r.report_date as reportDate,IFNULL(r.profession_not_labor,0) as professionNotLabor, " +
+                "IFNULL(r.profession_labor,0) as professionLabor , " +
+                "IFNULL((SELECT sum(transfer_num)  from transfer t where t.group_id =:groupId and " +
+                "DATE_FORMAT(t.transfer_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d')  ),0)  as transferReceive, " +
+                "IFNULL((SELECT sum(transfer_num) from transfer t where report_id = " +
+                "(SELECT id  from report r where " +
+                "DATE_FORMAT(r.report_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d') AND r.group_id = :groupId)),0) " +
+                "as transferTo , " +
+                "IFNULL((SELECT COUNT(employee_labor)  from emp_termination_contract etc where group_id =:groupId and " +
+                "DATE_FORMAT(etc.start_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d')),0) as numberStop " +
+                "from report r  " +
+                "left join rice r3 on r3.report_id = r.id " +
+                "where DATE_FORMAT(r.report_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d') AND r.group_id = :groupId",
+        resultSetMapping = "reportSearch"
+)
 @NamedNativeQuery(
         name = "find_by_report",
         query = " select r.id,r.group_id as groupId,r.demarcation as demarcation ," +
@@ -148,7 +197,8 @@ public class ReportEntity {
     private Integer groupId;
     @Column(name = "demarcation")
     private Float demarcation ;
-
+    @Column(name = "unproductiveLabor")
+    private Float unproductiveLabor ;
     @Column(name = "demarcationAvailable")
     private Float demarcationAvailable ;
     @Column(name = "professionLabor")
