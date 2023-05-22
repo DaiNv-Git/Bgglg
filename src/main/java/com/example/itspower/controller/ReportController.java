@@ -25,11 +25,12 @@ public class ReportController {
             LocalDate localDate = LocalDate.parse(reportDate, DateTimeFormatter.ofPattern("yyyy/MM/dd"));
             LocalDateTime localDateTime = localDate.atStartOfDay().plusHours(7);
             String strDate = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            return ResponseEntity.ok(reportService.reportDto(strDate, groupId));
+            return ResponseEntity.ok(reportService.search(strDate, groupId));
         }catch (Exception e){
             throw new RuntimeException(e.getMessage());
         }
     }
+    @CrossOrigin
     @GetMapping("/search")
     public Object search(@RequestParam("reportDate") String reportDate, @RequestParam("groupId") int groupId) throws ParseException {
         try{
