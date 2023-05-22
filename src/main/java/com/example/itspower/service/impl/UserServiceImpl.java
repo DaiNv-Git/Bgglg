@@ -115,7 +115,6 @@ public class UserServiceImpl implements UserService {
         Optional<ReportEntity> reportEntity = reportRepository.findByReportDateAndGroupId(DateUtils.formatDate(newDate), groupId);
         return reportEntity.isPresent();
     }
-
     @Override
     public PageResponse getAllUser(UserSearchRequest request, int pageSize, int pageNo) {
         int offset = (pageNo - 1) * pageSize;

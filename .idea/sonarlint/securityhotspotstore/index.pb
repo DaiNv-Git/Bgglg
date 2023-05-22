@@ -21,12 +21,6 @@ p
 @src/main/java/com/example/itspower/service/GroupRoleService.java,0\f\0f1fac80a96d0579702c0e7f9bdecd08b7760cf5
 u
 Esrc/main/java/com/example/itspower/controller/TransferController.java,c\6\c6452eedccad474744cf5b524477cde0a52365dd
-q
-Asrc/main/java/com/example/itspower/controller/UserController.java,c\1\c13d0462a551bb0df702b8b7d6ba3bd3e640ac5a
-q
-Asrc/main/java/com/example/itspower/controller/ViewController.java,8\a\8aff42c60b5adfb76930f5e8b025a49c51dbba2f
-q
-Asrc/main/java/com/example/itspower/service/ViewDetailService.java,0\9\0963b44a2651dae5c871ca88e0751493de241113
 |
 Lsrc/main/java/com/example/itspower/response/export/ExportExcelDtoReport.java,b\c\bcd1459ac35884afe911e8b1384df09f26b9b016
 v
@@ -35,10 +29,6 @@ s
 Csrc/main/java/com/example/itspower/controller/ReasonController.java,0\f\0f042621b145832777340a1d89ccf6490a7b1540
 ƒ
 Ssrc/main/java/com/example/itspower/repository/repositoryjpa/GroupJpaRepository.java,5\7\578dd5b64a428d0580823a4db38bc284ab531a76
-z
-Jsrc/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java,4\2\42cc696565d19963eb7d3dc0552ec676648d2148
-x
-Hsrc/main/java/com/example/itspower/model/entity/EmployeeGroupEntity.java,e\1\e15358649b5c2453f2eeee3496517480bb67b09d
 p
 @src/main/java/com/example/itspower/model/entity/GroupEntity.java,1\7\17831af1313de27fb81ab64e267d537309a1189a
 y

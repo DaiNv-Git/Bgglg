@@ -1,6 +1,7 @@
 package com.example.itspower.repository.repositoryjpa;
 
 import com.example.itspower.model.entity.EmployeeGroupEntity;
+import com.example.itspower.response.employee.EmployeeExportExcel;
 import com.example.itspower.response.employee.EmployeeGroupResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -23,6 +24,9 @@ public interface EmployeeGroupRepository extends JpaRepository<EmployeeGroupEnti
 
     @Query(value = "SELECT count(*) from group_employee", nativeQuery = true)
     int countEmployee();
+
+    @Query(name = "execl_Employee", nativeQuery = true)
+    List<EmployeeExportExcel> getExcelEmployee();
     @Transactional
     @Modifying
     void deleteByGroupIdAndLaborCodeIn(Integer groupId,List<String> laborCode);

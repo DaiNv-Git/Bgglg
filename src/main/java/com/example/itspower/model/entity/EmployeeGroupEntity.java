@@ -1,5 +1,6 @@
 package com.example.itspower.model.entity;
 
+import com.example.itspower.response.employee.EmployeeExportExcel;
 import com.example.itspower.response.employee.EmployeeGroupResponse;
 import lombok.Data;
 
@@ -26,6 +27,19 @@ import javax.persistence.*;
         " ORDER BY gr.group_name ASC LIMIT :pageSize OFFSET :pageNo ",
         resultSetMapping = "getEmployee"
         )
+@SqlResultSetMapping(
+        name = "execlEmployee",
+        classes = @ConstructorResult(targetClass = EmployeeExportExcel.class, columns = {
+                @ColumnResult(name = "groupName", type = String.class),
+                @ColumnResult(name = "employeeName", type = String.class),
+                @ColumnResult(name = "laborCode", type = String.class),
+        }
+        )
+)
+@NamedNativeQuery(name = "execl_Employee", query = "SELECT ge.name as employeeName,ge.labor_code as laborCode,gr.group_name as groupName " +
+        " from group_employee ge inner join group_role gr on gr.id =ge.group_id ",
+        resultSetMapping = "execlEmployee"
+)
 @Entity
 @Table(name = "group_employee")
 @Data

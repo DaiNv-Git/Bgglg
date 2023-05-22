@@ -15,6 +15,8 @@ import com.example.itspower.util.DateUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.*;
@@ -58,8 +60,10 @@ public class ReportServiceImpl implements ReportService {
     public Object search(String reportDate, int groupId) {
         try{
             ReportSearchResponse response= reportJpaRepository.searchReport(reportDate,groupId);
-            response.setEmployeeReceive(reportJpaRepository.employeeReceive(reportDate,groupId));
-            response.setEmployeeStop(reportJpaRepository.findEmployeeStop(reportDate,groupId));
+            if(response !=null){
+                response.setEmployeeReceive(reportJpaRepository.employeeReceive(reportDate,groupId));
+                response.setEmployeeStop(reportJpaRepository.findEmployeeStop(reportDate,groupId));
+            }
             return response;
         }catch (Exception e){
             throw new RuntimeException(e.getMessage());
@@ -140,6 +144,11 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public List<Integer> getIdsToMay() {
         return reportJpaRepository.getIDsTomay();
+    }
+
+    @Override
+    public byte[] exportExcel() throws IOException {
+        return new byte[0];
     }
 
     private void addEmpTerminationContract(Integer groupId, List<String> laborEmps, Date date) {
