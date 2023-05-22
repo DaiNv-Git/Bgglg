@@ -5,52 +5,57 @@ import com.example.itspower.request.ReportRequest;
 import com.example.itspower.request.RestRequestDelete;
 import com.example.itspower.response.SuccessResponse;
 import com.example.itspower.service.ReportService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 @RestController
 public class ReportController {
-    @Autowired
-    private ReportService reportService;
+    private final ReportService reportService;
+    public ReportController(ReportService reportService) {
+        this.reportService = reportService;
+    }
 
     @GetMapping("/report")
     public Object report(@RequestParam("reportDate") String reportDate, @RequestParam("groupId") int groupId) throws ParseException {
-        Date date = new SimpleDateFormat("yyyy/MM/dd").parse(reportDate);
-         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date); // yourDate là thời gian hiện tại của bạn
-        calendar.add(Calendar.HOUR_OF_DAY, 7); // thêm 7 giờ vào thời gian hiện tại
-        Date newDate = calendar.getTime();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String strDate = dateFormat.format(newDate);
-        return reportService.reportDto(strDate, groupId);
+        try{
+            LocalDate localDate = LocalDate.parse(reportDate, DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+            LocalDateTime localDateTime = localDate.atStartOfDay().plusHours(7);
+            String strDate = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            return ResponseEntity.ok(reportService.reportDto(strDate, groupId));
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+    @GetMapping("/search")
+    public Object search(@RequestParam("reportDate") String reportDate, @RequestParam("groupId") int groupId) throws ParseException {
+        try{
+            LocalDate localDate = LocalDate.parse(reportDate, DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+            LocalDateTime localDateTime = localDate.atStartOfDay().plusHours(7);
+            String strDate = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            return ResponseEntity.ok(reportService.search(strDate, groupId));
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
     }
     @GetMapping("/getReportByYesterday")
-    public Object getReportByYesterday( @RequestParam("groupId") int groupId) {
-        return reportService.callDataByDate( groupId);
+    public Object getReportByYesterday(@RequestParam("groupId") int groupId) {
+        return reportService.callDataByDate(groupId);
     }
+
     @PostMapping("/report/save")
     public ResponseEntity<Object> save(@RequestBody ReportRequest reportRequest, @RequestParam("groupId") int groupId) throws GeneralException {
         try {
-            return ResponseEntity.ok(reportService.save(reportRequest, groupId));
+            reportService.save(reportRequest, groupId);
+            return ResponseEntity.ok(new SuccessResponse<>(HttpStatus.OK.value(), "add new success"));
         } catch (Exception e) {
             throw new GeneralException(e.getMessage());
         }
     }
 
-    @PostMapping("/report/update")
-    public ResponseEntity<Object> update(@RequestBody ReportRequest reportRequest, @RequestParam("groupId") int groupId) throws GeneralException {
-        try {
-            return ResponseEntity.ok(reportService.update(reportRequest, groupId));
-        } catch (Exception e) {
-            throw new GeneralException(e.getMessage());
-        }
-    }
 
     @PostMapping("/report/delete-rest")
     public ResponseEntity<Object> deleteRest(@RequestBody RestRequestDelete reportRequest) {
@@ -63,15 +68,18 @@ public class ReportController {
         reportService.deleteRestEmployee(groupRequest.getGroupId(), groupRequest.getLaborEmp());
         return ResponseEntity.ok(new SuccessResponse<>(HttpStatus.OK.value(), "delete success"));
     }
+
     @GetMapping("/getTransfer")
-    public ResponseEntity<Object> getTransfer(@RequestParam("date") String reportDate,@RequestParam("groupID")Integer groupID) throws ParseException {
-        Date date = new SimpleDateFormat("yyyy/MM/dd").parse(reportDate);
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date); // yourDate là thời gian hiện tại của bạn
-         calendar.add(Calendar.HOUR_OF_DAY, 7); // thêm 7 giờ vào thời gian hiện tại
-        Date newDate = calendar.getTime();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String strDate = dateFormat.format(newDate);
-        return ResponseEntity.status(HttpStatus.OK).body(reportService.getTransfer(strDate,groupID));
+    public ResponseEntity<Object> getTransfer(@RequestParam("date") String reportDate, @RequestParam("groupID") Integer groupID) throws ParseException {
+        LocalDate localDate = LocalDate.parse(reportDate, DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+        LocalDateTime localDateTime = localDate.atStartOfDay().plusHours(7);
+        String strDate = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        return ResponseEntity.status(HttpStatus.OK).body(reportService.getTransfer(strDate, groupID));
+    }
+
+    @GetMapping("/getIdsTomay")
+    public ResponseEntity<Object> getID() throws ParseException {
+
+        return ResponseEntity.status(HttpStatus.OK).body(reportService.getIdsToMay());
     }
 }

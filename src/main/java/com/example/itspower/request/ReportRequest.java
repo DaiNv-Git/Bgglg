@@ -11,6 +11,8 @@ import java.util.List;
 public class ReportRequest {
     private int id;
     private Float demarcation;
+    private Float unproductiveLabor;
+    private Float demarcationAvailable;
     private Float restNum;
     private Float laborProductivity;
     private Float partTimeNum;

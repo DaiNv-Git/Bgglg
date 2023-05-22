@@ -19,7 +19,6 @@ import com.example.itspower.service.ViewDetailService;
 import com.example.itspower.service.exportexcel.ExportExcel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;

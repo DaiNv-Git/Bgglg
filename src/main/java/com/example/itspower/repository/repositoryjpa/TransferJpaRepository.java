@@ -14,10 +14,8 @@ import java.util.List;
 @Repository
 public interface TransferJpaRepository extends JpaRepository<TransferEntity, Integer> {
     List<TransferEntity> findByReportId(Integer reportId);
-
     @Query(name = "group_accept", nativeQuery = true)
     List<TransferNumAccept> findGroupIdAndTransferDate(@Param("groupId") int groupId, @Param("reportDate") String reportDate);
-
     @Modifying
     @Transactional
     @Query(value = "update transfer t set t.is_access = :isAccess where t.group_id =:groupId AND DATE_FORMAT(t.transfer_date , '%Y%m%d') = DATE_FORMAT(:transferDate, '%Y%m%d') AND t.type =1 ", nativeQuery = true)

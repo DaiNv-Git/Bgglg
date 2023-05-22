@@ -57,4 +57,7 @@ public interface GroupJpaRepository extends JpaRepository<GroupEntity, Integer> 
     List<ReasonResponse>  getReasonResponse(String reportDate);
     @Query(name = "view_list_reason", nativeQuery = true)
     List<ListNameRestResponse>  getListNameReason(String reportDate);
+
+
+
 }
