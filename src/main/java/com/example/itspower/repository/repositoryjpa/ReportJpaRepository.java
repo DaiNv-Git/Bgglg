@@ -22,8 +22,13 @@ public interface ReportJpaRepository extends JpaRepository<ReportEntity, Integer
     @Query(name = "find_by_report", nativeQuery = true)
     ReportDto findByReport(@Param("reportDate") String reportDate, @Param("groupId") int groupId);
 
+    @Query(value = "SELECT  CONCAT(employee_name, ' - ', employee_labor) from emp_termination_contract etc " +
+            "where etc.group_id =?2 and  DATE_FORMAT(etc.start_date, '%Y%m%d') = DATE_FORMAT(?1, '%Y%m%d')",nativeQuery = true)
     List<String> findEmployeeStop(@Param("reportDate") String reportDate, @Param("groupId") int groupId);
 
+    @Query(value = "SELECT CONCAT(name, ' - ', labor) from list_employee_transfer w " +
+            "where w.groupID =?2 and w.transfer_date =?1",nativeQuery = true)
+    List<String> employeeReceive(@Param("reportDate") String reportDate, @Param("groupId") int groupId);
 
     @Query(name = "report_Search", nativeQuery = true)
     ReportSearchResponse searchReport(@Param("reportDate") String reportDate, @Param("groupId") int groupId);

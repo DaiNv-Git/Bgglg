@@ -9,6 +9,7 @@ import com.example.itspower.repository.repositoryjpa.ReportJpaRepository;
 import com.example.itspower.request.ReportRequest;
 import com.example.itspower.response.SuccessResponse;
 import com.example.itspower.response.report.ReportResponse;
+import com.example.itspower.response.report.ReportSearchResponse;
 import com.example.itspower.service.ReportService;
 import com.example.itspower.util.DateUtils;
 import org.springframework.http.HttpStatus;
@@ -56,7 +57,10 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public Object search(String reportDate, int groupId) {
         try{
-            return reportJpaRepository.searchReport(reportDate,groupId);
+            ReportSearchResponse response= reportJpaRepository.searchReport(reportDate,groupId);
+            response.setEmployeeReceive(reportJpaRepository.employeeReceive(reportDate,groupId));
+            response.setEmployeeStop(reportJpaRepository.findEmployeeStop(reportDate,groupId));
+            return response;
         }catch (Exception e){
             throw new RuntimeException(e.getMessage());
         }
