@@ -1,4 +1,5 @@
 package com.example.itspower.controller;
+
 import com.example.itspower.exception.GeneralException;
 import com.example.itspower.request.EmployeeGroupRequest;
 import com.example.itspower.request.ReportRequest;
@@ -8,10 +9,12 @@ import com.example.itspower.service.ReportService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
 @RestController
 public class ReportController {
     private final ReportService reportService;
@@ -46,7 +49,6 @@ public class ReportController {
     public Object getReportByYesterday(@RequestParam("groupId") int groupId) {
         return reportService.callDataByDate(groupId);
     }
-
     @PostMapping("/report/save")
     public ResponseEntity<Object> save(@RequestBody ReportRequest reportRequest, @RequestParam("groupId") int groupId) throws GeneralException {
         try {
@@ -56,7 +58,6 @@ public class ReportController {
             throw new GeneralException(e.getMessage());
         }
     }
-
 
     @PostMapping("/report/delete-rest")
     public ResponseEntity<Object> deleteRest(@RequestBody RestRequestDelete reportRequest) {
@@ -83,4 +84,5 @@ public class ReportController {
 
         return ResponseEntity.status(HttpStatus.OK).body(reportService.getIdsToMay());
     }
+
 }

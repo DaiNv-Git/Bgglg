@@ -88,5 +88,12 @@ public class EmployeeGroupController {
             throw new GeneralException(e.getMessage());
         }
     }
-
+    @GetMapping("/exportExcel")
+    public ResponseEntity<Object> exportExcel() {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse<>(employeeGroupService.exportExcel()));
+        } catch (Exception e) {
+            throw new ReasonException(HttpStatus.NOT_FOUND.value(), ERROR, e);
+        }
+    }
 }

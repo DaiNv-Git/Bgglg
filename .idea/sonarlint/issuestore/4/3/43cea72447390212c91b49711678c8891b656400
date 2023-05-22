@@ -1,8 +1,0 @@
-
-„
-java:S1488"gImmediately return this expression instead of assigning it to the temporary variable "detailResponses".(Ó–õ¶8ÓçØŸ€1
-Z
-java:S1854"=Remove this useless assignment to local variable "getIdRoot".(ñ³¡µ8³ÈØŸ€1
-K
-java:S1481".Remove this unused "getIdRoot" local variable.(ñ³¡µ8´ÈØŸ€1
-X	java:S125"<This block of commented-out lines of code should be removed.(˜Ó‹8ÝçØŸ€1

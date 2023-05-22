@@ -2,6 +2,7 @@ package com.example.itspower.service;
 
 import com.example.itspower.request.ReportRequest;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface ReportService {
@@ -14,4 +15,6 @@ public interface ReportService {
     Integer getTransfer(String reportDate,Integer groupId);
 
     List<Integer> getIdsToMay();
+
+    byte[] exportExcel() throws IOException;
 }
