@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RiceResponse {
+
     private Integer riceCus;
     private Integer riceVip;
     private Integer riceEmp;

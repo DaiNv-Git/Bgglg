@@ -20,4 +20,5 @@ public class RiceEntity {
     private Integer riceVip = 0;
     @Column(name = "report_id")
     private Integer reportId = 0;
+
 }

@@ -1,4 +1,5 @@
 package com.example.itspower.service.impl;
+
 import com.example.itspower.model.entity.*;
 import com.example.itspower.model.resultset.ReportDto;
 import com.example.itspower.model.resultset.RestDto;
@@ -12,6 +13,7 @@ import com.example.itspower.request.RiceRequest;
 import com.example.itspower.response.SuccessResponse;
 import com.example.itspower.response.report.ReportResponse;
 import com.example.itspower.response.report.ReportSearchResponse;
+import com.example.itspower.response.report.RiceReportResponse;
 import com.example.itspower.service.ReportService;
 import com.example.itspower.util.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +72,8 @@ public class ReportServiceImpl implements ReportService {
                 response.setEmployeeReceive(reportJpaRepository.employeeReceive(reportDate,groupId));
                 response.setEmployeeStop(reportJpaRepository.findEmployeeStop(reportDate,groupId));
                 response.setRestEmployee(reportJpaRepository.findRestEmployee(reportDate,groupId));
+                response.setRiceResponses(new RiceReportResponse(response.getRiceID(),response.getRiceEmployee(),response.getRiceCus(),
+                        response.getRiceVip()));
             }
             return response;
         }catch (Exception e){

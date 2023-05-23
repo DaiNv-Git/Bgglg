@@ -1,5 +1,6 @@
 package com.example.itspower.response.report;
 
+import com.example.itspower.model.entity.RiceEntity;
 import lombok.Data;
 
 import java.util.Date;
@@ -32,6 +33,7 @@ public class ReportSearchResponse {
     private Integer riceEmployee;
     private Integer riceVip;
     private Integer riceID;
+    private RiceReportResponse  riceResponses;
 
 
     public ReportSearchResponse() {

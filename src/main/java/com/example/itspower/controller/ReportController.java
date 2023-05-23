@@ -58,6 +58,7 @@ public class ReportController {
             throw new GeneralException(e.getMessage());
         }
     }
+
     @PostMapping("/report/update")
     public ResponseEntity<Object> update(@RequestBody ReportRequest reportRequest, @RequestParam("groupId") int groupId) throws GeneralException {
         try {
