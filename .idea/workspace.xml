@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23413de2-c97e-42e4-a543-313b5b0bd741" name="Changes" comment="add">
+    <list default="true" id="23413de2-c97e-42e4-a543-313b5b0bd741" name="Changes" comment="a">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/ReportController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/ReportController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/ReportController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -307,13 +306,6 @@
       <workItem from="1684481776507" duration="9242000" />
       <workItem from="1684648426869" duration="1927000" />
       <workItem from="1684673611356" duration="3096000" />
-    </task>
-    <task id="LOCAL-00058" summary="api /groupRole/demarcation get and update">
-      <created>1681046926851</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1681046926851</updated>
     </task>
     <task id="LOCAL-00059" summary="fix bug search view">
       <created>1681051576874</created>
@@ -651,7 +643,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684370673352</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="a">
+      <created>1684762456354</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1684762456354</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -687,7 +686,8 @@
     <MESSAGE value="add api get All User" />
     <MESSAGE value="fix api update report" />
     <MESSAGE value="add api get All Usessadr" />
-    <option name="LAST_COMMIT_MESSAGE" value="add api get All Usessadr" />
+    <MESSAGE value="a" />
+    <option name="LAST_COMMIT_MESSAGE" value="a" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
