@@ -21,10 +21,19 @@ import java.util.Optional;
 public interface ReportJpaRepository extends JpaRepository<ReportEntity, Integer>, JpaSpecificationExecutor<ReportEntity> {
     @Query(name = "find_by_report", nativeQuery = true)
     ReportDto findByReport(@Param("reportDate") String reportDate, @Param("groupId") int groupId);
-
+    @Query(value = "SELECT  CONCAT(name, ' - ', labor) from list_employee_transfer let where groupID in ( " +
+            "SELECT t.group_id  from transfer t where t.report_id =(SELECT id  from report r2 where r2.group_id = ?2 " +
+            "and  DATE_FORMAT(r2.report_date, '%Y%m%d') = DATE_FORMAT(?1, '%Y%m%d')   ) );",nativeQuery = true)
+    List<String> findEmployeeTransferTo(@Param("reportDate") String reportDate, @Param("groupId") int groupId);
     @Query(value = "SELECT  CONCAT(employee_name, ' - ', employee_labor) from emp_termination_contract etc " +
             "where etc.group_id =?2 and  DATE_FORMAT(etc.start_date, '%Y%m%d') = DATE_FORMAT(?1, '%Y%m%d')",nativeQuery = true)
     List<String> findEmployeeStop(@Param("reportDate") String reportDate, @Param("groupId") int groupId);
+    @Query(value = "SELECT CONCAT(rest_name, ' - ', employee_labor, ' - ' , r2.name  ) as name " +
+            "         from rest r  inner join reason r2 on r.reason_id =r2.id where r.report_id =" +
+            " (SELECT id from report r3 where r3.group_id = ?2 and   DATE_FORMAT(r3.report_date, '%Y%m%d') = DATE_FORMAT(?1, '%Y%m%d') )",nativeQuery = true)
+    List<String> findRestEmployee(@Param("reportDate") String reportDate, @Param("groupId") int groupId);
+
+
 
     @Query(value = "SELECT CONCAT(name, ' - ', labor) from list_employee_transfer w " +
             "where w.groupID =?2 and w.transfer_date =?1",nativeQuery = true)

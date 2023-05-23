@@ -59,7 +59,6 @@ public interface GroupJpaRepository extends JpaRepository<GroupEntity, Integer> 
     Integer getStudentNumber(String reportDate);
     @Query(name = "view_list_reason", nativeQuery = true)
     List<ListNameRestResponse>  getListNameReason(String reportDate);
-
-
-
+    @Query(value = " SELECT IFNULL(MAX(sort),0)  from group_role gr  ",nativeQuery = true)
+    Integer getMaxSort();
 }

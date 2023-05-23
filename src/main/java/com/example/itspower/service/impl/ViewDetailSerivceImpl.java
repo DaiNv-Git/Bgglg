@@ -1,4 +1,5 @@
 package com.example.itspower.service.impl;
+
 import com.example.itspower.model.resultset.RootNameDto;
 import com.example.itspower.model.resultset.ViewAllDto;
 import com.example.itspower.repository.GroupRoleRepository;
@@ -19,6 +20,7 @@ import com.example.itspower.service.ViewDetailService;
 import com.example.itspower.service.exportexcel.ExportExcel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -62,11 +64,11 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
             viewAllDto.setRestObjectResponse(new RestObjectResponse(viewAllDto.getRestNum(), listReason, listNameReason));
         }
         // add ly do nghi parent
-        for(RootNameDto id : idRootList){
-            Map<String ,Integer> addChild = new HashMap<>();
-            List<ReasonResponse> childs= reasonResponseList.stream().
-                    filter( i->i.getParentID().equals(id.getId())).collect(Collectors.toList());
-            for (ReasonResponse totalChild : childs){
+        for (RootNameDto id : idRootList) {
+            Map<String, Integer> addChild = new HashMap<>();
+            List<ReasonResponse> childs = reasonResponseList.stream().
+                    filter(i -> i.getParentID().equals(id.getId())).collect(Collectors.toList());
+            for (ReasonResponse totalChild : childs) {
                 String reasonName = totalChild.getReasonName();
                 Integer total = totalChild.getTotal();
                 if (addChild.containsKey(reasonName)) {
@@ -89,24 +91,24 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
             //add ngược lại để tính tổng parent
             for (String key : sumMap.keySet()) {
                 int sum = sumMap.get(key);
-                reason.add(new ReasonRest(sum,key));
+                reason.add(new ReasonRest(sum, key));
             }
             Double numberRest = reason.stream()
                     .mapToDouble(ReasonRest::getTotal)
                     .sum();
-           viewAllDtoList.stream()
+            viewAllDtoList.stream()
                     .filter(setResponse -> setResponse.getGroupId().equals(id.getId()))
                     .findFirst()
                     .ifPresent(setResponse ->
-                            setResponse.setRestObjectResponse( new RestObjectResponse(numberRest,reason,null)));
-            if(!reason.isEmpty()){
-                int parentId =viewAllDtoList.stream()
+                            setResponse.setRestObjectResponse(new RestObjectResponse(numberRest, reason, null)));
+            if (!reason.isEmpty()) {
+                int parentId = viewAllDtoList.stream()
                         .filter(k -> k.getGroupId().equals(childs.get(0).getParentID()))
                         .findFirst()
-                        .map(k ->k.getGroupParentId())
+                        .map(k -> k.getGroupParentId())
                         .orElse(0);
-                for(int i = 0 ; i < reason.size();i++){
-                    reasonResponseList.add(new ReasonResponse(childs.get(0).getParentID()!=null ?childs.get(0).getParentID():0,reason.get(i).getReasonName(),reason.get(i).getTotal(),
+                for (int i = 0; i < reason.size(); i++) {
+                    reasonResponseList.add(new ReasonResponse(childs.get(0).getParentID() != null ? childs.get(0).getParentID() : 0, reason.get(i).getReasonName(), reason.get(i).getTotal(),
                             parentId));
                 }
             }
@@ -130,18 +132,18 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
                 .mapToInt(ViewAllDto::getPartTimeNum)
                 .findFirst()
                 .orElse(0);
-        int  hoanThien1NangSuatPartTime= viewAllDtoList.stream()
+        int hoanThien1NangSuatPartTime = viewAllDtoList.stream()
                 .filter(i -> i.getGroupName().trim().equalsIgnoreCase("hoàn thiện 1"))
                 .mapToInt(ViewAllDto::getPartTimeNum)
                 .findFirst()
                 .orElse(0);
-        int  hoanThien1NangSuatPartTime2= viewAllDtoList.stream()
+        int hoanThien1NangSuatPartTime2 = viewAllDtoList.stream()
                 .filter(i -> i.getGroupName().trim().equalsIgnoreCase("hoàn thiện 1"))
                 .mapToInt(ViewAllDto::getPartTimeNum)
                 .findFirst()
                 .orElse(0);
-        Double nangSuatPartTimeToMay=partTimeToMaySum/2.0;
-        Double nangSuatPartTimeDvl=(partTimeDonViLeSum-hoanThien1NangSuatPartTime-hoanThien1NangSuatPartTime2)/2.0;
+        Double nangSuatPartTimeToMay = partTimeToMaySum / 2.0;
+        Double nangSuatPartTimeDvl = (partTimeDonViLeSum - hoanThien1NangSuatPartTime - hoanThien1NangSuatPartTime2) / 2.0;
         ViewDetailGroups studentNangsuat =
                 new ViewDetailGroups(new ViewAllDto(-1, 0, "Học sinh chưa báo năng suất", studentSum, 0.0
                         , 0, 0.0, 0, 0, 0, 0, 0f, 0f, 0f), 0);
@@ -176,7 +178,7 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
         List<GroupRoleResponse> responses = a.stream()
                 .filter(i -> i.getLabel().equalsIgnoreCase("Đơn vị lẻ"))
                 .collect(Collectors.toList());
-            List<Integer> key = getAllValues(responses);
+        List<Integer> key = getAllValues(responses);
         return key;
     }
 
