@@ -129,8 +129,7 @@ public class ReportServiceImpl implements ReportService {
     }
 
     public ReportEntity updateReport(ReportRequest request, int groupId) {
-        ReportEntity reportEntity = new ReportEntity();
-        reportEntity.setId(request.getId());
+        ReportEntity reportEntity =reportJpaRepository.findById(request.getId()).get();
         reportEntity.setDemarcation(request.getDemarcation());
         reportEntity.setGroupId(groupId);
         reportEntity.setDemarcationAvailable(request.getDemarcationAvailable());
@@ -139,8 +138,12 @@ public class ReportServiceImpl implements ReportService {
         reportEntity.setLaborProductivity(request.getLaborProductivity());
         reportEntity.setUnproductiveLabor(request.getUnproductiveLabor());
         reportEntity.setPartTimeNum(request.getPartTimeNum());
-        reportEntity.setProfessionLabor(request.getProfessionLabor());
-        reportEntity.setProfessionNotLabor(request.getProfessionNotLabor());
+        if(request.getProfessionLabor() >0){
+            reportEntity.setProfessionLabor(request.getProfessionLabor());
+        }
+        if(request.getProfessionNotLabor() >0){
+            reportEntity.setProfessionNotLabor(request.getProfessionNotLabor());
+        }
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.HOUR_OF_DAY, 7);

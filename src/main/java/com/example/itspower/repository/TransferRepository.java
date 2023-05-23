@@ -44,7 +44,7 @@ public class TransferRepository {
         try{
             List<TransferEntity> entities = new ArrayList<>();
             List<EmployeeTransferEntity> employees = new ArrayList<>();
-            List<EmployeeGroupEntity> employeeGroupEntities =employeeGroupRepository.findAll();
+//            List<EmployeeGroupEntity> employeeGroupEntities =employeeGroupRepository.findAll();
             List<EmployeeGroupEntity> updateGroupEmployee =new ArrayList<>();
             LocalDateTime currentTime = LocalDateTime.now();
             LocalDateTime newDateTime = currentTime.plus(7, ChronoUnit.HOURS);
@@ -98,12 +98,10 @@ public class TransferRepository {
                     employeeTransferSave.setLabor(labor);
                     employees.add(employeeTransferSave);
                     EmployeeGroupEntity employeeGroup = new EmployeeGroupEntity();
-                    Integer employeeID = employeeGroupEntities.stream()
-                            .filter(i -> i.getLaborCode().equals(labor))
-                            .map(EmployeeGroupEntity::getId)
-                            .findFirst()
-                            .orElse(null);
-                    employeeGroup.setId(employeeID);
+                    Integer employeeID = employeeGroupRepository.findIDByLaborCode(labor);
+                    if(employeeID !=null){
+                        employeeGroup.setId(employeeID);
+                    }
                     employeeGroup.setLaborCode(labor);
                     employeeGroup.setName(name);
                     employeeGroup.setGroupId(transfer.getGroupId());
