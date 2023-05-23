@@ -89,7 +89,7 @@ import java.io.Serializable;
                 @ColumnResult(name = "groupParentId", type = Integer.class),
                 @ColumnResult(name = "groupName", type = String.class),
                 @ColumnResult(name = "reportDemarcation", type = Integer.class),
-                @ColumnResult(name = "laborProductivity", type = Integer.class),
+                @ColumnResult(name = "laborProductivity", type = Double.class),
                 @ColumnResult(name = "partTimeNum", type = Integer.class),
                 @ColumnResult(name = "restNum", type = Double.class),
                 @ColumnResult(name = "studentNum", type = Integer.class),

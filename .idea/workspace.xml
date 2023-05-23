@@ -4,36 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8e811f7-ab85-440d-81dd-29fe6388095e" name="Changes" comment="fix api update report">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/employee/EmployeeExportExcel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/30eccb9c3f860f79f19526c01e7a98a9f69274c6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/3/43cea72447390212c91b49711678c8891b656400" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/1/61144af2b7ea04649ac1f4aff9a5c9c8c57c2455" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/6/964d13f1b1369755f11d12722b57da819b880ff2" beforeDir="false" />
+    <list default="true" id="d8e811f7-ab85-440d-81dd-29fe6388095e" name="Changes" comment="add excel employee">
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/0/30eccb9c3f860f79f19526c01e7a98a9f69274c6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/3/43cea72447390212c91b49711678c8891b656400" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/1/61144af2b7ea04649ac1f4aff9a5c9c8c57c2455" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/6/964d13f1b1369755f11d12722b57da819b880ff2" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/EmployeeGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/EmployeeGroupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/ReportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/EmployeeGroupEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/EmployeeGroupEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/repositoryjpa/EmployeeGroupRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/repositoryjpa/EmployeeGroupRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/EmployeeGroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/EmployeeGroupService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/ReportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/EmployeeGroupServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/EmployeeGroupServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ReportServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/EmployeeGroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/EmployeeGroupController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/ReportController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/ReportController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/EmployeeGroupEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/EmployeeGroupEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/EmployeeGroupRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/EmployeeGroupRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/EmployeeGroupService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/EmployeeGroupService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/EmployeeGroupServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/EmployeeGroupServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ReportServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ReportServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/GroupEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/GroupEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/resultset/ViewAllDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/resultset/ViewAllDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/repositoryjpa/GroupJpaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/repositoryjpa/GroupJpaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/ReportService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/ReportService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ViewDetailSerivceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ViewDetailSerivceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -333,14 +313,9 @@
       <workItem from="1684481776507" duration="9242000" />
       <workItem from="1684648426869" duration="1927000" />
       <workItem from="1684673611356" duration="3064000" />
-      <workItem from="1684726405828" duration="4529000" />
-    </task>
-    <task id="LOCAL-00059" summary="fix bug search view">
-      <created>1681051576874</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1681051576874</updated>
+      <workItem from="1684726405828" duration="4578000" />
+      <workItem from="1684809526670" duration="586000" />
+      <workItem from="1684813765908" duration="1783000" />
     </task>
     <task id="LOCAL-00060" summary="fix bug search view">
       <created>1681107260043</created>
@@ -678,7 +653,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684723757799</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="add excel employee">
+      <created>1684735397602</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1684735397603</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -714,7 +696,8 @@
     <MESSAGE value="add api get All User" />
     <MESSAGE value="add api get All Usessadr" />
     <MESSAGE value="fix api update report" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix api update report" />
+    <MESSAGE value="add excel employee" />
+    <option name="LAST_COMMIT_MESSAGE" value="add excel employee" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -728,6 +711,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/repository/TransferRepository.java</url>
           <line>44</line>
           <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java</url>
+          <line>121</line>
+          <option name="timeStamp" value="80" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

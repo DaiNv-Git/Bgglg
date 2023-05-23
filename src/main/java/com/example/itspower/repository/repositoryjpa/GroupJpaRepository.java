@@ -55,6 +55,8 @@ public interface GroupJpaRepository extends JpaRepository<GroupEntity, Integer> 
     Optional<GroupEntity> findByGroupNameAndParentId(String groupName, Integer parentId);
     @Query(name = "view_reason", nativeQuery = true)
     List<ReasonResponse>  getReasonResponse(String reportDate);
+    @Query(value ="SELECT sum(student_num) from report r where  DATE_FORMAT(r.report_date, '%Y%m%d') = DATE_FORMAT(:#{#reportDate}, '%Y%m%d')", nativeQuery = true)
+    Integer getStudentNumber(String reportDate);
     @Query(name = "view_list_reason", nativeQuery = true)
     List<ListNameRestResponse>  getListNameReason(String reportDate);
 
