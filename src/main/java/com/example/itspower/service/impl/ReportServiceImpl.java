@@ -116,6 +116,39 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
+    public void update(ReportRequest request, int groupId) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.HOUR_OF_DAY, 7);
+        Date newDate = calendar.getTime();
+        Optional<ReportEntity> entity = reportRepository.findByReportDateAndGroupId(DateUtils.formatDate(newDate), groupId);
+        if (entity.isEmpty()) {
+            throw new RuntimeException(" report date is not exits");
+        }
+        ReportEntity reportEntity = updateReport(request, groupId);
+    }
+
+    public ReportEntity updateReport(ReportRequest request, int groupId) {
+        ReportEntity reportEntity = new ReportEntity();
+        reportEntity.setId(request.getId());
+        reportEntity.setDemarcation(request.getDemarcation());
+        reportEntity.setGroupId(groupId);
+        reportEntity.setDemarcationAvailable(request.getDemarcationAvailable());
+        reportEntity.setRestNum(request.getRestNum());
+        reportEntity.setStudentNum(request.getStudentNum());
+        reportEntity.setLaborProductivity(request.getLaborProductivity());
+        reportEntity.setUnproductiveLabor(request.getUnproductiveLabor());
+        reportEntity.setPartTimeNum(request.getPartTimeNum());
+        reportEntity.setProfessionLabor(request.getProfessionLabor());
+        reportEntity.setProfessionNotLabor(request.getProfessionNotLabor());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.HOUR_OF_DAY, 7);
+        Date newDate = calendar.getTime();
+        reportEntity.setReportDate(newDate);
+        return reportJpaRepository.saveAndFlush(reportEntity);
+    }
+    @Override
     public void deleteRestIdsAndReportId(Integer reportId, List<Integer> restIds) {
         restRepository.deleteRestIdsAndReportId(reportId, restIds);
     }
