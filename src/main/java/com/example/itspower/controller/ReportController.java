@@ -58,6 +58,15 @@ public class ReportController {
             throw new GeneralException(e.getMessage());
         }
     }
+    @PostMapping("/report/update")
+    public ResponseEntity<Object> update(@RequestBody ReportRequest reportRequest, @RequestParam("groupId") int groupId) throws GeneralException {
+        try {
+            reportService.save(reportRequest, groupId);
+            return ResponseEntity.ok(new SuccessResponse<>(HttpStatus.OK.value(), "add new success"));
+        } catch (Exception e) {
+            throw new GeneralException(e.getMessage());
+        }
+    }
 
     @PostMapping("/report/delete-rest")
     public ResponseEntity<Object> deleteRest(@RequestBody RestRequestDelete reportRequest) {

@@ -41,7 +41,7 @@ public class ViewAllDto {
         this.restObjectResponse = restObjectResponse;
     }
 
-    public ViewAllDto(Integer groupId, Integer groupParentId, String groupName, Integer reportDemarcation, Integer laborProductivity, Integer partTimeNum, Double restNum, Integer studentNum,
+    public ViewAllDto(Integer groupId, Integer groupParentId, String groupName, Integer reportDemarcation, Double laborProductivity, Integer partTimeNum, Double restNum, Integer studentNum,
                       Integer riceCus, Integer riceEmp, Integer riceVip) {
         this.groupId = groupId;
         this.groupParentId = groupParentId;

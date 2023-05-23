@@ -119,8 +119,7 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
         List<ViewDetailGroups> viewDetailsRes = response.stream()
                 .map(i -> new ViewDetailGroups(i, officeId))
                 .collect(Collectors.toList());
-        int studentSum = viewAllDtoList.stream()
-                .collect(Collectors.summingInt(ViewAllDto::getStudentNum));
+        int studentSum = groupJpaRepository.getStudentNumber(reportDate);
         int partTimeToMaySum = viewAllDtoList.stream()
                 .filter(i -> i.getGroupName().trim().equalsIgnoreCase("Tổ may"))
                 .mapToInt(ViewAllDto::getPartTimeNum)

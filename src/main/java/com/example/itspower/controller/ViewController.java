@@ -30,7 +30,7 @@ public class ViewController {
         return ResponseEntity.status(HttpStatus.OK).body(viewService.getView(date));
     }
 
-     @GetMapping("/groupRoleViewDetails")
+    @GetMapping("/groupRoleViewDetails")
     public ResponseEntity<BaseResponse<Object>> searchAllViewDetails(@RequestParam("reportDate") String reportDate) {
         try {
             Date date = new SimpleDateFormat("yyyy/MM/dd").parse(reportDate);
