@@ -82,7 +82,7 @@ public class GroupRoleRepository {
     }
 
     public Object getDemarcationRes(Integer groupId) {
-        Optional<GroupEntity> groupEntity = groupJpaRepository.findById(groupId);
+         Optional<GroupEntity> groupEntity = groupJpaRepository.findById(groupId);
         groupEntity.get().setDemarcationAvailable(groupJpaRepository.countEmployee(groupId));
         if (groupEntity.isPresent()) {
             return new SuccessResponse<>(HttpStatus.OK.value(), "success", new GroupRoleDemarcationRes(groupEntity.get()));
