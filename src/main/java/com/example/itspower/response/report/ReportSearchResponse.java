@@ -1,5 +1,6 @@
 package com.example.itspower.response.report;
 
+import com.example.itspower.model.entity.RiceEntity;
 import lombok.Data;
 
 import java.util.Date;
@@ -26,6 +27,14 @@ public class ReportSearchResponse {
     private List<String> employeeStop;
     private List<String> employeeTransferTo;
     private List<String> employeeReceive;
+    private List<String> restEmployee;
+
+    private Integer riceCus;
+    private Integer riceEmployee;
+    private Integer riceVip;
+    private Integer riceID;
+    private RiceReportResponse  riceResponses;
+
 
     public ReportSearchResponse() {
         // Default constructor
@@ -35,7 +44,7 @@ public class ReportSearchResponse {
                                 Float unproductiveLabor, Double laborProductivity, Integer numberStop,
                                 Double restNum, Integer partTimeNum, Integer transferReceive, Integer transferTo,
                                 Integer studentNum, Integer totalRice, Date reportDate, Integer professionNotLabor,
-                                Integer professionLabor) {
+                                Integer professionLabor,Integer riceCus, Integer riceEmployee,Integer riceVip,Integer riceID) {
         this.id = id;
         this.groupId = groupId;
         this.demarcation = demarcation;
@@ -52,6 +61,10 @@ public class ReportSearchResponse {
         this.reportDate = reportDate;
         this.professionNotLabor = professionNotLabor;
         this.professionLabor = professionLabor;
+        this.riceCus = riceCus;
+        this.riceEmployee = riceEmployee;
+        this.riceVip = riceVip;
+        this.riceID=riceID;
     }
 
     // Getters and setters

@@ -37,6 +37,7 @@ public class GroupRoleRepository {
         entity.setGroupName(groupRoleRequest.getGroupName());
         entity.setParentId(parentID);
         entity.setDemarcationAvailable(groupRoleRequest.getDemarcation());
+        entity.setSort(groupJpaRepository.getMaxSort()+1);
         return groupJpaRepository.save(entity);
     }
 

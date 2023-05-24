@@ -28,11 +28,12 @@ public class ReportController {
             LocalDate localDate = LocalDate.parse(reportDate, DateTimeFormatter.ofPattern("yyyy/MM/dd"));
             LocalDateTime localDateTime = localDate.atStartOfDay().plusHours(7);
             String strDate = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            return ResponseEntity.ok(reportService.reportDto(strDate, groupId));
+            return ResponseEntity.ok(reportService.search(strDate, groupId));
         }catch (Exception e){
             throw new RuntimeException(e.getMessage());
         }
     }
+    @CrossOrigin
     @GetMapping("/search")
     public Object search(@RequestParam("reportDate") String reportDate, @RequestParam("groupId") int groupId) throws ParseException {
         try{
@@ -57,10 +58,11 @@ public class ReportController {
             throw new GeneralException(e.getMessage());
         }
     }
+
     @PostMapping("/report/update")
     public ResponseEntity<Object> update(@RequestBody ReportRequest reportRequest, @RequestParam("groupId") int groupId) throws GeneralException {
         try {
-            reportService.save(reportRequest, groupId);
+            reportService.update(reportRequest, groupId);
             return ResponseEntity.ok(new SuccessResponse<>(HttpStatus.OK.value(), "add new success"));
         } catch (Exception e) {
             throw new GeneralException(e.getMessage());

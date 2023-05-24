@@ -25,6 +25,9 @@ public interface EmployeeGroupRepository extends JpaRepository<EmployeeGroupEnti
     @Query(value = "SELECT count(*) from group_employee", nativeQuery = true)
     int countEmployee();
 
+    @Query(value = "SELECT * from group_employee ge where labor_code = ?1",nativeQuery = true)
+    Integer findIDByLaborCode(String laborCode);
+
     @Query(name = "execl_Employee", nativeQuery = true)
     List<EmployeeExportExcel> getExcelEmployee();
     @Transactional

@@ -1,4 +1,5 @@
 package com.example.itspower.service.impl;
+
 import com.example.itspower.model.entity.*;
 import com.example.itspower.model.resultset.ReportDto;
 import com.example.itspower.model.resultset.RestDto;
@@ -6,12 +7,16 @@ import com.example.itspower.repository.*;
 import com.example.itspower.repository.repositoryjpa.EmpTerminationContractRepository;
 import com.example.itspower.repository.repositoryjpa.EmployeeGroupRepository;
 import com.example.itspower.repository.repositoryjpa.ReportJpaRepository;
+import com.example.itspower.repository.repositoryjpa.RiceJpaRepository;
 import com.example.itspower.request.ReportRequest;
+import com.example.itspower.request.RiceRequest;
 import com.example.itspower.response.SuccessResponse;
 import com.example.itspower.response.report.ReportResponse;
 import com.example.itspower.response.report.ReportSearchResponse;
+import com.example.itspower.response.report.RiceReportResponse;
 import com.example.itspower.service.ReportService;
 import com.example.itspower.util.DateUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -31,6 +36,8 @@ public class ReportServiceImpl implements ReportService {
     private final RiceRepository riceRepository;
     private final EmpTerminationContractRepository empTerminationContractRepository;
     private final EmployeeGroupRepository employeeGroupRepository;
+    @Autowired
+    private RiceJpaRepository riceJpaRepository;
 
     public ReportServiceImpl(ReportRepository reportRepository, ReportJpaRepository reportJpaRepository, RestRepository restRepository, TransferRepository transferRepository, GroupRoleRepository groupRoleRepository, RiceRepository riceRepository, EmpTerminationContractRepository empTerminationContractRepository, EmployeeGroupRepository employeeGroupRepository) {
         this.reportRepository = reportRepository;
@@ -61,8 +68,12 @@ public class ReportServiceImpl implements ReportService {
         try{
             ReportSearchResponse response= reportJpaRepository.searchReport(reportDate,groupId);
             if(response !=null){
+                response.setEmployeeTransferTo(reportJpaRepository.findEmployeeTransferTo(reportDate,groupId));
                 response.setEmployeeReceive(reportJpaRepository.employeeReceive(reportDate,groupId));
                 response.setEmployeeStop(reportJpaRepository.findEmployeeStop(reportDate,groupId));
+                response.setRestEmployee(reportJpaRepository.findRestEmployee(reportDate,groupId));
+                response.setRiceResponses(new RiceReportResponse(response.getRiceID(),response.getRiceEmployee(),response.getRiceCus(),
+                        response.getRiceVip()));
             }
             return response;
         }catch (Exception e){
@@ -80,18 +91,10 @@ public class ReportServiceImpl implements ReportService {
     }
 
     public Object getYesterday(String reportDate, int groupId) {
-        try {
-            Optional<ReportEntity> entity = reportRepository.findByReportDateAndGroupId(reportDate, groupId);
-            if (entity.isEmpty()) {
-                return null;
-            }
-            ReportDto reportDto = reportRepository.reportDto(reportDate, groupId);
-            List<RestDto> restDtos = restRepository.getRests(reportDto.getId());
-            List<TransferEntity> transferEntities = transferRepository.findByReportId(reportDto.getId());
-            Optional<RiceEntity> riceEntity = riceRepository.getByRiceDetail(reportDto.getId());
-            return new ReportResponse(reportDto, riceEntity.get(), restDtos, transferEntities);
-        } catch (Exception e) {
-            throw new RuntimeException("get pesterDay fail");
+        try{
+            return search(reportDate,groupId);
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -117,20 +120,30 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public void update(ReportRequest request, int groupId) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date());
-        calendar.add(Calendar.HOUR_OF_DAY, 7);
-        Date newDate = calendar.getTime();
-        Optional<ReportEntity> entity = reportRepository.findByReportDateAndGroupId(DateUtils.formatDate(newDate), groupId);
-        if (entity.isEmpty()) {
-            throw new RuntimeException(" report date is not exits");
+        try {
+            ReportEntity reportEntity = updateReport(request, groupId);
+            riceRepository.updateRice(request.getRiceRequests(), reportEntity.getId());
+            restRepository.saveRest(request.getRestRequests(), reportEntity.getId());
+            transferRepository.saveTransfer(request.getTransferRequests(), reportEntity.getId(),groupId);
+        } catch (Exception e) {
+            throw new RuntimeException("save fail");
         }
-        ReportEntity reportEntity = updateReport(request, groupId);
     }
+    public RiceEntity update(RiceRequest riceRequest, Integer reportId) {
+        try{
+            RiceEntity entity = new RiceEntity();
+            entity.setReportId(reportId);
+            entity.setRiceEmp(riceRequest.getRiceEmp());
+            entity.setRiceCus(riceRequest.getRiceCus());
+            entity.setRiceVip(riceRequest.getRiceVip());
+            return riceJpaRepository.save(entity);
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
 
+    }
     public ReportEntity updateReport(ReportRequest request, int groupId) {
-        ReportEntity reportEntity = new ReportEntity();
-        reportEntity.setId(request.getId());
+        ReportEntity reportEntity =reportJpaRepository.findById(request.getId()).get();
         reportEntity.setDemarcation(request.getDemarcation());
         reportEntity.setGroupId(groupId);
         reportEntity.setDemarcationAvailable(request.getDemarcationAvailable());
@@ -139,8 +152,12 @@ public class ReportServiceImpl implements ReportService {
         reportEntity.setLaborProductivity(request.getLaborProductivity());
         reportEntity.setUnproductiveLabor(request.getUnproductiveLabor());
         reportEntity.setPartTimeNum(request.getPartTimeNum());
-        reportEntity.setProfessionLabor(request.getProfessionLabor());
-        reportEntity.setProfessionNotLabor(request.getProfessionNotLabor());
+        if(request.getProfessionLabor() >0){
+            reportEntity.setProfessionLabor(request.getProfessionLabor());
+        }
+        if(request.getProfessionNotLabor() >0){
+            reportEntity.setProfessionNotLabor(request.getProfessionNotLabor());
+        }
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.HOUR_OF_DAY, 7);

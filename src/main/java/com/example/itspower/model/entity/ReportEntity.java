@@ -72,7 +72,11 @@ import java.util.Date;
                                 @ColumnResult(name = "totalRice", type = Integer.class),
                                 @ColumnResult(name = "reportDate", type = Date.class),
                                 @ColumnResult(name = "professionNotLabor", type = Integer.class),
-                                @ColumnResult(name = "professionLabor", type = Integer.class)
+                                @ColumnResult(name = "professionLabor", type = Integer.class),
+                                @ColumnResult(name = "riceCus", type = Integer.class),
+                                @ColumnResult(name = "riceEmployee", type = Integer.class),
+                                @ColumnResult(name = "riceVip", type = Integer.class),
+                                @ColumnResult(name = "riceID", type = Integer.class),
                         }
                 )
         }
@@ -80,7 +84,7 @@ import java.util.Date;
 
 @NamedNativeQuery(
         name = "report_Search",
-        query = "SELECT r.id as id,r.demarcation as demarcation,r.group_id as groupId,r.demarcationAvailable as demarcationAvailable, " +
+        query = "SELECT r.id as id,r.demarcation as demarcation,r.group_id as groupId,r.demarcation_available as demarcationAvailable, " +
                 "r.unproductive_labor as unproductiveLabor, " +
                 "r.labor_productivity as laborProductivity, r.rest_num  as restNum, " +
                 "r.part_time_num  as partTimeNum, r.student_num  as studentNum , " +
@@ -94,7 +98,8 @@ import java.util.Date;
                 "DATE_FORMAT(r.report_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d') AND r.group_id = :groupId)),0) " +
                 "as transferTo , " +
                 "IFNULL((SELECT COUNT(employee_labor)  from emp_termination_contract etc where group_id =:groupId and " +
-                "DATE_FORMAT(etc.start_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d')),0) as numberStop " +
+                "DATE_FORMAT(etc.start_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d')),0) as numberStop ," +
+                " r3.rice_cus as riceCus,r3.rice_emp as riceEmployee,r3.rice_vip as riceVip,r3.id as riceID " +
                 "from report r  " +
                 "left join rice r3 on r3.report_id = r.id " +
                 "where DATE_FORMAT(r.report_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d') AND r.group_id = :groupId",

@@ -7,7 +7,6 @@ import com.example.itspower.request.RestRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +18,6 @@ public class RestRepository {
     public List<RestDto> getRests(Integer reportId) {
         return restJpaRepository.findByRest(reportId);
     }
-
 
     public List<RestEntity> saveRest(List<RestRequest> requests, Integer reportId) {
         List<RestEntity> restEntities = new ArrayList<>();
