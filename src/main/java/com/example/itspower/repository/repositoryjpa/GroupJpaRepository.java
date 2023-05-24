@@ -60,6 +60,7 @@ public interface GroupJpaRepository extends JpaRepository<GroupEntity, Integer> 
     @Query(name = "view_list_reason", nativeQuery = true)
     List<ListNameRestResponse>  getListNameReason(String reportDate);
 
-
+    @Query(value = "SELECT COUNT(id)  from group_employee ge where group_id = ?1", nativeQuery = true)
+    Float  countEmployee(Integer groupID);
 
 }

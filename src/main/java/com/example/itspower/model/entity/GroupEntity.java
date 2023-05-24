@@ -232,6 +232,4 @@ public class GroupEntity implements Serializable {
     private Integer parentId;
     @Column(name = "demarcation_available")
     private Float demarcationAvailable;
-
-
 }
