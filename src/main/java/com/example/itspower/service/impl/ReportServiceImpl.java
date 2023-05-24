@@ -112,7 +112,7 @@ public class ReportServiceImpl implements ReportService {
             ReportEntity reportEntity = reportRepository.saveReport(request, groupId);
             riceRepository.saveRice(request.getRiceRequests(), reportEntity.getId());
             restRepository.saveRest(request.getRestRequests(), reportEntity.getId());
-            transferRepository.saveTransfer(request.getTransferRequests(), reportEntity.getId(),groupId);
+             transferRepository.saveTransfer(request.getTransferRequests(), reportEntity.getId(),groupId);
         } catch (Exception e) {
             throw new RuntimeException("save fail");
         }
