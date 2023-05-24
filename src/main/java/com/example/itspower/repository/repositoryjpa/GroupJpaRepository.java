@@ -62,5 +62,7 @@ public interface GroupJpaRepository extends JpaRepository<GroupEntity, Integer> 
 
      @Query(value = "SELECT COUNT(id)  from group_employee ge where group_id = ?1", nativeQuery = true)
     Float  countEmployee(Integer groupID);
+     @Query(value = "SELECT IFNULL(max(sort),0)  from group_role gr  ",nativeQuery = true)
+     Integer getMaxSort();
 
 }
