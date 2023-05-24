@@ -1,5 +1,6 @@
 package com.example.itspower.response.report;
 
+import com.example.itspower.model.resultset.RestDto;
 import lombok.Data;
 
 import java.util.Date;
@@ -26,8 +27,7 @@ public class ReportSearchResponse {
     private List<String> employeeStop;
     private List<String> employeeTransferTo;
     private List<String> employeeReceive;
-    private List<String> restEmployee;
-
+    private List<RestDto> rests;
     private Integer riceCus;
     private Integer riceEmployee;
     private Integer riceVip;
