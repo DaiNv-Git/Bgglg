@@ -65,7 +65,7 @@ import java.util.Date;
                                 @ColumnResult(name = "laborProductivity", type = Double.class),
                                 @ColumnResult(name = "numberStop", type = Integer.class),
                                 @ColumnResult(name = "restNum", type = Double.class),
-                                @ColumnResult(name = "partTimeNum", type = Integer.class),
+                                @ColumnResult(name = "partTimeNum", type = Double.class),
                                 @ColumnResult(name = "transferReceive", type = Integer.class),
                                 @ColumnResult(name = "transferTo", type = Integer.class),
                                 @ColumnResult(name = "studentNum", type = Integer.class),
