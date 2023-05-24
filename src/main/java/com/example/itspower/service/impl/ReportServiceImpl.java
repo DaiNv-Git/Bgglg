@@ -123,7 +123,11 @@ public class ReportServiceImpl implements ReportService {
         try {
             ReportEntity reportEntity = updateReport(request, groupId);
             riceRepository.updateRice(request.getRiceRequests(), reportEntity.getId());
-            restRepository.saveRest(request.getRestRequests(), reportEntity.getId());
+            request.getRestRequests().forEach(z -> {
+                if (z.getRestId() != null && z.getRestId() != 0) {
+                    restRepository.updateRest(request.getRestRequests(), reportEntity.getId());
+                }
+            });
             transferRepository.saveTransfer(request.getTransferRequests(), reportEntity.getId(),groupId);
         } catch (Exception e) {
             throw new RuntimeException("save fail");
