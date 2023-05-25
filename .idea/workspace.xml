@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6d461146-e749-4aaa-a5a9-fe487bfd78b9" name="Changes" comment="fix save report">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/ReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/ReportEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/ReportEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/ReportNangsuatResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/ReportNangsuatResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/ExportExcel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/ExportExcel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/template/BGGLG_EXCEL.xls" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/template/BGGLG_EXCEL.xls" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -699,8 +704,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/repository/TransferRepository.java</url>
-          <line>46</line>
+          <line>59</line>
           <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java</url>
+          <line>283</line>
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java</url>
+          <line>292</line>
+          <option name="timeStamp" value="99" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
