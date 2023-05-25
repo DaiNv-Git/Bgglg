@@ -7,6 +7,7 @@ import com.example.itspower.repository.ReportRepository;
 import com.example.itspower.repository.repositoryjpa.EmpTerminationContractRepository;
 import com.example.itspower.repository.repositoryjpa.GroupJpaRepository;
 import com.example.itspower.repository.repositoryjpa.ReportJpaRepository;
+import com.example.itspower.response.ReportNangsuatResponse;
 import com.example.itspower.response.export.EmployeeExportExcelContractEnd;
 import com.example.itspower.response.export.ExportExcelDtoReport;
 import com.example.itspower.response.export.ExportExcelEmpRest;
@@ -39,6 +40,9 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
     private GroupRoleRepository groupRoleRepository;
     @Autowired
     private ReportRepository reportRepository;
+
+    @Autowired
+    private ReportJpaRepository reportJPARepository;
     @Autowired
     private EmpTerminationContractRepository empTerminationContractRepository;
     @Autowired
@@ -276,10 +280,20 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
     }
 
     public byte[] exportExcel(String reportDate) throws IOException {
-        List<ExportExcelDtoReport> reportExcel = reportRepository.findByReportExcel(reportDate);
-        List<EmployeeExportExcelContractEnd> employeeExportExcelContractEnds = empTerminationContractRepository.findByEmployee(reportDate);
-        List<ExportExcelEmpRest> exportExcelEmpRests = reportRepository.findByReportExcelEmpRest(reportDate);
-        exportExcel.initializeData(reportExcel, employeeExportExcelContractEnds, exportExcelEmpRests);
-        return exportExcel.export();
+        try{
+            List<ExportExcelDtoReport> reportExcel = reportRepository.findByReportExcel(reportDate);
+            List<EmployeeExportExcelContractEnd> employeeExportExcelContractEnds = empTerminationContractRepository.findByEmployee(reportDate);
+            List<ExportExcelEmpRest> exportExcelEmpRests = reportRepository.findByReportExcelEmpRest(reportDate);
+            List<ReportNangsuatResponse> nangsuat = reportJPARepository.findNangSuat(reportDate);
+            int j = 0;
+            for (int i = 1 ; i <= nangsuat.size();i++){
+                nangsuat.get(j).setId(i);
+                ++j;
+            }
+            exportExcel.initializeData(reportExcel, employeeExportExcelContractEnds, exportExcelEmpRests,nangsuat);
+            return exportExcel.export();
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
     }
 }

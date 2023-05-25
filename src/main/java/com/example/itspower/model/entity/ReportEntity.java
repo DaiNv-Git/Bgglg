@@ -1,6 +1,7 @@
 package com.example.itspower.model.entity;
 
 import com.example.itspower.model.resultset.ReportDto;
+import com.example.itspower.response.ReportNangsuatResponse;
 import com.example.itspower.response.export.ExportExcelDtoReport;
 import com.example.itspower.response.export.ExportExcelEmpRest;
 import com.example.itspower.response.report.ReportSearchResponse;
@@ -185,6 +186,35 @@ import java.util.Date;
                 "left join reason r3 on r2.reason_id = r3.id\n" +
                 "where DATE_FORMAT(r.report_date ,'%Y%m%d') = DATE_FORMAT(:reportDate ,'%Y%m%d')",
          resultSetMapping = "ExportExcelEmpRest"
+)
+
+
+@SqlResultSetMapping(
+        name = "GroupReportMapping",
+        classes = @ConstructorResult(
+                targetClass = ReportNangsuatResponse.class,
+                columns = {
+                        @ColumnResult(name = "name", type = String.class),
+                        @ColumnResult(name = "demarcation", type = Double.class),
+                        @ColumnResult(name = "restNum", type = Integer.class),
+                        @ColumnResult(name = "laborProductivity", type = Double.class),
+                        @ColumnResult(name = "stopNumber", type = Integer.class),
+                        @ColumnResult(name = "newNumber", type = Integer.class),
+                }
+        )
+)
+@NamedNativeQuery(
+        name = "GroupReport.findAll",
+        query = "SELECT gr.group_name AS name, r.demarcation AS demarcation, r.rest_num AS restNum, r.labor_productivity AS laborProductivity, \n" +
+                "    COUNT(etc.id) AS stopNumber, COUNT(ge.id) AS newNumber\n" +
+                "FROM report r\n" +
+                "INNER JOIN group_role gr ON r.group_id = gr.id\n" +
+                "LEFT JOIN emp_termination_contract etc ON etc.group_id = gr.id AND DATE_FORMAT(etc.start_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d')\n" +
+                "LEFT JOIN group_employee ge ON ge.group_id = gr.id AND DATE_FORMAT(ge.createDate, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d') \n" +
+                "WHERE DATE_FORMAT(r.report_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d')\n" +
+                "GROUP BY gr.group_name, r.demarcation, r.rest_num, r.labor_productivity, gr.sort\n" +
+                "ORDER BY gr.sort ASC",
+        resultSetMapping = "GroupReportMapping"
 )
 public class ReportEntity {
     @Id
