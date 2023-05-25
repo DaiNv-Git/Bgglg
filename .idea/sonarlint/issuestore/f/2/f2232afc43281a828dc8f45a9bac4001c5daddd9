@@ -1,0 +1,6 @@
+
+`	java:S112j"FDefine and throw a dedicated exception instead of using a generic one.(ŠªõŽüÿÿÿÿ
+y
+java:S3655U"^Call "userGroupEntity.isPresent()" or "!userGroupEntity.isEmpty()" before accessing the value.(¦ÎÌ—ûÿÿÿÿ
+k
+java:S3655S"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÉÖ–úüÿÿÿÿ

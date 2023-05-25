@@ -7,6 +7,7 @@ import com.example.itspower.response.dynamic.PageResponse;
 import com.example.itspower.response.employee.EmployeeExportExcel;
 import com.example.itspower.response.employee.EmployeeGroupResponse;
 import com.example.itspower.service.EmployeeGroupService;
+import com.example.itspower.util.DateUtils;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Component;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -34,9 +36,14 @@ public class EmployeeGroupServiceImpl implements EmployeeGroupService {
         for (addUserRequest addUserRequest : addUser) {
             EmployeeGroupEntity employeeGroup = new EmployeeGroupEntity();
             employeeGroup.setId(addUserRequest.getId());
+            List<EmployeeGroupEntity> entity = groupRepository.findLaborCode(addUserRequest.getLaborCode());
+            if (entity.size() >0) {
+                throw new RuntimeException("labor code duplicate");
+            }
             employeeGroup.setGroupId(addUserRequest.getGroupId());
             employeeGroup.setLaborCode(addUserRequest.getLaborCode());
             employeeGroup.setName(addUserRequest.getName());
+            employeeGroup.setCreateDate(DateUtils.formatDate(new Date(),"yyyy-MM-dd"));
             save.add(employeeGroup);
         }
         groupRepository.saveAll(save);

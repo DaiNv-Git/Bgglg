@@ -71,7 +71,8 @@ public class ReportServiceImpl implements ReportService {
                 response.setEmployeeTransferTo(reportJpaRepository.findEmployeeTransferTo(reportDate,groupId));
                 response.setEmployeeReceive(reportJpaRepository.employeeReceive(reportDate,groupId));
                 response.setEmployeeStop(reportJpaRepository.findEmployeeStop(reportDate,groupId));
-                response.setRestEmployee(reportJpaRepository.findRestEmployee(reportDate,groupId));
+//                response.setRests(new );
+               response.setRests(restRepository.getRests(response.getId()));
                 response.setRiceResponses(new RiceReportResponse(response.getRiceID(),response.getRiceEmployee(),response.getRiceCus(),
                         response.getRiceVip()));
             }
@@ -112,7 +113,7 @@ public class ReportServiceImpl implements ReportService {
             ReportEntity reportEntity = reportRepository.saveReport(request, groupId);
             riceRepository.saveRice(request.getRiceRequests(), reportEntity.getId());
             restRepository.saveRest(request.getRestRequests(), reportEntity.getId());
-            transferRepository.saveTransfer(request.getTransferRequests(), reportEntity.getId(),groupId);
+             transferRepository.saveTransfer(request.getTransferRequests(), reportEntity.getId(),groupId);
         } catch (Exception e) {
             throw new RuntimeException("save fail");
         }
@@ -123,7 +124,11 @@ public class ReportServiceImpl implements ReportService {
         try {
             ReportEntity reportEntity = updateReport(request, groupId);
             riceRepository.updateRice(request.getRiceRequests(), reportEntity.getId());
-            restRepository.saveRest(request.getRestRequests(), reportEntity.getId());
+            request.getRestRequests().forEach(z -> {
+                if (z.getRestId() != null && z.getRestId() != 0) {
+                    restRepository.updateRest(request.getRestRequests(), reportEntity.getId());
+                }
+            });
             transferRepository.saveTransfer(request.getTransferRequests(), reportEntity.getId(),groupId);
         } catch (Exception e) {
             throw new RuntimeException("save fail");

@@ -234,6 +234,4 @@ public class GroupEntity implements Serializable {
     private Float demarcationAvailable;
     @Column(name = "sort")
     private Integer sort;
-
-
 }

@@ -2,6 +2,7 @@ package com.example.itspower.repository.repositoryjpa;
 
 import com.example.itspower.model.entity.ReportEntity;
 import com.example.itspower.model.resultset.ReportDto;
+import com.example.itspower.response.ReportNangsuatResponse;
 import com.example.itspower.response.export.ExportExcelDtoReport;
 import com.example.itspower.response.export.ExportExcelEmpRest;
 import com.example.itspower.response.report.ReportSearchResponse;
@@ -21,6 +22,11 @@ import java.util.Optional;
 public interface ReportJpaRepository extends JpaRepository<ReportEntity, Integer>, JpaSpecificationExecutor<ReportEntity> {
     @Query(name = "find_by_report", nativeQuery = true)
     ReportDto findByReport(@Param("reportDate") String reportDate, @Param("groupId") int groupId);
+
+    @Query(name = "GroupReport.findAll", nativeQuery = true)
+    List<ReportNangsuatResponse> findNangSuat(@Param("reportDate") String reportDate);
+
+
     @Query(value = "SELECT  CONCAT(name, ' - ', labor) from list_employee_transfer let where groupID in ( " +
             "SELECT t.group_id  from transfer t where t.report_id =(SELECT id  from report r2 where r2.group_id = ?2 " +
             "and  DATE_FORMAT(r2.report_date, '%Y%m%d') = DATE_FORMAT(?1, '%Y%m%d')   ) );",nativeQuery = true)

@@ -1,6 +1,6 @@
 package com.example.itspower.response.report;
 
-import com.example.itspower.model.entity.RiceEntity;
+import com.example.itspower.model.resultset.RestDto;
 import lombok.Data;
 
 import java.util.Date;
@@ -16,7 +16,7 @@ public class ReportSearchResponse {
     private Double laborProductivity;
     private Integer numberStop;
     private Double restNum;
-    private Integer partTimeNum;
+    private Double partTimeNum;
     private Integer transferReceive;
     private Integer transferTo;
     private Integer studentNum;
@@ -27,8 +27,7 @@ public class ReportSearchResponse {
     private List<String> employeeStop;
     private List<String> employeeTransferTo;
     private List<String> employeeReceive;
-    private List<String> restEmployee;
-
+    private List<RestDto> rests;
     private Integer riceCus;
     private Integer riceEmployee;
     private Integer riceVip;
@@ -42,7 +41,7 @@ public class ReportSearchResponse {
 
     public ReportSearchResponse(Integer id, Integer groupId, Integer demarcation, Integer demarcationAvailable,
                                 Float unproductiveLabor, Double laborProductivity, Integer numberStop,
-                                Double restNum, Integer partTimeNum, Integer transferReceive, Integer transferTo,
+                                Double restNum, Double partTimeNum, Integer transferReceive, Integer transferTo,
                                 Integer studentNum, Integer totalRice, Date reportDate, Integer professionNotLabor,
                                 Integer professionLabor,Integer riceCus, Integer riceEmployee,Integer riceVip,Integer riceID) {
         this.id = id;

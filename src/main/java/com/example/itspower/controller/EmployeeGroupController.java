@@ -36,7 +36,7 @@ public class EmployeeGroupController {
             employeeGroupService.saveAll(addUser);
             return new SuccessResponse<>(HttpStatus.CREATED.value(), "add new success", null);
         } catch (Exception e) {
-            throw new ReasonException(HttpStatus.BAD_REQUEST.value(), ERROR, e);
+                 return  new SuccessResponse<>(HttpStatus.BAD_REQUEST.value(), "laborCode is duplicate", null);
         }
     }
 

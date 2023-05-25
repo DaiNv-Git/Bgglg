@@ -63,7 +63,7 @@ public class ReportController {
     public ResponseEntity<Object> update(@RequestBody ReportRequest reportRequest, @RequestParam("groupId") int groupId) throws GeneralException {
         try {
             reportService.update(reportRequest, groupId);
-            return ResponseEntity.ok(new SuccessResponse<>(HttpStatus.OK.value(), "add new success"));
+             return ResponseEntity.ok(new SuccessResponse<>(HttpStatus.OK.value(), "add new success"));
         } catch (Exception e) {
             throw new GeneralException(e.getMessage());
         }

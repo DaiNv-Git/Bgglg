@@ -164,12 +164,12 @@ public class GroupRoleServiceImpl implements GroupRoleService {
 
     @Override
     public Object getDemarcationRes(Integer groupId) {
-        return groupRoleRepository.getDemarcationRes(groupId);
+         return groupRoleRepository.getDemarcationRes(groupId);
     }
 
     @Override
     public List<GroupRoleDemarcationRes> getAllDemarcationRes() {
-        return null;
+         return null;
     }
 
     @Override

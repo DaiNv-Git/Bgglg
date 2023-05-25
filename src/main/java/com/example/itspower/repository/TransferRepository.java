@@ -39,7 +39,20 @@ public class TransferRepository {
          List<TransferEntity> entities = transferJpaRepository.findByReportId(reportId);
         return entities;
     }
-
+    @Transactional
+    public Object updateTransfer(List<TransferRequest> requests, Integer reportId) {
+        List<TransferEntity> entities = new ArrayList<>();
+        for (TransferRequest transfer : requests) {
+            TransferEntity entity = new TransferEntity();
+            entity.setTransferId(transfer.getTransferId());
+            entity.setReportId(reportId);
+            entity.setGroupId(transfer.getGroupId());
+            entity.setTransferDate(new Date());
+            entity.setTransferNum(transfer.getTransferNum());
+            entities.add(entity);
+        }
+        return transferJpaRepository.saveAll(entities);
+    }
     public void saveTransfer(List<TransferRequest> requests, Integer reportId,int groupId) {
         try{
             List<TransferEntity> entities = new ArrayList<>();
