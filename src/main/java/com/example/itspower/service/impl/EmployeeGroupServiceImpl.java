@@ -34,6 +34,10 @@ public class EmployeeGroupServiceImpl implements EmployeeGroupService {
         for (addUserRequest addUserRequest : addUser) {
             EmployeeGroupEntity employeeGroup = new EmployeeGroupEntity();
             employeeGroup.setId(addUserRequest.getId());
+            List<EmployeeGroupEntity> entity = groupRepository.findLaborCode(addUserRequest.getLaborCode());
+            if (entity.size() >0) {
+                throw new RuntimeException("labor code duplicate");
+            }
             employeeGroup.setGroupId(addUserRequest.getGroupId());
             employeeGroup.setLaborCode(addUserRequest.getLaborCode());
             employeeGroup.setName(addUserRequest.getName());

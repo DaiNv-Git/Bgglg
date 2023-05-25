@@ -5,12 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8e811f7-ab85-440d-81dd-29fe6388095e" name="Changes" comment="add excel employeeza">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/e/9eae4fe559acb91de28eec640c66db7e6a7635fa" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/7/b7ec7f85d499631d9c2f42301d0e2efcd6f997f5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/e/ee4efc4e8dc042745a3bad89d235836ef3f9adff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/0680717be73416b6a1a49a82e45813cfefb07628" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/a/0a1c19a0ca9cd03fa722aeb9ce921031943ca24c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/a/0a25f37628fd224292cd0ceeff9e5529c9ffbae4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/f/0f042621b145832777340a1d89ccf6490a7b1540" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/30eccb9c3f860f79f19526c01e7a98a9f69274c6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/399ac572d6e35ebcc79503d8d87766b4cccf63a1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/2/42cc696565d19963eb7d3dc0552ec676648d2148" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/2/42cc696565d19963eb7d3dc0552ec676648d2148" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/d/5d3270c8ab2724c1fcc37d0f67212f908ac706b0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/1/61144af2b7ea04649ac1f4aff9a5c9c8c57c2455" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/6/964d13f1b1369755f11d12722b57da819b880ff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8c1d88bc85fafa7327bb3e4d43033e76119f498" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/4/d46e4344d14556425fefa365f281a358dcce77be" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/0/f091b8e3dfbc3c4f12f5475c8c7983b2fd63a6ba" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/a/0a25f37628fd224292cd0ceeff9e5529c9ffbae4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/f/0f042621b145832777340a1d89ccf6490a7b1540" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/0/30eccb9c3f860f79f19526c01e7a98a9f69274c6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/1/61144af2b7ea04649ac1f4aff9a5c9c8c57c2455" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/6/964d13f1b1369755f11d12722b57da819b880ff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/4/d46e4344d14556425fefa365f281a358dcce77be" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/0/f091b8e3dfbc3c4f12f5475c8c7983b2fd63a6ba" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/report/ReportSearchResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/report/ReportSearchResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ReportServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/EmployeeGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/EmployeeGroupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/exception/ErrorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/exception/ErrorResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/exception/ReasonException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/exception/ReasonException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/GroupRoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/GroupRoleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/repositoryjpa/EmployeeGroupRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/repositoryjpa/EmployeeGroupRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/EmployeeGroupServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/EmployeeGroupServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +145,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;da0449ae01b7f5aab043103a07dfd4e6&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;d711370da4480ce50d2728dd0e8fdd13&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -280,13 +302,9 @@
       <workItem from="1681965035897" duration="64000" />
       <workItem from="1681965778835" duration="1282000" />
       <workItem from="1682131271416" duration="16777000" />
-    </task>
-    <task id="LOCAL-00038" summary="api report">
-      <created>1679495139687</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1679495139687</updated>
+      <workItem from="1684919256375" duration="651000" />
+      <workItem from="1684924333567" duration="386000" />
+      <workItem from="1684978551946" duration="3140000" />
     </task>
     <task id="LOCAL-00039" summary="api report">
       <created>1679495439102</created>
@@ -624,7 +642,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684912012278</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="add excel employeeza">
+      <created>1684918193656</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1684918193656</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -681,6 +706,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java</url>
           <line>159</line>
           <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/controller/EmployeeGroupController.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/EmployeeGroupServiceImpl.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="83" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

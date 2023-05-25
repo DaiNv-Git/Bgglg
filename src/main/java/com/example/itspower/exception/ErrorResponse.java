@@ -17,4 +17,5 @@ public class ErrorResponse {
     private Integer errorCode;
     private String message;
     private List<String> errors;
+
 }

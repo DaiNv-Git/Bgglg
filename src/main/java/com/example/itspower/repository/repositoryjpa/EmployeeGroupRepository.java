@@ -25,6 +25,7 @@ public interface EmployeeGroupRepository extends JpaRepository<EmployeeGroupEnti
     @Query(value = "SELECT count(*) from group_employee", nativeQuery = true)
     int countEmployee();
 
+
     @Query(value = "SELECT * from group_employee ge where labor_code = ?1",nativeQuery = true)
     Integer findIDByLaborCode(String laborCode);
 
@@ -35,4 +36,6 @@ public interface EmployeeGroupRepository extends JpaRepository<EmployeeGroupEnti
     void deleteByGroupIdAndLaborCodeIn(Integer groupId,List<String> laborCode);
 
     Optional<EmployeeGroupEntity> findByLaborCode(String laborCode);
+    @Query(value = "select * from group_employee where labor_code = ?1",nativeQuery = true)
+    List<EmployeeGroupEntity> findLaborCode(String laborCode);
 }
