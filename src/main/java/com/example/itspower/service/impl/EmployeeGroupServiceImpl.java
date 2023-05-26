@@ -13,6 +13,8 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +23,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,6 +32,12 @@ import java.util.List;
 public class EmployeeGroupServiceImpl implements EmployeeGroupService {
     @Autowired
     EmployeeGroupRepository groupRepository;
+
+    private final ResourceLoader resourceLoader;
+
+    public EmployeeGroupServiceImpl(ResourceLoader resourceLoader) {
+        this.resourceLoader = resourceLoader;
+    }
 
     @Override
     public void saveAll(List<addUserRequest> addUser) {
@@ -51,36 +60,44 @@ public class EmployeeGroupServiceImpl implements EmployeeGroupService {
 
     @Override
     public byte[] exportExcel() throws IOException {
-        List<EmployeeExportExcel> exportExcels = groupRepository.getExcelEmployee();
-        Workbook workbook = new XSSFWorkbook();
-        Sheet sheet = workbook.createSheet("employee list");
-        Row headerRow = sheet.createRow(0);
-        headerRow.createCell(0).setCellValue("Tổ");
-        headerRow.createCell(1).setCellValue("Tên");
-        headerRow.createCell(2).setCellValue("Mã");
-
-        int rowNum = 1;
-        for (EmployeeExportExcel object : exportExcels) {
-            Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(object.getGroupName());
-            row.createCell(1).setCellValue(object.getName());
-            row.createCell(2).setCellValue(object.getLabor());
-        }
-
-        for (int i = 0; i < 3; i++) {
-            sheet.autoSizeColumn(i);
-        }
-
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         try {
+            Resource resource = resourceLoader.getResource("classpath:template/employee.xls");
+            InputStream inp = resource.getInputStream();
+            Workbook workbook = new XSSFWorkbook(inp);
+            Sheet sheet = workbook.getSheetAt(0); // Lấy sheet trong mẫu (template)
+
+            // Ghi dữ liệu vào mẫu Excel
+            List<EmployeeExportExcel> exportExcels = groupRepository.getExcelEmployee();
+            int rowNum = 1;
+            for (EmployeeExportExcel object : exportExcels) {
+                Row row = sheet.createRow(rowNum++);
+                row.createCell(0).setCellValue(object.getGroupName());
+                row.createCell(1).setCellValue(object.getName());
+                row.createCell(2).setCellValue(object.getLabor());
+            }
+
+            for (int i = 0; i < 3; i++) {
+                sheet.autoSizeColumn(i);
+            }
+
+            // Ghi Workbook vào ByteArrayOutputStream
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             workbook.write(outputStream);
+
+            // Chuyển đổi ByteArrayOutputStream thành mảng byte
+            byte[] excelBytes = outputStream.toByteArray();
+
+            // Đóng các luồng và giải phóng tài nguyên
             outputStream.close();
             workbook.close();
+
+            return excelBytes;
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return outputStream.toByteArray();
+        return null;
 
     }
 
