@@ -29,8 +29,6 @@ w
 Gsrc/main/java/com/example/itspower/exception/ResponseEntityBuilder.java,0\6\0680717be73416b6a1a49a82e45813cfefb07628
 q
 Asrc/main/java/com/example/itspower/exception/ReasonException.java,d\4\d46e4344d14556425fefa365f281a358dcce77be
-ˆ
-Xsrc/main/java/com/example/itspower/repository/repositoryjpa/EmployeeGroupRepository.java,9\6\964d13f1b1369755f11d12722b57da819b880ff2
 w
 Gsrc/main/java/com/example/itspower/response/ReportNangsuatResponse.java,f\1\f11a54d2b9d18117272843f88d53700d934b224f
 u

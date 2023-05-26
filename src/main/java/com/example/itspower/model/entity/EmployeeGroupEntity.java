@@ -37,7 +37,7 @@ import javax.persistence.*;
         )
 )
 @NamedNativeQuery(name = "execl_Employee", query = "SELECT ge.name as employeeName,ge.labor_code as laborCode,gr.group_name as groupName " +
-        " from group_employee ge inner join group_role gr on gr.id =ge.group_id ",
+        " from group_employee ge inner join group_role gr on gr.id =ge.group_id limit 5",
         resultSetMapping = "execlEmployee"
 )
 @Entity

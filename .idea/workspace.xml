@@ -4,183 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8e811f7-ab85-440d-81dd-29fe6388095e" name="Changes" comment="ADD EXCEPTIOn">
+    <list default="true" id="d8e811f7-ab85-440d-81dd-29fe6388095e" name="Changes" comment="ádassdas">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/6/964d13f1b1369755f11d12722b57da819b880ff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/1/e15358649b5c2453f2eeee3496517480bb67b09d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/6/964d13f1b1369755f11d12722b57da819b880ff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/1/e15358649b5c2453f2eeee3496517480bb67b09d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/EmployeeGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/EmployeeGroupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/EmployeeGroupServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/EmployeeGroupServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/ItsPowerApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/component/Auth/AuthConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/component/constrant/EFieldMatch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/component/constrant/FieldMatch$List.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/component/constrant/FieldMatch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/component/constrant/FieldsMatchValidator$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/component/constrant/FieldsMatchValidator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/component/enums/ERoles.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/component/enums/StatusReason.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/component/enums/TransferType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/config/SetToStringConverter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/config/SwaggerConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/EmployeeGroupController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/GroupRoleController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/ReasonController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/ReportController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/TransferController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/UserController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/ViewController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/exception/DuplicateResourceException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/exception/ErrorCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/exception/ErrorResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/exception/GeneralException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/exception/ReasonException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/exception/ResourceNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/exception/ResponseEntityBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/exception/ViolationBusinessException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/filter/AjaxAuthenticationProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/filter/JwtAuthenticationEntryPoint.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/filter/JwtAuthenticationFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/filter/JwtToken.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/EmployeeGroupEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/EmployeeTerminationOfContractEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/EmployeeTransferEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/GroupEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/ReasonEntity$ReasonEntityBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/ReasonEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/ReportEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/RestEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/RiceEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/TransferEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/UserEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/UserGroupEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/resultset/GroupRoleDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/resultset/ReportDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/resultset/RestDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/resultset/RootNameDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/resultset/UserDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/resultset/ViewAllDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/usertoken/UserRefreshToken.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/usertoken/UserResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/GroupRoleRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/ReasonRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/ReportRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/RestRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/RiceRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/TransferRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/UserGroupRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/UserRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/EmpTerminationContractRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/EmployeeGroupRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/EmployeeTransferRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/GroupJpaRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/ReasonJpaRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/ReportJpaRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/RestJpaRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/RiceJpaRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/TransferJpaRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/UserGroupJpaRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/UserJpaRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/request/EmployeeGroupRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/request/GroupRoleRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/request/ReasonRequest$ReasonRequestBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/request/ReasonRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/request/ReportRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/request/RestRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/request/RestRequestDelete.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/request/RiceRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/request/TransferRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/request/search/SearchEmployeeRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/request/search/UserSearchRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/request/userrequest/UserDeleteRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/request/userrequest/UserUpdateRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/request/userrequest/addUserRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/AbstractResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/BaseResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/ReportDetailResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/ReportNangsuatResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/ResponseHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/SuccessResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/dynamic/PageResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/employee/EmployeeExportExcel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/employee/EmployeeGroupResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/employee/EmployeeInforResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/export/EmployeeExportExcelContractEnd.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/export/ExportExcelDtoReport.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/export/ExportExcelEmpRest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/GroupRoleAndReportDetailsRes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/GroupRoleDemarcationRes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/GroupRoleResponse$GroupRoleResponseBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/GroupRoleResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/GroupRoleResponseChildren.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/InterfaceReportDetails.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/ResponseCount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/ViewDetailGroupResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/ViewDetailGroups.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/ViewDetailsResponse$ViewDetailsResponseBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/ViewDetailsResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/ViewGroupRoot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/report/ReportResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/report/ReportSearchResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/report/RiceReportResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/search/UserAulogin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/search/UserRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/transfer/TransferNumAccept.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/transfer/TransferResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/transfer/TransferResponseGroup.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/user/GroupResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/user/ListUserResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/user/UserGroupResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/user/UserResponseSave.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/ListNameRestResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/ReasonResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/ReasonRest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/RestObjectResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/RiceResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/RootResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/ViewDetailResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/ViewDetailResponseDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/ViewRemoveTomayRes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/ViewRootResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/reasonEmployee.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/security/CorsConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/security/SecurityConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/EmployeeGroupService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/GroupRoleService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/ReasonService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/ReportService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/TransferService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/ViewDetailService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/ViewService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/exportexcel/ExportExcel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/EmployeeGroupServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/GroupRoleServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ImportEmployee.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ReasonServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ReportServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/TransferServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/UserLoginConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/UserServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ViewDetailSerivceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ViewServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/type/Language.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/type/RegexType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/util/ConverterUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/util/Date.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/util/DateUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/util/DateValidator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/util/GroupNameExcep.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/util/GroupNameValidator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/util/HeaderExcelTem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/util/Integer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/util/IntegerValidator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/util/StartBeforeEndDate$List.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/util/StartBeforeEndDate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/util/StartBeforeEndDateValidator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/util/TextUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/message.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/project-b91e4.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/template/BGGLG_EXCEL.xls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/template/employee.xls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/EmployeeGroupEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/EmployeeGroupEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -460,14 +292,7 @@
       <workItem from="1685072594472" duration="898000" />
       <workItem from="1685073524908" duration="756000" />
       <workItem from="1685074347973" duration="1070000" />
-      <workItem from="1685083976794" duration="5679000" />
-    </task>
-    <task id="LOCAL-00047" summary="api report">
-      <created>1679673336425</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1679673336425</updated>
+      <workItem from="1685083976794" duration="6138000" />
     </task>
     <task id="LOCAL-00048" summary="api report">
       <created>1679673583816</created>
@@ -805,7 +630,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685089037244</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="ádassdas">
+      <created>1685089678438</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1685089678438</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -839,7 +671,8 @@
     <MESSAGE value="fix api add request rest" />
     <MESSAGE value="add excel employeeza" />
     <MESSAGE value="ADD EXCEPTIOn" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADD EXCEPTIOn" />
+    <MESSAGE value="ádassdas" />
+    <option name="LAST_COMMIT_MESSAGE" value="ádassdas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
