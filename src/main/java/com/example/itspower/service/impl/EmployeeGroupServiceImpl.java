@@ -70,8 +70,8 @@ public class EmployeeGroupServiceImpl implements EmployeeGroupService {
         }
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         workbook.write(outputStream);
-        workbook.close();
         outputStream.close();
+        workbook.close();
         return outputStream.toByteArray();
     }
 

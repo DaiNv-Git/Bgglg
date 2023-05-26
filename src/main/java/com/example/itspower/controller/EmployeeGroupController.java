@@ -93,7 +93,7 @@ public class EmployeeGroupController {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse<>(employeeGroupService.exportExcel()));
         } catch (Exception e) {
-            throw new ReasonException(HttpStatus.NOT_FOUND.value(), ERROR, e);
+            throw new ReasonException(HttpStatus.NOT_FOUND.value(), "saiiiiii", "saiiiiii");
         }
     }
 }
