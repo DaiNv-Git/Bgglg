@@ -5,12 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8e811f7-ab85-440d-81dd-29fe6388095e" name="Changes" comment="ádassdas">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/6/964d13f1b1369755f11d12722b57da819b880ff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/1/e15358649b5c2453f2eeee3496517480bb67b09d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/6/964d13f1b1369755f11d12722b57da819b880ff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/1/e15358649b5c2453f2eeee3496517480bb67b09d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/EmployeeGroupEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/EmployeeGroupEntity.java" afterDir="false" />
     </list>
@@ -292,14 +286,7 @@
       <workItem from="1685072594472" duration="898000" />
       <workItem from="1685073524908" duration="756000" />
       <workItem from="1685074347973" duration="1070000" />
-      <workItem from="1685083976794" duration="6138000" />
-    </task>
-    <task id="LOCAL-00048" summary="api report">
-      <created>1679673583816</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1679673583816</updated>
+      <workItem from="1685083976794" duration="6622000" />
     </task>
     <task id="LOCAL-00049" summary="api report">
       <created>1679674731108</created>
@@ -637,7 +624,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685089678438</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="ádassdas">
+      <created>1685090133075</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1685090133075</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
