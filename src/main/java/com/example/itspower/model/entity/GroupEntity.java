@@ -117,7 +117,7 @@ import java.io.Serializable;
         "           rp.report_date AS reportDate  " +
         "    FROM group_role gr\n" +
         "    LEFT JOIN report rp ON gr.id = rp.group_id \n" +
-        "    LEFT JOIN rice r ON rp.id = r.report_id \n" +
+        "    LEFT JOIN rice r ON rp.id = r.report_id order by gr.sort asc\n" +
         ") subq -- add an alias for the subquery\n" +
         "WHERE DATE_FORMAT(subq.reportDate, '%Y%m%d') = DATE_FORMAT(:reportDate,'%Y%m%d')\n" +
         "or subq.reportDate is null  ",
