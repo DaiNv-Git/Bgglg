@@ -1,5 +1,4 @@
 package com.example.itspower.controller;
-
 import com.example.itspower.exception.GeneralException;
 import com.example.itspower.request.EmployeeGroupRequest;
 import com.example.itspower.request.ReportRequest;
@@ -9,7 +8,6 @@ import com.example.itspower.service.ReportService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

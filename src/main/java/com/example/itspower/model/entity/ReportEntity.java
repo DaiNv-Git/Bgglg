@@ -200,19 +200,21 @@ import java.util.Date;
                         @ColumnResult(name = "laborProductivity", type = Double.class),
                         @ColumnResult(name = "stopNumber", type = Integer.class),
                         @ColumnResult(name = "newNumber", type = Integer.class),
+                        @ColumnResult(name = "student", type = Double.class),
+                        @ColumnResult(name = "partTime", type = Double.class),
                 }
         )
 )
 @NamedNativeQuery(
         name = "GroupReport.findAll",
         query = "SELECT gr.group_name AS name, r.demarcation AS demarcation, r.rest_num AS restNum, r.labor_productivity AS laborProductivity, \n" +
-                "    COUNT(etc.id) AS stopNumber, COUNT(ge.id) AS newNumber\n" +
-                "FROM report r\n" +
+                "    COUNT(etc.id) AS stopNumber, COUNT(ge.id) AS newNumber ,r.student_num as student,r.part_time_num as partTime " +
+                " FROM report r\n" +
                 "INNER JOIN group_role gr ON r.group_id = gr.id\n" +
                 "LEFT JOIN emp_termination_contract etc ON etc.group_id = gr.id AND DATE_FORMAT(etc.start_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d')\n" +
                 "LEFT JOIN group_employee ge ON ge.group_id = gr.id AND DATE_FORMAT(ge.createDate, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d') \n" +
                 "WHERE DATE_FORMAT(r.report_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d')\n" +
-                "GROUP BY gr.group_name, r.demarcation, r.rest_num, r.labor_productivity, gr.sort\n" +
+                "GROUP BY gr.group_name, r.demarcation, r.rest_num, r.labor_productivity,r.student_num,r.part_time_num, gr.sort\n" +
                 "ORDER BY gr.sort ASC",
         resultSetMapping = "GroupReportMapping"
 )

@@ -125,6 +125,8 @@ public class ExportExcel {
             createCell(row, columnCount++, employee.getRestNum(), style);
             createCell(row, columnCount++, employee.getStopNumber(), style);
             createCell(row, columnCount++, employee.getNewNumber(), style);
+            createCell(row, columnCount++, employee.getStudent(), style);
+            createCell(row, columnCount++, employee.getPartTime(), style);
             createCell(row, columnCount, employee.getLaborProductivity(), style3);
         }
         for (ExportExcelDtoReport data1 : reportExcel) {
