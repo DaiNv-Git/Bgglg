@@ -22,7 +22,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
@@ -59,14 +58,12 @@ public class EmployeeGroupServiceImpl implements EmployeeGroupService {
     }
 
     @Override
-    public byte[] exportExcel() throws IOException {
+    public byte[] exportExcel() {
         try {
             Resource resource = resourceLoader.getResource("classpath:template/employee.xls");
             InputStream inp = resource.getInputStream();
             Workbook workbook = new XSSFWorkbook(inp);
-            Sheet sheet = workbook.getSheetAt(0); // Lấy sheet trong mẫu (template)
-
-            // Ghi dữ liệu vào mẫu Excel
+            Sheet sheet = workbook.getSheetAt(0);
             List<EmployeeExportExcel> exportExcels = groupRepository.getExcelEmployee();
             int rowNum = 1;
             for (EmployeeExportExcel object : exportExcels) {
@@ -75,30 +72,19 @@ public class EmployeeGroupServiceImpl implements EmployeeGroupService {
                 row.createCell(1).setCellValue(object.getName());
                 row.createCell(2).setCellValue(object.getLabor());
             }
-
             for (int i = 0; i < 3; i++) {
                 sheet.autoSizeColumn(i);
             }
-
-            // Ghi Workbook vào ByteArrayOutputStream
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             workbook.write(outputStream);
-
-            // Chuyển đổi ByteArrayOutputStream thành mảng byte
             byte[] excelBytes = outputStream.toByteArray();
-
-            // Đóng các luồng và giải phóng tài nguyên
             outputStream.close();
             workbook.close();
-
             return excelBytes;
-
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
         return null;
-
     }
 
 
