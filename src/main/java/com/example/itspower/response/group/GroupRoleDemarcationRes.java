@@ -11,10 +11,10 @@ public class GroupRoleDemarcationRes {
     private String groupName;
     private Float demarcationAvailable;
 
-    public GroupRoleDemarcationRes(GroupEntity groupEntity) {
+    public GroupRoleDemarcationRes(GroupEntity groupEntity,Float demarcation) {
         this.groupId = groupEntity.getId();
         this.groupName = groupEntity.getGroupName();
-        this.demarcationAvailable = groupEntity.getDemarcationAvailable();
+        this.demarcationAvailable = demarcation;
     }
 
     public GroupRoleDemarcationRes(Integer groupId, Float demarcationAvailable, String groupName) {

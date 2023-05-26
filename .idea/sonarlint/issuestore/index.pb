@@ -55,3 +55,5 @@ s
 Csrc/main/java/com/example/itspower/repository/ReportRepository.java,b\c\bc43fb8f305242e19a25dac009a348c7fe3dff98
 „
 Tsrc/main/java/com/example/itspower/repository/repositoryjpa/ReportJpaRepository.java,a\5\a59a516709e5b2416f033e72351bfe3dbe794ec0
+q
+Asrc/main/java/com/example/itspower/model/entity/ReportEntity.java,b\8\b8e31ea4216c52710d463067cdc015f2b6c875bc

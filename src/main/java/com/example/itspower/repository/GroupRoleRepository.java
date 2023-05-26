@@ -19,12 +19,13 @@ public class GroupRoleRepository {
     @Autowired
     private GroupJpaRepository groupJpaRepository;
 
-    public GroupEntity update(Integer groupRoleId, String groupName, Integer parentId, Float demarcation) {
+    public GroupEntity update(Integer groupRoleId, String groupName, Integer parentId, Float demarcation,Integer sort) {
         GroupEntity entity = new GroupEntity();
         entity.setId(groupRoleId);
         entity.setGroupName(groupName);
         entity.setParentId(parentId);
         entity.setDemarcationAvailable(demarcation);
+        entity.setSort(sort);
         return groupJpaRepository.save(entity);
     }
 
@@ -84,8 +85,9 @@ public class GroupRoleRepository {
     public Object getDemarcationRes(Integer groupId) {
          Optional<GroupEntity> groupEntity = groupJpaRepository.findById(groupId);
         groupEntity.get().setDemarcationAvailable(groupJpaRepository.countEmployee(groupId));
+
         if (groupEntity.isPresent()) {
-            return new SuccessResponse<>(HttpStatus.OK.value(), "success", new GroupRoleDemarcationRes(groupEntity.get()));
+            return new SuccessResponse<>(HttpStatus.OK.value(), "success", new GroupRoleDemarcationRes(groupEntity.get(),groupJpaRepository.countEmployee(groupId)));
         }
         return new SuccessResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), "group id is not exits", HttpStatus.INTERNAL_SERVER_ERROR.name());
     }
