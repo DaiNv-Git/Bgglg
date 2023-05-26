@@ -53,36 +53,25 @@ public class EmployeeGroupServiceImpl implements EmployeeGroupService {
     public byte[] exportExcel() throws IOException {
         List<EmployeeExportExcel> exportExcels = groupRepository.getExcelEmployee();
         Workbook workbook = new XSSFWorkbook();
-        // Tạo một trang mới
         Sheet sheet = workbook.createSheet("employee list");
-
-        // Tạo tiêu đề cột
         Row headerRow = sheet.createRow(0);
         headerRow.createCell(0).setCellValue("Tổ");
         headerRow.createCell(1).setCellValue("Tên");
         headerRow.createCell(2).setCellValue("mã");
-
-        // Đổ dữ liệu từ danh sách đối tượng vào các dòng trong Excel
         int rowNum = 1;
         for (EmployeeExportExcel object : exportExcels) {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(object.getGroupName());
             row.createCell(1).setCellValue(object.getName());
             row.createCell(2).setCellValue(object.getLabor());
-
         }
-
-        // Tự động điều chỉnh kích thước cột
         for (int i = 0; i < 3; i++) {
             sheet.autoSizeColumn(i);
         }
-
-        // Ghi workbook vào ByteArrayOutputStream
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         workbook.write(outputStream);
         workbook.close();
-
-        // Trả về mảng byte từ ByteArrayOutputStream
+        outputStream.close();
         return outputStream.toByteArray();
     }
 

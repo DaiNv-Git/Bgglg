@@ -42,7 +42,7 @@ public class GroupRoleServiceImpl implements GroupRoleService {
         try {
             int offset = (pageNo - 1) * pageSize;
             int countGroupRole = groupJpaRepository.countGroupRole();
-            List<GroupEntity> findAll = groupJpaRepository.findByGroupName(groupName, pageSize, offset);
+            List<GroupEntity> findAll = groupJpaRepository.getAllGroup(groupName, pageSize, offset);
             Pageable pageable = PageRequest.of(offset, pageSize);
             final PageImpl<GroupEntity> page = new PageImpl<>(findAll, pageable, 0);
             return new PageResponse<>(page, (long) countGroupRole);

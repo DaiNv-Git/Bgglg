@@ -7,8 +7,10 @@
     <list default="true" id="d8e811f7-ab85-440d-81dd-29fe6388095e" name="Changes" comment="ADD EXCEPTIOn">
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/GroupRoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/GroupRoleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/group/GroupRoleDemarcationRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/group/GroupRoleDemarcationRes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/ViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/GroupEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/GroupEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/repositoryjpa/GroupJpaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/repositoryjpa/GroupJpaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/EmployeeGroupServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/EmployeeGroupServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/GroupRoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/GroupRoleServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -287,14 +289,7 @@
       <workItem from="1685072594472" duration="898000" />
       <workItem from="1685073524908" duration="756000" />
       <workItem from="1685074347973" duration="1070000" />
-      <workItem from="1685083976794" duration="345000" />
-    </task>
-    <task id="LOCAL-00042" summary="api detail">
-      <created>1679536277504</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1679536277504</updated>
+      <workItem from="1685083976794" duration="3090000" />
     </task>
     <task id="LOCAL-00043" summary="api detail">
       <created>1679537127657</created>
@@ -632,7 +627,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685073670370</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="ADD EXCEPTIOn">
+      <created>1685084331465</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1685084331465</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -682,11 +684,6 @@
           <option name="timeStamp" value="73" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java</url>
-          <line>292</line>
-          <option name="timeStamp" value="75" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/ExportExcel.java</url>
           <line>196</line>
           <option name="timeStamp" value="76" />
@@ -695,11 +692,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/ExportExcel.java</url>
           <line>116</line>
           <option name="timeStamp" value="79" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java</url>
-          <line>291</line>
-          <option name="timeStamp" value="92" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
