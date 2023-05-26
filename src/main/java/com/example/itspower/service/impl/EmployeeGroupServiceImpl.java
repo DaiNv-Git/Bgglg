@@ -57,7 +57,8 @@ public class EmployeeGroupServiceImpl implements EmployeeGroupService {
         Row headerRow = sheet.createRow(0);
         headerRow.createCell(0).setCellValue("Tổ");
         headerRow.createCell(1).setCellValue("Tên");
-        headerRow.createCell(2).setCellValue("mã");
+        headerRow.createCell(2).setCellValue("Mã");
+
         int rowNum = 1;
         for (EmployeeExportExcel object : exportExcels) {
             Row row = sheet.createRow(rowNum++);
@@ -65,14 +66,22 @@ public class EmployeeGroupServiceImpl implements EmployeeGroupService {
             row.createCell(1).setCellValue(object.getName());
             row.createCell(2).setCellValue(object.getLabor());
         }
+
         for (int i = 0; i < 3; i++) {
             sheet.autoSizeColumn(i);
         }
+
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        workbook.write(outputStream);
-        outputStream.close();
-        workbook.close();
+        try {
+            workbook.write(outputStream);
+            outputStream.close();
+            workbook.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return outputStream.toByteArray();
+
     }
 
 
