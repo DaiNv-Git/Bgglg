@@ -31,8 +31,8 @@ public class ReportRepository {
     }
 
     public ReportEntity saveReport(ReportRequest request, int groupId) {
-         ReportEntity reportEntity = new ReportEntity();
-         reportEntity.setDemarcation(request.getDemarcation());
+        ReportEntity reportEntity = new ReportEntity();
+        reportEntity.setDemarcation(request.getDemarcation());
         reportEntity.setGroupId(groupId);
         reportEntity.setDemarcationAvailable(request.getDemarcationAvailable());
         reportEntity.setRestNum(request.getRestNum());

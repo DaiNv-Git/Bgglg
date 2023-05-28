@@ -96,4 +96,5 @@ public class EmployeeGroupController {
             throw new ReasonException(HttpStatus.NOT_FOUND.value(), ERROR, e);
         }
     }
+
 }

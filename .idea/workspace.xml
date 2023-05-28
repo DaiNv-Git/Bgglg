@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d461146-e749-4aaa-a5a9-fe487bfd78b9" name="Changes" comment="fix save report">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/EmployeeExportExcelService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/ReportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/ReportEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/ReportEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/ReportNangsuatResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/ReportNangsuatResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/ExportExcel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/ExportExcel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/template/BGGLG_EXCEL.xls" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/template/BGGLG_EXCEL.xls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/EmployeeGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/EmployeeGroupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/ReportRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/TransferRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/TransferRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/EmployeeGroupServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/EmployeeGroupServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/template/system-report.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/template/system-report.xls" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +228,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d8e811f7-ab85-440d-81dd-29fe6388095e" name="Changes" comment="" />
+      <changelist id="6d461146-e749-4aaa-a5a9-fe487bfd78b9" name="Changes" comment="fix save report" />
       <created>1668561629400</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -310,6 +311,10 @@
       <workItem from="1684481776507" duration="9242000" />
       <workItem from="1684648426869" duration="1927000" />
       <workItem from="1684673611356" duration="3096000" />
+      <workItem from="1685108593631" duration="647000" />
+      <workItem from="1685110960395" duration="135000" />
+      <workItem from="1685153291188" duration="707000" />
+      <workItem from="1685276498598" duration="1543000" />
     </task>
     <task id="LOCAL-00062" summary="fix bug search view">
       <created>1681137016073</created>
@@ -703,19 +708,24 @@
           <option name="timeStamp" value="63" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/repository/TransferRepository.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="80" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/EmployeeExportExcelService.java</url>
+          <line>109</line>
+          <option name="timeStamp" value="102" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java</url>
-          <line>283</line>
-          <option name="timeStamp" value="98" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/EmployeeExportExcelService.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="103" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java</url>
-          <line>292</line>
-          <option name="timeStamp" value="99" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/EmployeeExportExcelService.java</url>
+          <line>78</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/EmployeeExportExcelService.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="105" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
