@@ -42,7 +42,7 @@ public class GroupRoleServiceImpl implements GroupRoleService {
         try {
             int offset = (pageNo - 1) * pageSize;
             int countGroupRole = groupJpaRepository.countGroupRole();
-            List<GroupEntity> findAll = groupJpaRepository.findByGroupName(groupName, pageSize, offset);
+            List<GroupEntity> findAll = groupJpaRepository.getAllGroup(groupName, pageSize, offset);
             Pageable pageable = PageRequest.of(offset, pageSize);
             final PageImpl<GroupEntity> page = new PageImpl<>(findAll, pageable, 0);
             return new PageResponse<>(page, (long) countGroupRole);
@@ -178,7 +178,7 @@ public class GroupRoleServiceImpl implements GroupRoleService {
         if (group.isEmpty()) {
               return new SuccessResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), "parentName sai ", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        GroupEntity groupEntity = groupRoleRepository.update(group.get().getId(), name, group.get().getParentId(), demarcation);
+        GroupEntity groupEntity = groupRoleRepository.update(group.get().getId(), name, group.get().getParentId(), demarcation,group.get().getSort());
         return new SuccessResponse<>(HttpStatus.OK.value(), "update group demarcation success", groupEntity);
     }
 

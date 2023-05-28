@@ -21,7 +21,7 @@ import java.util.Date;
 )
 @NamedNativeQuery(name = "group_accept",
         query = "select gr.group_name as groupName,a.transfer_num as transferNum ,gr.id from  (select * from " +
-        "transfer tr where tr.group_id =:groupId  and tr.type = 1) a " +
+        "transfer tr where tr.group_id =:groupId ) a " +
         "inner join report r on a.report_id= r.id inner join group_role gr on r.group_id=gr.id " +
         "and DATE_FORMAT(r.report_date,'%Y%m%d') = DATE_FORMAT(:reportDate,'%Y%m%d') ",
         resultSetMapping = "GroupAcceptDto"

@@ -117,7 +117,7 @@ import java.io.Serializable;
         "           rp.report_date AS reportDate  " +
         "    FROM group_role gr\n" +
         "    LEFT JOIN report rp ON gr.id = rp.group_id \n" +
-        "    LEFT JOIN rice r ON rp.id = r.report_id \n" +
+        "    LEFT JOIN rice r ON rp.id = r.report_id order by gr.sort asc\n" +
         ") subq -- add an alias for the subquery\n" +
         "WHERE DATE_FORMAT(subq.reportDate, '%Y%m%d') = DATE_FORMAT(:reportDate,'%Y%m%d')\n" +
         "or subq.reportDate is null  ",
@@ -222,16 +222,50 @@ import java.io.Serializable;
         "inner join report r3 on r.report_id =r3.id where  DATE_FORMAT(r3.report_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d')",
         resultSetMapping = "listNameRest"
 )
+
+@SqlResultSetMapping(
+        name = "GroupEntity",
+        classes = @ConstructorResult(targetClass = GroupEntity.class, columns = {
+                @ColumnResult(name = "id", type = Integer.class),
+                @ColumnResult(name = "demarcation", type = Float.class),
+                @ColumnResult(name = "groupName", type = String.class),
+                @ColumnResult(name = "parentId", type = Integer.class),
+        }
+        )
+)
+@NamedNativeQuery(name = "view_group",
+        query = "SELECT gr.id as id, COUNT(ge.id) AS demarcation, gr.group_name AS groupName, gr.parent_id AS parentId\n" +
+                "FROM group_role gr\n" +
+                "INNER JOIN group_employee ge ON gr.id = ge.group_id\n" +
+                "WHERE gr.group_name LIKE CONCAT('%', :groupName, '%')\n" +
+                "GROUP BY gr.id, gr.group_name, gr.parent_id\n" +
+                "ORDER BY gr.sort ASC " +
+                " LIMIT :pageSize OFFSET :pageNo",
+        resultSetMapping = "GroupEntity"
+)
+
+
 public class GroupEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "demarcation_available")
+    private Float demarcationAvailable;
     @Column(name = "group_name")
     private String groupName = "";
     @Column(name = "parent_id")
     private Integer parentId;
-    @Column(name = "demarcation_available")
-    private Float demarcationAvailable;
     @Column(name = "sort")
     private Integer sort;
+
+    public GroupEntity(Integer id, Float demarcationAvailable, String groupName, Integer parentId) {
+        this.id = id;
+        this.demarcationAvailable = demarcationAvailable;
+        this.groupName = groupName;
+        this.parentId = parentId;
+    }
+
+    public GroupEntity() {
+
+    }
 }

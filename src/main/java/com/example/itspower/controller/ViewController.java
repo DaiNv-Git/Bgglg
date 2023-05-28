@@ -65,7 +65,7 @@ public class ViewController {
         }
     }
     @GetMapping("/exportExcel")
-    public ResponseEntity<Object> exportExcel(@RequestParam("reportDate") String reportDate) {
+        public ResponseEntity<Object> exportExcel(@RequestParam("reportDate") String reportDate) {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse<>(viewDetailService.exportExcel(reportDate)));
         } catch (Exception e) {

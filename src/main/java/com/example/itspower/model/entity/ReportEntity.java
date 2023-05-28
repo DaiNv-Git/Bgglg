@@ -130,7 +130,7 @@ import java.util.Date;
                 "from rice ri " +
                 "join report r on r.id= ri.report_id " +
                 "join group_role gr on r.group_id = gr.id " +
-                "where DATE_FORMAT(r.report_date ,'%Y%m%d') =DATE_FORMAT(:reportDate ,'%Y%m%d') and gr.sort is not null " +
+                "where DATE_FORMAT(r.report_date ,'%Y%m%d') =DATE_FORMAT(:reportDate ,'%Y%m%d')  " +
                 " order by gr.sort  asc",
         resultSetMapping = "Export_Excel_Report"
 )

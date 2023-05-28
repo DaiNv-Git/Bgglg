@@ -21,7 +21,7 @@ import java.util.Optional;
 @Repository
 public interface GroupJpaRepository extends JpaRepository<GroupEntity, Integer> {
     List<GroupEntity> findAllByParentId(int parentId);
-    @Query(value = "select * from group_role where group_name like concat('%',:groupName,'%') LIMIT :pageSize OFFSET :pageNo ", nativeQuery = true)
+    @Query(value = "select * from group_role where group_name like concat('%',:groupName,'%') ORDER BY sort ASC LIMIT :pageSize OFFSET :pageNo ", nativeQuery = true)
     List<GroupEntity> findByGroupName(@Param("groupName") String groupName
             ,@Param("pageSize") int pageSize
             ,@Param("pageNo")  int pageNo);
@@ -34,6 +34,11 @@ public interface GroupJpaRepository extends JpaRepository<GroupEntity, Integer> 
     List<GroupEntity> findAllByParentIdIsNull();
     @Query(name = "findAllRole", nativeQuery = true)
     List<GroupRoleDto> findAllRole();
+
+    @Query(name = "view_group", nativeQuery = true)
+    List<GroupEntity> getAllGroup(@Param("groupName") String groupName
+            ,@Param("pageSize") int pageSize
+            ,@Param("pageNo")  int pageNo);
     @Query(name = "findAllRoleView", nativeQuery = true)
     List<ViewAllDto> findAllViewRole(@Param("reportDate") String reportDate);
     @Query(name = "findAllRoot", nativeQuery = true)

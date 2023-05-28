@@ -1,0 +1,9 @@
+
+c	java:S112€"FDefine and throw a dedicated exception instead of using a generic one.(ñßÓª8óÔÕ¯…1
+}
+java:S1488'"`Immediately return this expression instead of assigning it to the temporary variable "entities".(òœÇû8õÔÕ¯…1
+>
+java:S1700"!Rename field "transferRepository"(À¹ÊÒ8öÔÕ¯…1
+t
+java:S37768"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(ûÆœŒùÿÿÿÿ8ØÕ¯…1
+]	java:S125<"<This block of commented-out lines of code should be removed.(¤ÄôÉşÿÿÿÿ8ØÕ¯…1
