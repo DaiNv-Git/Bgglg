@@ -49,7 +49,7 @@ public class EmployeeGroupServiceImpl implements EmployeeGroupService {
 
     @Override
     public byte[] exportExcel() throws IOException {
-          List<EmployeeExportExcel> exportExcels = groupRepository.getExcelEmployee();
+           List<EmployeeExportExcel> exportExcels = groupRepository.getExcelEmployee();
           employeeExportExcelService.initializeData(exportExcels);
          return employeeExportExcelService.export();
 
