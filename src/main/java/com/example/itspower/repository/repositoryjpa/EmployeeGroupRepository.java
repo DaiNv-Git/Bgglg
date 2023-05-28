@@ -38,4 +38,7 @@ public interface EmployeeGroupRepository extends JpaRepository<EmployeeGroupEnti
     Optional<EmployeeGroupEntity> findByLaborCode(String laborCode);
     @Query(value = "select * from group_employee where labor_code = ?1",nativeQuery = true)
     List<EmployeeGroupEntity> findLaborCode(String laborCode);
+
+    @Query(value = "select * from group_employee ge where labor_code = ?1 and ge.id <> ?2",nativeQuery = true)
+    List<EmployeeGroupEntity> findLaborCodeUpdate(String laborCode ,Integer id);
 }

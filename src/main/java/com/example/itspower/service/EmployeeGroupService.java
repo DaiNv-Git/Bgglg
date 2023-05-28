@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface EmployeeGroupService {
     void saveAll(List<addUserRequest> addUser);
+    void update(List<addUserRequest> addUser);
       byte[] exportExcel() throws IOException;
 
 

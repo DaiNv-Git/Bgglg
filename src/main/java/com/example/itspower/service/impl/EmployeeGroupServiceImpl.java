@@ -48,6 +48,25 @@ public class EmployeeGroupServiceImpl implements EmployeeGroupService {
     }
 
     @Override
+    public void update(List<addUserRequest> addUser) {
+        List<EmployeeGroupEntity> save = new ArrayList<>();
+        for (addUserRequest addUserRequest : addUser) {
+            EmployeeGroupEntity employeeGroup = new EmployeeGroupEntity();
+            employeeGroup.setId(addUserRequest.getId());
+            List<EmployeeGroupEntity> entity = groupRepository.findLaborCodeUpdate(addUserRequest.getLaborCode(),addUserRequest.getId());
+            if (entity.size() >0) {
+                throw new RuntimeException("labor code duplicate");
+            }
+            employeeGroup.setGroupId(addUserRequest.getGroupId());
+            employeeGroup.setLaborCode(addUserRequest.getLaborCode());
+            employeeGroup.setName(addUserRequest.getName());
+            employeeGroup.setCreateDate(DateUtils.formatDate(new Date(),"yyyy-MM-dd"));
+            save.add(employeeGroup);
+        }
+        groupRepository.saveAll(save);
+    }
+
+    @Override
     public byte[] exportExcel() throws IOException {
            List<EmployeeExportExcel> exportExcels = groupRepository.getExcelEmployee();
           employeeExportExcelService.initializeData(exportExcels);
