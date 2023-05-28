@@ -91,7 +91,7 @@ public class EmployeeGroupController {
     @GetMapping("/exportExcel")
     public ResponseEntity<Object> exportExcel() {
         try {
-             return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse<>(employeeGroupService.exportExcel()));
+              return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse<>(employeeGroupService.exportExcel()));
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
