@@ -60,7 +60,7 @@ public class EmployeeExportExcelService {
         font.setFontHeight(14);
         font1.setBold(true);
         font1.setFontHeight(14);
-        style.setFont(font);
+         style.setFont(font);
         XSSFCellStyle style3 =(XSSFCellStyle) workbook.createCellStyle();
         style3.setFillPattern(FillPatternType.SOLID_FOREGROUND);
         style3.setBorderBottom(BorderStyle.THIN); // Đường viền mỏng phía dưới

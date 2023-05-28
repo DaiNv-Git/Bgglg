@@ -6,6 +6,178 @@
   <component name="ChangeListManager">
     <list default="true" id="6d461146-e749-4aaa-a5a9-fe487bfd78b9" name="Changes" comment="fix save report">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/EmployeeExportExcelService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/ItsPowerApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/component/Auth/AuthConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/component/constrant/EFieldMatch.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/component/constrant/FieldMatch$List.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/component/constrant/FieldMatch.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/component/constrant/FieldsMatchValidator$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/component/constrant/FieldsMatchValidator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/component/enums/ERoles.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/component/enums/StatusReason.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/component/enums/TransferType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/config/SetToStringConverter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/config/SwaggerConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/EmployeeGroupController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/GroupRoleController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/ReasonController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/ReportController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/TransferController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/UserController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/controller/ViewController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/exception/DuplicateResourceException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/exception/ErrorCode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/exception/ErrorResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/exception/GeneralException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/exception/ReasonException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/exception/ResourceNotFoundException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/exception/ResponseEntityBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/exception/ViolationBusinessException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/filter/AjaxAuthenticationProvider.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/filter/JwtAuthenticationEntryPoint.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/filter/JwtAuthenticationFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/filter/JwtToken.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/EmployeeGroupEntity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/EmployeeTerminationOfContractEntity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/EmployeeTransferEntity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/GroupEntity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/ReasonEntity$ReasonEntityBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/ReasonEntity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/ReportEntity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/RestEntity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/RiceEntity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/TransferEntity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/UserEntity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/UserGroupEntity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/resultset/GroupRoleDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/resultset/ReportDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/resultset/RestDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/resultset/RootNameDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/resultset/UserDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/resultset/ViewAllDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/usertoken/UserRefreshToken.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/usertoken/UserResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/GroupRoleRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/ReasonRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/ReportRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/RestRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/RiceRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/TransferRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/UserGroupRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/UserRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/EmpTerminationContractRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/EmployeeGroupRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/EmployeeTransferRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/GroupJpaRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/ReasonJpaRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/ReportJpaRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/RestJpaRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/RiceJpaRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/TransferJpaRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/UserGroupJpaRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/UserJpaRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/request/EmployeeGroupRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/request/GroupRoleRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/request/ReasonRequest$ReasonRequestBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/request/ReasonRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/request/ReportRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/request/RestRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/request/RestRequestDelete.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/request/RiceRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/request/TransferRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/request/search/SearchEmployeeRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/request/search/UserSearchRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/request/userrequest/UserDeleteRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/request/userrequest/UserUpdateRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/request/userrequest/addUserRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/AbstractResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/BaseResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/ReportDetailResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/ReportNangsuatResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/ResponseHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/SuccessResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/dynamic/PageResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/employee/EmployeeExportExcel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/employee/EmployeeGroupResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/employee/EmployeeInforResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/export/EmployeeExportExcelContractEnd.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/export/ExportExcelDtoReport.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/export/ExportExcelEmpRest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/GroupRoleAndReportDetailsRes.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/GroupRoleDemarcationRes.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/GroupRoleResponse$GroupRoleResponseBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/GroupRoleResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/GroupRoleResponseChildren.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/InterfaceReportDetails.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/ResponseCount.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/ViewDetailGroupResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/ViewDetailGroups.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/ViewDetailsResponse$ViewDetailsResponseBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/ViewDetailsResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/group/ViewGroupRoot.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/report/ReportResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/report/ReportSearchResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/report/RiceReportResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/search/UserAulogin.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/search/UserRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/transfer/TransferNumAccept.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/transfer/TransferResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/transfer/TransferResponseGroup.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/user/GroupResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/user/ListUserResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/user/UserGroupResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/user/UserResponseSave.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/ListNameRestResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/ReasonResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/ReasonRest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/RestObjectResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/RiceResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/RootResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/ViewDetailResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/ViewDetailResponseDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/ViewRemoveTomayRes.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/ViewRootResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/response/view/reasonEmployee.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/security/CorsConfiguration.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/security/SecurityConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/EmployeeGroupService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/GroupRoleService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/ReasonService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/ReportService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/TransferService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/UserService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/ViewDetailService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/ViewService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/exportexcel/ExportExcel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/EmployeeGroupServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/GroupRoleServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ImportEmployee.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ReasonServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ReportServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/TransferServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/UserLoginConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ViewDetailSerivceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ViewServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/type/Language.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/type/RegexType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/util/ConverterUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/util/Date.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/util/DateUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/util/DateValidator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/util/GroupNameExcep.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/util/GroupNameValidator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/util/HeaderExcelTem.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/util/Integer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/util/IntegerValidator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/util/StartBeforeEndDate$List.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/util/StartBeforeEndDate.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/util/StartBeforeEndDateValidator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/util/TextUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/message.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/project-b91e4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/template/BGGLG_EXCEL.xls" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/EmployeeGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/EmployeeGroupController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/ReportRepository.java" afterDir="false" />
@@ -314,14 +486,7 @@
       <workItem from="1685108593631" duration="647000" />
       <workItem from="1685110960395" duration="135000" />
       <workItem from="1685153291188" duration="707000" />
-      <workItem from="1685276498598" duration="1543000" />
-    </task>
-    <task id="LOCAL-00062" summary="fix bug search view">
-      <created>1681137016073</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1681137016075</updated>
+      <workItem from="1685276498598" duration="1852000" />
     </task>
     <task id="LOCAL-00063" summary="fix bug search view">
       <created>1681139109497</created>
@@ -659,7 +824,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684863835065</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="fix save report">
+      <created>1685278365859</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1685278365859</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -711,16 +883,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/EmployeeExportExcelService.java</url>
           <line>109</line>
           <option name="timeStamp" value="102" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/EmployeeExportExcelService.java</url>
-          <line>82</line>
-          <option name="timeStamp" value="103" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/EmployeeExportExcelService.java</url>
-          <line>78</line>
-          <option name="timeStamp" value="104" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/EmployeeExportExcelService.java</url>
