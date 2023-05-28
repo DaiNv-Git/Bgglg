@@ -7,22 +7,16 @@ import com.example.itspower.response.dynamic.PageResponse;
 import com.example.itspower.response.employee.EmployeeExportExcel;
 import com.example.itspower.response.employee.EmployeeGroupResponse;
 import com.example.itspower.service.EmployeeGroupService;
+import com.example.itspower.service.exportexcel.EmployeeExportExcelService;
 import com.example.itspower.util.DateUtils;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,12 +25,8 @@ import java.util.List;
 public class EmployeeGroupServiceImpl implements EmployeeGroupService {
     @Autowired
     EmployeeGroupRepository groupRepository;
-
-    private final ResourceLoader resourceLoader;
-
-    public EmployeeGroupServiceImpl(ResourceLoader resourceLoader) {
-        this.resourceLoader = resourceLoader;
-    }
+    @Autowired
+    EmployeeExportExcelService employeeExportExcelService;
 
     @Override
     public void saveAll(List<addUserRequest> addUser) {
@@ -58,33 +48,11 @@ public class EmployeeGroupServiceImpl implements EmployeeGroupService {
     }
 
     @Override
-    public byte[] exportExcel() {
-        try {
-            Resource resource = resourceLoader.getResource("classpath:template/employee.xls");
-            InputStream inp = resource.getInputStream();
-            Workbook workbook = new XSSFWorkbook(inp);
-            Sheet sheet = workbook.getSheetAt(0);
-            List<EmployeeExportExcel> exportExcels = groupRepository.getExcelEmployee();
-            int rowNum = 1;
-            for (EmployeeExportExcel object : exportExcels) {
-                Row row = sheet.createRow(rowNum++);
-                row.createCell(0).setCellValue(object.getGroupName());
-                row.createCell(1).setCellValue(object.getName());
-                row.createCell(2).setCellValue(object.getLabor());
-            }
-            for (int i = 0; i < 3; i++) {
-                sheet.autoSizeColumn(i);
-            }
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            workbook.write(outputStream);
-            byte[] excelBytes = outputStream.toByteArray();
-            outputStream.close();
-            workbook.close();
-            return excelBytes;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+    public byte[] exportExcel() throws IOException {
+         List<EmployeeExportExcel> exportExcels = groupRepository.getExcelEmployee();
+         employeeExportExcelService.initializeData(exportExcels);
+        return employeeExportExcelService.export();
+
     }
 
 

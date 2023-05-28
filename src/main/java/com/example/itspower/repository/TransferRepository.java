@@ -109,6 +109,7 @@ public class TransferRepository {
                     employeeTransferSave.setGroupID(transfer.getGroupId());
                     employeeTransferSave.setTransferDate(DateUtils.formatDate(new Date(),DateUtils.FORMAT_DATE));
                     employeeTransferSave.setLabor(labor);
+                    employeeTransferSave.setTransferType(reportId);
                     employees.add(employeeTransferSave);
                     EmployeeGroupEntity employeeGroup = new EmployeeGroupEntity();
                     Integer employeeID = employeeGroupRepository.findIDByLaborCode(labor);
