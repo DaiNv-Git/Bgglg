@@ -49,7 +49,7 @@ public class EmployeeExportExcelService {
     }
 
     private void writeDataLines() throws IOException {
-        Resource resource = resourceLoader.getResource("classpath:template/system-report.xls");
+        Resource resource = resourceLoader.getResource("classpath:template/employee.xls");
         InputStream inp = resource.getInputStream();
         workbook = WorkbookFactory.create(inp);
         sheet = workbook.getSheetAt(0);
