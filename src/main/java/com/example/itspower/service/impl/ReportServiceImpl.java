@@ -71,7 +71,6 @@ public class ReportServiceImpl implements ReportService {
                 response.setEmployeeTransferTo(reportJpaRepository.findEmployeeTransferTo(reportDate,groupId));
                 response.setEmployeeReceive(reportJpaRepository.employeeReceive(reportDate,groupId));
                 response.setEmployeeStop(reportJpaRepository.findEmployeeStop(reportDate,groupId));
-//                response.setRests(new );
                response.setRests(restRepository.getRests(response.getId()));
                 response.setRiceResponses(new RiceReportResponse(response.getRiceID(),response.getRiceEmployee(),response.getRiceCus(),
                         response.getRiceVip()));

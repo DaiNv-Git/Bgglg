@@ -1,0 +1,9 @@
+
+`	java:S1122"FDefine and throw a dedicated exception instead of using a generic one.(Ê“Åıÿÿÿÿ
+a	java:S112¾"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+
+java:S3655t"fCall "optionalGroupEntity.isPresent()" or "!optionalGroupEntity.isEmpty()" before accessing the value.(­²öÒúÿÿÿÿ
+h
+java:S3776K"RRefactor this method to reduce its Cognitive Complexity from 46 to the 15 allowed.(¥˜£Ş
+I
+java:S1168¬"+Return an empty collection instead of null.(¥¹ï8¼‹ĞÄ‚1

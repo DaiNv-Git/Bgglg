@@ -27,9 +27,13 @@ public interface ReportJpaRepository extends JpaRepository<ReportEntity, Integer
     List<ReportNangsuatResponse> findNangSuat(@Param("reportDate") String reportDate);
 
 
-    @Query(value = "SELECT  CONCAT(name, ' - ', labor) from list_employee_transfer let where groupID in ( " +
-            "SELECT t.group_id  from transfer t where t.report_id =(SELECT id  from report r2 where r2.group_id = ?2 " +
-            "and  DATE_FORMAT(r2.report_date, '%Y%m%d') = DATE_FORMAT(?1, '%Y%m%d')   ) );",nativeQuery = true)
+    @Query(value ="SELECT CONCAT(e.name, ' - ', e.labor)" +
+            "FROM list_employee_transfer e " +
+            "WHERE e.transfer_type  = (" +
+            "        SELECT r2.id" +
+            "        FROM report r2" +
+            "        WHERE r2.group_id = ?2" +
+            "        AND DATE_FORMAT(r2.report_date, '%Y%m%d') = DATE_FORMAT(?1, '%Y%m%d'))",nativeQuery = true)
     List<String> findEmployeeTransferTo(@Param("reportDate") String reportDate, @Param("groupId") int groupId);
     @Query(value = "SELECT  CONCAT(employee_name, ' - ', employee_labor) from emp_termination_contract etc " +
             "where etc.group_id =?2 and  DATE_FORMAT(etc.start_date, '%Y%m%d') = DATE_FORMAT(?1, '%Y%m%d')",nativeQuery = true)
