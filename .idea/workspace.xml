@@ -5,20 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8e811f7-ab85-440d-81dd-29fe6388095e" name="Changes" comment="ádassdas">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/2/42478237a5b7c46bd532997dc8acffc5f1bca40a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5c55094a64a353212c9a2c7313ca0df30306a74d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/8/68a046f0e147ed2aa321fdfdbe4a228a1977dad9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/5/a59a516709e5b2416f033e72351bfe3dbe794ec0" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/response/export/TransferExcel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/1/2121b412fd8c4c88b810eaf7906f8b98079dc0f0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/24550951355dab993307fa4eef6f01ff156b3a5d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/3/43c4ce744e75a5a973c4813095bbd0080e803960" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/6/c6452eedccad474744cf5b524477cde0a52365dd" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/2/42478237a5b7c46bd532997dc8acffc5f1bca40a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/c/5c55094a64a353212c9a2c7313ca0df30306a74d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/8/68a046f0e147ed2aa321fdfdbe4a228a1977dad9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/5/a59a516709e5b2416f033e72351bfe3dbe794ec0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/1/2121b412fd8c4c88b810eaf7906f8b98079dc0f0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/4/24550951355dab993307fa4eef6f01ff156b3a5d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/3/43c4ce744e75a5a973c4813095bbd0080e803960" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/6/c6452eedccad474744cf5b524477cde0a52365dd" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/repositoryjpa/ReportJpaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/repositoryjpa/ReportJpaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ReportServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/ReportJpaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/ReportJpaRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/TransferEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/model/entity/TransferEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/repositoryjpa/TransferJpaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/repositoryjpa/TransferJpaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/ExportExcel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/exportexcel/ExportExcel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/template/BGGLG_EXCEL.xls" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/template/BGGLG_EXCEL.xls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/TransferEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/model/entity/TransferEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/TransferJpaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/repositoryjpa/TransferJpaRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/exportexcel/ExportExcel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/exportexcel/ExportExcel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ReportServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ReportServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ViewDetailSerivceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ViewDetailSerivceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/template/BGGLG_EXCEL.xls" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/template/BGGLG_EXCEL.xls" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,13 +309,6 @@
       <workItem from="1685074347973" duration="1070000" />
       <workItem from="1685083976794" duration="6622000" />
       <workItem from="1685285365648" duration="894000" />
-    </task>
-    <task id="LOCAL-00053" summary="api /groupRole/demarcation get and update">
-      <created>1680187205183</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1680187205184</updated>
     </task>
     <task id="LOCAL-00054" summary="api /groupRole/demarcation get and update">
       <created>1680187496312</created>
@@ -644,7 +646,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685284449870</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="ádassdas">
+      <created>1685326618875</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1685326618876</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

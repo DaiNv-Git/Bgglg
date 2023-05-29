@@ -5,6 +5,7 @@ import com.example.itspower.response.ReportNangsuatResponse;
 import com.example.itspower.response.export.EmployeeExportExcelContractEnd;
 import com.example.itspower.response.export.ExportExcelDtoReport;
 import com.example.itspower.response.export.ExportExcelEmpRest;
+import com.example.itspower.response.export.TransferExcel;
 import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
@@ -33,17 +34,21 @@ public class ExportExcel {
     private List<ReportNangsuatResponse> nangsuat;
     private List<EmployeeExportExcelContractEnd> reportEmpContractEnd;
     private List<ExportExcelEmpRest> exportExcelEmpRests;
+
+    private List<TransferExcel> findTransferExcel;
     private final ResourceLoader resourceLoader;
 
     public ExportExcel(ResourceLoader resourceLoader) {
         this.resourceLoader = resourceLoader;
     }
 
-    public void initializeData(List<ExportExcelDtoReport> reportExcel, List<EmployeeExportExcelContractEnd> reportEmpContractEnd, List<ExportExcelEmpRest> exportExcelEmpRests, List<ReportNangsuatResponse> nangsuat) {
+    public void initializeData(List<ExportExcelDtoReport> reportExcel, List<EmployeeExportExcelContractEnd> reportEmpContractEnd,
+                               List<ExportExcelEmpRest> exportExcelEmpRests, List<ReportNangsuatResponse> nangsuat,List<TransferExcel> findTransferExcel) {
         this.reportExcel = reportExcel;
         this.reportEmpContractEnd = reportEmpContractEnd;
         this.exportExcelEmpRests = exportExcelEmpRests;
         this.nangsuat=nangsuat;
+        this.findTransferExcel =findTransferExcel;
     }
 
     static void createCell(Row row, int columnCount, Object value, CellStyle style) {
@@ -68,12 +73,13 @@ public class ExportExcel {
         sheet1 = workbook.getSheetAt(1);
         sheet2 = workbook.getSheetAt(2);
         sheet3 = workbook.getSheetAt(3);
-        sheet4 = workbook.getSheetAt(0);
+        sheet4 = workbook.getSheetAt(4);
         sheet5 = workbook.getSheetAt(0);
         int rowCount = 7;
         int rowCountSheet1 = 7;
         int rowCountSheet2 = 7;
         int rowCountSheet3 = 7;
+        int rowCountSheet4 = 7;
         CellStyle style = workbook.createCellStyle();
         CellStyle styleFooter = workbook.createCellStyle();
         XSSFFont font = (XSSFFont) workbook.createFont();
@@ -107,17 +113,32 @@ public class ExportExcel {
         Row row2 = sheet1.createRow(4);
         Row row3 = sheet2.createRow(4);
         Row row4 = sheet3.createRow(4);
+        Row row5= sheet4.createRow(4);
         creatCellFormat(row1, String.valueOf(reportExcel.get(0).getReportDate()), style);
         creatCellFormat(row2, String.valueOf(reportExcel.get(0).getReportDate()), style);
         creatCellFormat(row3, String.valueOf(reportExcel.get(0).getReportDate()), style);
         creatCellFormat(row4, String.valueOf(reportExcel.get(0).getReportDate()), style);
+        creatCellFormat(row5, String.valueOf(reportExcel.get(0).getReportDate()), style);
 
         Integer sumEmp = 0;
         Integer sumCus = 0;
         int rowString;
         int rowKey;
+        if(!findTransferExcel.isEmpty()){
+            for (TransferExcel transferExcel : findTransferExcel) {
+                Row row = sheet3.createRow(rowCountSheet4++);
+                int columnCount = 0;
+                createCell(row, columnCount++, transferExcel.getTransferDate(), style);
+                createCell(row, columnCount++, transferExcel.getName(), style);
+                createCell(row, columnCount++, transferExcel.getLabor(), style);
+                createCell(row, columnCount++, transferExcel.getOldGroup(), style);
+                createCell(row, columnCount++, transferExcel.getNewGroup(), style);
+                createCell(row, columnCount, transferExcel.getStatusTransfer(), style);
+            }
+        }
+
         for (ReportNangsuatResponse employee : nangsuat) {
-            Row row = sheet3.createRow(rowCountSheet3++);
+            Row row = sheet4.createRow(rowCountSheet3++);
             int columnCount = 0;
             createCell(row, columnCount++, employee.getId(), style);
             createCell(row, columnCount++, employee.getName(), style);
@@ -145,10 +166,6 @@ public class ExportExcel {
         Row rowTotal = sheet3.createRow(rowCount);
         Row row10 = sheet4.createRow(rowString);
         Row rowNameKey = sheet5.createRow(rowKey);
-//        creatCellFormatStr(rowTotal, 0, "Tổng", style);
-//        creatCellFormatStr(rowTotal, 1, sumEmp, style);
-//        creatCellFormatStr(rowTotal, 2, sumCus, style);
-//        creatCellFormatStr(rowTotal, 3, "", style);
         creatCellFormatStr(row10, 0, "Kế toán", styleFooter);
         creatCellFormatStr(row10, 1, "Giám sát", styleFooter);
         creatCellFormatStr(row10, 2, "Nhà bếp", styleFooter);
@@ -157,7 +174,6 @@ public class ExportExcel {
         for (ExportExcelEmpRest data2 : exportExcelEmpRests) {
             Row row = sheet1.createRow(rowCountSheet1++);
             int columnCount = 0;
-
             createCell(row, columnCount++, String.valueOf(data2.getReportDate()), style);
             createCell(row, columnCount++, data2.getRestName(), style);
             createCell(row, columnCount++, data2.getLabor(), style);
@@ -172,7 +188,6 @@ public class ExportExcel {
             createCell(row, columnCount++, employee.getLaborCode(), style);
             createCell(row, columnCount, employee.getGroupName(), style);
         }
-
     }
 
     private void creatCellFormatStr(Row row, int getCell, String value, CellStyle cellStyle) {

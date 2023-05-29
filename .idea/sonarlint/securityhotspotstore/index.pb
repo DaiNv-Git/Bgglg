@@ -37,16 +37,10 @@ Jsrc/main/java/com/example/itspower/request/userrequest/addUserRequest.java,f\0
 Vsrc/main/java/com/example/itspower/response/export/EmployeeExportExcelContractEnd.java,4\a\4a5f488982a0abf22e4d70fc22d0c9259be6fa21
 w
 Gsrc/main/java/com/example/itspower/response/ReportNangsuatResponse.java,f\1\f11a54d2b9d18117272843f88d53700d934b224f
-u
-Esrc/main/java/com/example/itspower/controller/TransferController.java,c\6\c6452eedccad474744cf5b524477cde0a52365dd
 o
 ?src/main/java/com/example/itspower/service/TransferService.java,4\6\464259969a0add2bbff6b78db85d3ecf3192f043
 x
 Hsrc/main/java/com/example/itspower/service/impl/TransferServiceImpl.java,3\2\32516fe79707cb534b3a065bbea5707ef46c9129
-†
-Vsrc/main/java/com/example/itspower/repository/repositoryjpa/TransferJpaRepository.java,2\4\24550951355dab993307fa4eef6f01ff156b3a5d
-s
-Csrc/main/java/com/example/itspower/model/entity/TransferEntity.java,2\1\2121b412fd8c4c88b810eaf7906f8b98079dc0f0
 |
 Lsrc/main/java/com/example/itspower/response/export/ExportExcelDtoReport.java,b\c\bcd1459ac35884afe911e8b1384df09f26b9b016
 s

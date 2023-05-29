@@ -7,10 +7,12 @@ import com.example.itspower.repository.ReportRepository;
 import com.example.itspower.repository.repositoryjpa.EmpTerminationContractRepository;
 import com.example.itspower.repository.repositoryjpa.GroupJpaRepository;
 import com.example.itspower.repository.repositoryjpa.ReportJpaRepository;
+import com.example.itspower.repository.repositoryjpa.TransferJpaRepository;
 import com.example.itspower.response.ReportNangsuatResponse;
 import com.example.itspower.response.export.EmployeeExportExcelContractEnd;
 import com.example.itspower.response.export.ExportExcelDtoReport;
 import com.example.itspower.response.export.ExportExcelEmpRest;
+import com.example.itspower.response.export.TransferExcel;
 import com.example.itspower.response.group.GroupRoleResponse;
 import com.example.itspower.response.group.ViewDetailGroups;
 import com.example.itspower.response.view.ListNameRestResponse;
@@ -47,6 +49,8 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
     private EmpTerminationContractRepository empTerminationContractRepository;
     @Autowired
     private ExportExcel exportExcel;
+    @Autowired
+    private TransferJpaRepository transferJpaRepository;
     public static DecimalFormat decimalFormat = new DecimalFormat("#.#");
 
     @Override
@@ -285,12 +289,13 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
             List<EmployeeExportExcelContractEnd> employeeExportExcelContractEnds = empTerminationContractRepository.findByEmployee(reportDate);
             List<ExportExcelEmpRest> exportExcelEmpRests = reportRepository.findByReportExcelEmpRest(reportDate);
             List<ReportNangsuatResponse> nangsuat = reportJPARepository.findNangSuat(reportDate);
+            List<TransferExcel> findTransferExcel =transferJpaRepository.findTransferExcel(reportDate);
             int j = 0;
             for (int i = 1 ; i <= nangsuat.size();i++){
                 nangsuat.get(j).setId(i);
                 ++j;
             }
-            exportExcel.initializeData(reportExcel, employeeExportExcelContractEnds, exportExcelEmpRests,nangsuat);
+            exportExcel.initializeData(reportExcel, employeeExportExcelContractEnds, exportExcelEmpRests,nangsuat,findTransferExcel);
             return exportExcel.export();
         }catch (Exception e){
             throw new RuntimeException(e.getMessage());
