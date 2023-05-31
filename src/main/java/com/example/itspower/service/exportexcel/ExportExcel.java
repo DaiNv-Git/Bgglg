@@ -163,13 +163,14 @@ public class ExportExcel {
         }
         rowString = rowCount + 2;
         rowKey = rowCount + 6;
+
         Row rowTotal = sheet3.createRow(rowCount);
         Row row10 = sheet4.createRow(rowString);
-        Row rowNameKey = sheet5.createRow(rowKey);
-        creatCellFormatStr(row10, 0, "Kế toán", styleFooter);
-        creatCellFormatStr(row10, 1, "Giám sát", styleFooter);
-        creatCellFormatStr(row10, 2, "Nhà bếp", styleFooter);
-        creatCellFormatStr(row10, 3, "Người lập bảng", styleFooter);
+        Row rowNameKey = sheet.createRow(rowKey);
+        creatCellFormatStr(rowNameKey, 0, "Kế toán", styleFooter);
+        creatCellFormatStr(rowNameKey, 1, "Giám sát", styleFooter);
+        creatCellFormatStr(rowNameKey, 2, "Nhà bếp", styleFooter);
+        creatCellFormatStr(rowNameKey, 3, "Người lập bảng", styleFooter);
         creatCellFormatStr(rowNameKey, 3, "Nguyễn Công Lương", styleFooter);
         for (ExportExcelEmpRest data2 : exportExcelEmpRests) {
             Row row = sheet1.createRow(rowCountSheet1++);

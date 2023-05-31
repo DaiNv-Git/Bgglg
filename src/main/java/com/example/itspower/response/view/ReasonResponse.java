@@ -7,14 +7,14 @@ public class ReasonResponse {
     private Integer groupId;
     private Integer parentID;
     private String reasonName;
-    private Integer total;
+    private Double total;
 
-    public ReasonResponse(Integer groupId, String reasonName, Integer total) {
+    public ReasonResponse(Integer groupId, String reasonName, Double total) {
         this.groupId = groupId;
         this.reasonName = reasonName;
         this.total = total;
     }
-    public ReasonResponse(Integer groupId, String reasonName, Integer total,Integer parentId) {
+    public ReasonResponse(Integer groupId, String reasonName, Double total,Integer parentId) {
         this.groupId = groupId;
         this.reasonName = reasonName;
         this.total = total;

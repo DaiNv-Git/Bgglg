@@ -9,9 +9,9 @@ public class ReasonRest {
     private int groupId;
     private int parentId;
     private String reasonName;
-    private int total;
+    private Double total;
 
-    public ReasonRest( int total,String reasonName) {
+    public ReasonRest( Double total,String reasonName) {
         this.reasonName = reasonName;
         this.total = total;
     }

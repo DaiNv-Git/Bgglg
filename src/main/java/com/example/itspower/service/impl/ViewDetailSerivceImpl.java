@@ -73,15 +73,15 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
         }
         // add ly do nghi parent
         for (RootNameDto id : idRootList) {
-            Map<String, Integer> addChild = new HashMap<>();
+            Map<String, Double> addChild = new HashMap<>();
             List<ReasonResponse> childs = reasonResponseList.stream().
                     filter(i -> i.getParentID().equals(id.getId())).collect(Collectors.toList());
             for (ReasonResponse totalChild : childs) {
                 String reasonName = totalChild.getReasonName();
-                Integer total = totalChild.getTotal();
+                Double total = totalChild.getTotal();
                 if (addChild.containsKey(reasonName)) {
                     // Nếu đã có, cộng thêm vào tổng hiện tại
-                    int currentTotal = addChild.get(reasonName);
+                    Double currentTotal = addChild.get(reasonName);
                     addChild.put(reasonName, currentTotal + total);
                 } else {
                     // Nếu chưa có, thêm vào map với tổng ban đầu là total
@@ -89,16 +89,16 @@ public class ViewDetailSerivceImpl implements ViewDetailService {
                 }
             }
             //tinh tong
-            Map<String, Integer> sumMap = new HashMap<>();
+            Map<String, Double> sumMap = new HashMap<>();
             for (String key : addChild.keySet()) {
-                int value = addChild.get(key);
-                int sum = sumMap.getOrDefault(key, 0) + value;
+                Double value = addChild.get(key);
+                Double sum = sumMap.getOrDefault(key, 0.0) + value;
                 sumMap.put(key, sum);
             }
             List<ReasonRest> reason = new ArrayList<>();
             //add ngược lại để tính tổng parent
             for (String key : sumMap.keySet()) {
-                int sum = sumMap.get(key);
+                Double sum = sumMap.get(key);
                 reason.add(new ReasonRest(sum, key));
             }
             Double numberRest = reason.stream()

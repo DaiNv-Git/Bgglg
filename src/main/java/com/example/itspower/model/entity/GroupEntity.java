@@ -192,7 +192,7 @@ import java.io.Serializable;
         classes = @ConstructorResult(targetClass = ReasonResponse.class, columns = {
                 @ColumnResult(name = "groupId", type = Integer.class),
                 @ColumnResult(name = "reasonName", type = String.class),
-                @ColumnResult(name = "total", type = Integer.class),
+                @ColumnResult(name = "total", type = Double.class),
                 @ColumnResult(name = "parentId", type = Integer.class),
         }
         )
@@ -219,7 +219,8 @@ import java.io.Serializable;
 @NamedNativeQuery(name = "view_list_reason", query = "SELECT  r3.group_id as groupId,rest_name as nameEmployee,r2.name as reasonName,employee_labor as labor from \n" +
         "rest r inner join " +
         "reason r2 on r.reason_id =r2.id " +
-        "inner join report r3 on r.report_id =r3.id where  DATE_FORMAT(r3.report_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d')",
+        "inner join report r3 on r.report_id =r3.id where " +
+        "  r.report_id in(SELECT id from report r4 where DATE_FORMAT(r4.report_date, '%Y%m%d') = DATE_FORMAT(:reportDate, '%Y%m%d') )",
         resultSetMapping = "listNameRest"
 )
 
