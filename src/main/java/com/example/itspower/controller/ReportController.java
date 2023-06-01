@@ -89,7 +89,6 @@ public class ReportController {
 
     @GetMapping("/getIdsTomay")
     public ResponseEntity<Object> getID() throws ParseException {
-
         return ResponseEntity.status(HttpStatus.OK).body(reportService.getIdsToMay());
     }
 

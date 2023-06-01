@@ -36,7 +36,7 @@ public class RestRepository {
         return restJpaRepository.saveAll(restEntities);
     }
     @Transactional
-    public List<RestEntity> updateRest(List<RestRequest> requests, Integer reportId) {
+    public void updateRest(List<RestRequest> requests, Integer reportId) {
         List<RestEntity> restEntities = new ArrayList<>();
         List<Integer> restIds = new ArrayList<>();
         for (RestRequest restRequest : requests) {
@@ -67,7 +67,7 @@ public class RestRepository {
             }
         }
         restJpaRepository.deleteRestIds(restIds);
-        return restJpaRepository.saveAll(restEntities);
+         restJpaRepository.saveAll(restEntities);
     }
 
     public void deleteRestIdsAndReportId(Integer reportId, List<Integer> restIds) {
