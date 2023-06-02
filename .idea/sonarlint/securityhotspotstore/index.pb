@@ -1,6 +1,4 @@
 
-m
-=src/main/java/com/example/itspower/request/ReportRequest.java,6\8\6862fbbaa5edaa87902e586371cca668298cdf19
 o
 ?src/main/java/com/example/itspower/security/SecurityConfig.java,6\1\61656606714c8e70b819b9ea80b2ccbde90cbc77
 v
@@ -41,8 +39,6 @@ x
 Hsrc/main/java/com/example/itspower/service/impl/TransferServiceImpl.java,3\2\32516fe79707cb534b3a065bbea5707ef46c9129
 |
 Lsrc/main/java/com/example/itspower/response/export/ExportExcelDtoReport.java,b\c\bcd1459ac35884afe911e8b1384df09f26b9b016
-s
-Csrc/main/java/com/example/itspower/repository/ReportRepository.java,b\c\bc43fb8f305242e19a25dac009a348c7fe3dff98
 q
 Asrc/main/java/com/example/itspower/model/entity/ReportEntity.java,b\8\b8e31ea4216c52710d463067cdc015f2b6c875bc
 }
@@ -239,8 +235,6 @@ w
 G.idea/sonarlint/issuestore/a/1/a18086c808f9e91c66b10d9de6bdca21c00abacc,0\2\028080eb02ead2b3bfbc78b1d19b29207d1072af
 w
 G.idea/sonarlint/issuestore/f/4/f4127aba4b4bfeee9cff4097ed84cc5313e0b4ac,3\9\39bbe3e1cfa2b6da795839672bbce68c34c12c3c
-Ñ
-Tsrc/main/java/com/example/itspower/repository/repositoryjpa/ReportJpaRepository.java,a\5\a59a516709e5b2416f033e72351bfe3dbe794ec0
 w
 G.idea/sonarlint/issuestore/1/b/1b5f3db3904df2e890a5007ce6c3e2ccdfe61973,1\2\12b92f357d08a84e75291a6c5aa8969e4611f9f7
 Å
@@ -289,3 +283,15 @@ p
 @src/main/java/com/example/itspower/response/view/ReasonRest.java,7\a\7ad02b55ec6d4bbd674a195a493c2539b56c4a69
 t
 Dsrc/main/java/com/example/itspower/response/view/ReasonResponse.java,0\2\024de65ce3da14b419b4483df7bb0a2003e07bec
+z
+Jsrc/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java,4\2\42cc696565d19963eb7d3dc0552ec676648d2148
+w
+Gsrc/main/java/com/example/itspower/service/exportexcel/ExportExcel.java,4\3\43c4ce744e75a5a973c4813095bbd0080e803960
+p
+@src/main/java/com/example/itspower/model/entity/GroupEntity.java,1\7\17831af1313de27fb81ab64e267d537309a1189a
+É
+Ssrc/main/java/com/example/itspower/repository/repositoryjpa/GroupJpaRepository.java,5\7\578dd5b64a428d0580823a4db38bc284ab531a76
+q
+Asrc/main/java/com/example/itspower/repository/RestRepository.java,5\3\5335439e028d33bce554115c11d70d8475b7fe46
+Ñ
+Tsrc/main/java/com/example/itspower/repository/repositoryjpa/ReportJpaRepository.java,a\5\a59a516709e5b2416f033e72351bfe3dbe794ec0

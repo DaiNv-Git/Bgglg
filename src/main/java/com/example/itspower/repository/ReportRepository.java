@@ -9,6 +9,7 @@ import com.example.itspower.response.export.ExportExcelEmpRest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -46,8 +47,11 @@ public class ReportRepository {
         calendar.setTime(new Date()); // yourDate là thời gian hiện tại của bạn
         calendar.add(Calendar.HOUR_OF_DAY, 7); // thêm 7 giờ vào thời gian hiện tại
         Date newDate = calendar.getTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dateString = dateFormat.format(newDate);
         reportEntity.setReportDate(newDate);
-        return reportJpaRepository.saveAndFlush(reportEntity);
+        reportJpaRepository.saveAndFlush(reportEntity);
+        return reportJpaRepository.findByReportDateAndGroupId(dateString,groupId).get();
     }
 
 

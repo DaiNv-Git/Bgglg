@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8e811f7-ab85-440d-81dd-29fe6388095e" name="Changes" comment="ádassdas">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/3/5335439e028d33bce554115c11d70d8475b7fe46" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/8/6862fbbaa5edaa87902e586371cca668298cdf19" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/c/bc43fb8f305242e19a25dac009a348c7fe3dff98" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/3/5335439e028d33bce554115c11d70d8475b7fe46" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/8/6862fbbaa5edaa87902e586371cca668298cdf19" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/c/bc43fb8f305242e19a25dac009a348c7fe3dff98" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/controller/ReportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/RestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/RestRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/RestRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/repository/RestRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ReportServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/itspower/service/impl/ReportServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/itspower/repository/ReportRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,21 +298,10 @@
       <workItem from="1685410660007" duration="1902000" />
       <workItem from="1685497163235" duration="2498000" />
       <workItem from="1685522217640" duration="2333000" />
-      <workItem from="1685585454320" duration="827000" />
-    </task>
-    <task id="LOCAL-00056" summary="api /groupRole/demarcation get and update">
-      <created>1681035431842</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1681035431842</updated>
-    </task>
-    <task id="LOCAL-00057" summary="api /groupRole/demarcation get and update">
-      <created>1681035442897</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1681035442897</updated>
+      <workItem from="1685585454320" duration="3094000" />
+      <workItem from="1685612389735" duration="1399000" />
+      <workItem from="1685670606971" duration="453000" />
+      <workItem from="1685672595092" duration="1014000" />
     </task>
     <task id="LOCAL-00058" summary="api /groupRole/demarcation get and update">
       <created>1681046926851</created>
@@ -644,7 +632,21 @@
       <option name="project" value="LOCAL" />
       <updated>1685523203993</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="ádassdas">
+      <created>1685586397906</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1685586397907</updated>
+    </task>
+    <task id="LOCAL-00106" summary="ádassdas">
+      <created>1685586504188</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1685586504188</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -691,13 +693,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/service/impl/ReportServiceImpl.java</url>
-          <line>210</line>
+          <line>206</line>
           <option name="timeStamp" value="77" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/itspower/repository/RestRepository.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="80" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

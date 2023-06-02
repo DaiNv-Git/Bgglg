@@ -1,6 +1,4 @@
 
-m
-=src/main/java/com/example/itspower/request/ReportRequest.java,6\8\6862fbbaa5edaa87902e586371cca668298cdf19
 o
 ?src/main/java/com/example/itspower/security/SecurityConfig.java,6\1\61656606714c8e70b819b9ea80b2ccbde90cbc77
 v
@@ -31,8 +29,6 @@ x
 Hsrc/main/java/com/example/itspower/service/impl/TransferServiceImpl.java,3\2\32516fe79707cb534b3a065bbea5707ef46c9129
 |
 Lsrc/main/java/com/example/itspower/response/export/ExportExcelDtoReport.java,b\c\bcd1459ac35884afe911e8b1384df09f26b9b016
-s
-Csrc/main/java/com/example/itspower/repository/ReportRepository.java,b\c\bc43fb8f305242e19a25dac009a348c7fe3dff98
 q
 Asrc/main/java/com/example/itspower/model/entity/ReportEntity.java,b\8\b8e31ea4216c52710d463067cdc015f2b6c875bc
 }
@@ -263,8 +259,6 @@ Q.idea/sonarlint/securityhotspotstore/8/e/8e47f38ebc55de0b0737cd5bf30fa97a3bb42e
 Q.idea/sonarlint/securityhotspotstore/7/c/7cf26852b0a4f6974b9fb3fdc169f8af849160cb,0\2\02ebef70511826a170045740bfa52b1ea596f2d2
 w
 G.idea/sonarlint/issuestore/5/7/578dd5b64a428d0580823a4db38bc284ab531a76,c\2\c2d472fae78a2dffc5065fb624a12957935bb59c
-„
-Tsrc/main/java/com/example/itspower/repository/repositoryjpa/ReportJpaRepository.java,a\5\a59a516709e5b2416f033e72351bfe3dbe794ec0
 u
 Esrc/main/java/com/example/itspower/response/export/TransferExcel.java,f\d\fd6773cd5fa331ca803311bed89267412fcf90e5
 s
@@ -279,3 +273,15 @@ t
 Dsrc/main/java/com/example/itspower/response/view/ReasonResponse.java,0\2\024de65ce3da14b419b4483df7bb0a2003e07bec
 p
 @src/main/java/com/example/itspower/response/view/ReasonRest.java,7\a\7ad02b55ec6d4bbd674a195a493c2539b56c4a69
+z
+Jsrc/main/java/com/example/itspower/service/impl/ViewDetailSerivceImpl.java,4\2\42cc696565d19963eb7d3dc0552ec676648d2148
+w
+Gsrc/main/java/com/example/itspower/service/exportexcel/ExportExcel.java,4\3\43c4ce744e75a5a973c4813095bbd0080e803960
+p
+@src/main/java/com/example/itspower/model/entity/GroupEntity.java,1\7\17831af1313de27fb81ab64e267d537309a1189a
+ƒ
+Ssrc/main/java/com/example/itspower/repository/repositoryjpa/GroupJpaRepository.java,5\7\578dd5b64a428d0580823a4db38bc284ab531a76
+q
+Asrc/main/java/com/example/itspower/repository/RestRepository.java,5\3\5335439e028d33bce554115c11d70d8475b7fe46
+„
+Tsrc/main/java/com/example/itspower/repository/repositoryjpa/ReportJpaRepository.java,a\5\a59a516709e5b2416f033e72351bfe3dbe794ec0
