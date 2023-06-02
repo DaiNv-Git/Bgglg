@@ -295,3 +295,7 @@ q
 Asrc/main/java/com/example/itspower/repository/RestRepository.java,5\3\5335439e028d33bce554115c11d70d8475b7fe46
 „
 Tsrc/main/java/com/example/itspower/repository/repositoryjpa/ReportJpaRepository.java,a\5\a59a516709e5b2416f033e72351bfe3dbe794ec0
+q
+Asrc/main/java/com/example/itspower/controller/ViewController.java,8\a\8aff42c60b5adfb76930f5e8b025a49c51dbba2f
+m
+=src/main/java/com/example/itspower/request/ReportRequest.java,6\8\6862fbbaa5edaa87902e586371cca668298cdf19

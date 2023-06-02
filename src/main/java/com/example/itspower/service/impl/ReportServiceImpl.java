@@ -163,7 +163,7 @@ public class ReportServiceImpl implements ReportService {
         calendar.add(Calendar.HOUR_OF_DAY, 7);
         Date newDate = calendar.getTime();
         reportEntity.setReportDate(newDate);
-        return reportJpaRepository.saveAndFlush(reportEntity);
+        return reportJpaRepository.save(reportEntity);
     }
     @Override
     public void deleteRestIdsAndReportId(Integer reportId, List<Integer> restIds) {
