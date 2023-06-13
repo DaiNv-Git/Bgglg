@@ -163,6 +163,7 @@ public class ReportServiceImpl implements ReportService {
         calendar.add(Calendar.HOUR_OF_DAY, 7);
         Date newDate = calendar.getTime();
         reportEntity.setReportDate(newDate);
+        reportEntity.setReportDateFix(String.valueOf(newDate));
         return reportJpaRepository.save(reportEntity);
     }
     @Override

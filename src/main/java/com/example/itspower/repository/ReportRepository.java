@@ -50,6 +50,7 @@ public class ReportRepository {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String dateString = dateFormat.format(newDate);
         reportEntity.setReportDate(newDate);
+        reportEntity.setReportDateFix(String.valueOf(newDate));
         reportJpaRepository.save(reportEntity);
         return reportJpaRepository.findByReportDateAndGroupId(dateString,groupId).get();
     }

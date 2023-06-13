@@ -224,6 +224,8 @@ public class ReportEntity {
     private Integer id = 0;
     @Column(name = "report_date")
     private Date reportDate;
+    @Column(name = "report_date_fixed")
+    private String reportDateFix;
     @Column(name = "part_time_num")
     private Float partTimeNum ;
     @Column(name = "student_num")
